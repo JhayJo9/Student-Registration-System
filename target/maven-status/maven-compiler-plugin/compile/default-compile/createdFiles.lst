@@ -5,14 +5,17 @@ com\mycompany\login_form\Main2$11.class
 com\mycompany\login_form\Mainform$5.class
 com\mycompany\login_form\Main2$5.class
 com\mycompany\login_form\updaterecords$6.class
+com\mycompany\login_form\signupform$2.class
 com\mycompany\login_form\Main2$3.class
 com\mycompany\login_form\LogIn.class
 com\mycompany\login_form\Mainform$3.class
 com\mycompany\login_form\LogIn$1.class
+com\mycompany\login_form\signupform$1.class
 com\mycompany\login_form\LogIn$6.class
 com\mycompany\login_form\LogIn$3.class
 com\mycompany\login_form\Login_Form.class
 com\mycompany\login_form\Main2$8.class
+com\mycompany\login_form\signupform$4.class
 com\mycompany\login_form\updaterecords$4.class
 com\mycompany\login_form\LogIn$5.class
 com\mycompany\login_form\Main2$6.class
@@ -26,7 +29,9 @@ com\mycompany\login_form\Main2$1.class
 com\mycompany\login_form\Main2$9.class
 com\mycompany\login_form\Mainform$2.class
 com\mycompany\login_form\Main2$2.class
+com\mycompany\login_form\signupform.class
 com\mycompany\login_form\updaterecords$3.class
+com\mycompany\login_form\signupform$3.class
 com\mycompany\login_form\updaterecords$5.class
 com\mycompany\login_form\Main2$4.class
 com\mycompany\login_form\Main2$7.class

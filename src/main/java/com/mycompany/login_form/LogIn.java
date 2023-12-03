@@ -153,7 +153,7 @@ public class LogIn extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jLabel1)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_user, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,9 +244,9 @@ public class LogIn extends javax.swing.JFrame {
 
     private void jLabel5clickcreate(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5clickcreate
         // TODO add your handling code here:
-        //SignUp frame4 = new SignUp();
-        //loginform.this.setVisible(false);
-       // frame4.setVisible(true);
+        signupform frame4 = new signupform();
+        LogIn.this.setVisible(false);
+        frame4.setVisible(true);
     }//GEN-LAST:event_jLabel5clickcreate
 
     /**
