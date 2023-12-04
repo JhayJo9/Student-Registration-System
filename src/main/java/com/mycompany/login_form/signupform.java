@@ -4,6 +4,7 @@
  */
 package com.mycompany.login_form;
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,6 +23,9 @@ public class signupform extends javax.swing.JFrame {
      */
     public signupform() {
         initComponents();
+        
+        Color kulay = new Color(254,255,254,255);
+        getContentPane().setBackground(kulay);
     }
 
     /**
@@ -239,8 +243,6 @@ public class signupform extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField txt_pass;
-    private javax.swing.JTextField txt_user;
-    private javax.swing.JTextField txt_user1;
     private javax.swing.JTextField txt_user2;
     // End of variables declaration//GEN-END:variables
 }
