@@ -42,9 +42,6 @@ public class Main2 extends javax.swing.JFrame {
     
     
    public void tableupdate(){
-        
-      
-       
        Connection con = null;
         PreparedStatement pst = null;
         ResultSet rs= null;
@@ -132,23 +129,21 @@ public class Main2 extends javax.swing.JFrame {
               pstmain.setString(7, department);      // Department
               pstmain.setString(8, course);          // Course
 
+              
+                
+                
               pstmain.executeUpdate();
               JOptionPane.showMessageDialog(rootPane, "Inserted Successfully!");
               tableupdate();
               
-                 // disable the textbox
-                txt_studno.setEnabled(false);
-                txt_last.setEnabled(false);
-                txt_first.setEnabled(false);
-                txt_middle.setEnabled(false);
-                txt_add.setEnabled(false);
-                txt_bday.setEnabled(false);
-                jc_dept.setEnabled(false);
-                jc_course.setEnabled(false);
+              // disable the textbox
+              disabletextbox();
+              
+              btn_save.setEnabled(false);
              
 
           } catch (Exception e) {
-             System.out.println(e);
+            JOptionPane.showMessageDialog(null, "The student id is already given");
           }
             
            }
@@ -177,6 +172,19 @@ public class Main2 extends javax.swing.JFrame {
             jc_course.setSelectedItem("------------Select Course----------");
             txt_studno.requestFocus();
    }
+     
+     public void disabletextbox(){
+                txt_studno.setEnabled(false);
+                txt_last.setEnabled(false);
+                txt_first.setEnabled(false);
+                txt_middle.setEnabled(false);
+                txt_add.setEnabled(false);
+                txt_bday.setEnabled(false);
+                jc_dept.setEnabled(false);
+                jc_course.setEnabled(false);
+                
+                 btn_save.setEnabled(false);
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -194,6 +202,7 @@ public class Main2 extends javax.swing.JFrame {
         btn_add = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
         btn_exit = new javax.swing.JButton();
+        edit_btn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -310,6 +319,16 @@ public class Main2 extends javax.swing.JFrame {
             }
         });
 
+        edit_btn.setBackground(new java.awt.Color(25, 119, 243));
+        edit_btn.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        edit_btn.setForeground(new java.awt.Color(255, 255, 255));
+        edit_btn.setText("Edit Record");
+        edit_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edit_btnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -317,26 +336,29 @@ public class Main2 extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(btn_save)
-                .addGap(49, 49, 49)
+                .addGap(18, 18, 18)
                 .addComponent(btn_delete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addGap(18, 25, Short.MAX_VALUE)
                 .addComponent(btn_update)
-                .addGap(50, 50, 50)
+                .addGap(18, 18, 18)
+                .addComponent(edit_btn)
+                .addGap(18, 18, 18)
                 .addComponent(btn_exit)
                 .addGap(40, 40, 40))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_save)
                     .addComponent(btn_delete)
                     .addComponent(btn_add)
                     .addComponent(btn_update)
-                    .addComponent(btn_exit))
+                    .addComponent(btn_exit)
+                    .addComponent(edit_btn))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
@@ -344,23 +366,23 @@ public class Main2 extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, new java.awt.Color(102, 102, 102)));
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        jLabel1.setText("MS ACCES DATABASE CONNECTION WITH JAVA NETBEANS");
+        jLabel1.setText("MS ACCESS DATABASE CONNECTION WITH JAVA NETBEANS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(254, 255, 254));
@@ -410,7 +432,7 @@ public class Main2 extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
@@ -434,7 +456,7 @@ public class Main2 extends javax.swing.JFrame {
                     .addComponent(txt_add, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jc_dept, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jc_course, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -475,13 +497,12 @@ public class Main2 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(7, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -560,7 +581,17 @@ public class Main2 extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        int selectedIndex = jTable1.getSelectedRow();
         
+        txt_studno.setText(model.getValueAt(selectedIndex, 0).toString());
+        txt_last.setText(model.getValueAt(selectedIndex, 1).toString());
+        txt_first.setText(model.getValueAt(selectedIndex, 2).toString());
+        txt_middle.setText(model.getValueAt(selectedIndex, 3).toString());
+        txt_add.setText(model.getValueAt(selectedIndex, 4).toString());
+        txt_bday.setText(model.getValueAt(selectedIndex, 5).toString());
+        jc_dept.setSelectedItem(model.getValueAt(selectedIndex, 6));
+        jc_course.setSelectedItem(model.getValueAt(selectedIndex, 7));
       
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -574,8 +605,79 @@ public class Main2 extends javax.swing.JFrame {
         // TODO add your handling code here:
        // btn_save.setEnabled(true);
        addnewrecord();
-       
     }//GEN-LAST:event_btn_addActionPerformed
+
+    private void edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btnActionPerformed
+        // TODO add your handling code here:
+                
+        txt_studno.setEnabled(false);
+        txt_last.setEnabled(true);
+        txt_first.setEnabled(true);
+        txt_middle.setEnabled(true);
+        txt_add.setEnabled(true);
+        txt_bday.setEnabled(true);
+        jc_dept.setEnabled(true);
+        jc_course.setEnabled(true);
+        
+        
+        
+        
+         Connection conmain = null;
+         PreparedStatement pstmain = null;
+       
+          try
+          {
+           String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+           conmain = DriverManager.getConnection(urlmain);
+           DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+           int selectedRow = jTable1.getSelectedRow();
+           String id = (model.getValueAt(selectedRow, 0).toString());
+           
+           
+           String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+        
+            studentNumber = txt_studno.getText();
+            lastName = txt_last.getText();
+            firstName = txt_first.getText();
+            middleName = txt_middle.getText();
+            address = txt_add.getText();
+            birthDate = txt_bday.getText();
+            department = (String) jc_dept.getSelectedItem();
+            course = (String) jc_course.getSelectedItem();  
+            String sql = "UPDATE StudInfoTbl SET `Stud-no`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=? WHERE `Stud-no`=?";
+            pstmain = conmain.prepareStatement(sql);
+
+            // Correct order for setting values in the prepared statement
+            pstmain.setString(1, studentNumber);   // Stud-no
+            pstmain.setString(2, lastName);        // Last-name
+            pstmain.setString(3, firstName);       // First-name
+            pstmain.setString(4, middleName);      // Middle-name
+            pstmain.setString(5, address);         // Address
+            pstmain.setString(6, birthDate);       // Birthday
+            pstmain.setString(7, department);      // Department
+            pstmain.setString(8, course);          // Course
+            pstmain.setString(9, studentNumber);   // WHERE condition
+  
+
+                pstmain.executeUpdate();
+               
+                txt_studno.setText("");
+                txt_last.setText("");
+                txt_first.setText("");
+                txt_middle.setText("");
+                txt_add.setText("");
+                txt_bday.setText("");
+                jc_dept.setSelectedItem("---Select Department---");
+                jc_course.setSelectedItem("-------Select Course--------");
+                txt_studno.requestFocus();
+                tableupdate();
+       
+       }
+       catch (Exception e)
+            {
+                System.out.println(e);
+            }
+    }//GEN-LAST:event_edit_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -618,6 +720,7 @@ public class Main2 extends javax.swing.JFrame {
     private javax.swing.JButton btn_exit;
     private javax.swing.JButton btn_save;
     private javax.swing.JButton btn_update;
+    private javax.swing.JButton edit_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

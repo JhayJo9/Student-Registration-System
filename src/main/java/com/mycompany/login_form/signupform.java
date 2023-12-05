@@ -172,9 +172,6 @@ public class signupform extends javax.swing.JFrame {
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Account Created");
-            LogIn frame3 = new LogIn();
-            signupform.this.setVisible(false);
-            frame3.setVisible(true);
             // error handling for query
 
             try {
@@ -197,7 +194,9 @@ public class signupform extends javax.swing.JFrame {
         int confirmed = JOptionPane.showConfirmDialog(null,"Exit Again?", "Exit" , JOptionPane.YES_NO_OPTION);
         if(confirmed == JOptionPane.YES_OPTION){ // check if the user click the ( YES )
             //System.exit(0);
-            dispose();
+           LogIn g = new LogIn();
+           g.setVisible(true);
+           this.setVisible(false);
         }
     }//GEN-LAST:event_btn_exitActionPerformed
 

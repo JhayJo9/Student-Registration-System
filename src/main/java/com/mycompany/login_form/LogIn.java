@@ -38,7 +38,6 @@ public class LogIn extends javax.swing.JFrame {
     private void initComponents() {
 
         btn_exit = new javax.swing.JButton();
-        jcshow_password = new javax.swing.JCheckBox();
         txt_pass = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -59,14 +58,6 @@ public class LogIn extends javax.swing.JFrame {
         btn_exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_exitActionPerformed(evt);
-            }
-        });
-
-        jcshow_password.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        jcshow_password.setText("show password");
-        jcshow_password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcshow_passwordActionPerformed(evt);
             }
         });
 
@@ -135,18 +126,15 @@ public class LogIn extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jcshow_password)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel5))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(44, 44, 44)))))
+                                .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(44, 44, 44)))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -162,9 +150,7 @@ public class LogIn extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txt_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addComponent(jcshow_password)
-                .addGap(9, 9, 9)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -188,16 +174,6 @@ public class LogIn extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_exitActionPerformed
 
-    private void jcshow_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcshow_passwordActionPerformed
-        // TODO add your handling code here:
-        if(jcshow_password.isSelected()){
-            txt_pass.setEchoChar((char)0);
-        }
-        else{
-            txt_pass.setEchoChar('*');
-        }
-    }//GEN-LAST:event_jcshow_passwordActionPerformed
-
     private void txt_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_userActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_userActionPerformed
@@ -205,7 +181,7 @@ public class LogIn extends javax.swing.JFrame {
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
 
         System.out.println("Hello");
-          Connection con = null;
+     Connection con = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
 
@@ -219,15 +195,28 @@ public class LogIn extends javax.swing.JFrame {
         pst.setString(1, txt_user.getText());
         pst.setString(2, txt_pass.getText());
         rs = pst.executeQuery();
-
+        
+        String d = txt_user.getText();
+        String f = txt_pass.getText();
         if (rs.next()) {
-            JOptionPane.showMessageDialog(null, "Login Success");
-            Main2 b1 = new Main2();
-            b1.setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "Login Failed. Incorrect username or password.");
-        }
+        JOptionPane.showMessageDialog(null, "Login Success");
+        Main2 b1 = new Main2();
+        b1.setVisible(true);
+        this.setVisible(false);
+            if(!rs.next()){
+             if(d.equals("") && f.equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter requered fields");
+            }
+                else if(d == d && f == ""){
+                JOptionPane.showMessageDialog(null, "enter password");
+             }
+            }
+            
+        } 
+       
+        
+       
+        
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         e.printStackTrace();
@@ -292,7 +281,6 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JCheckBox jcshow_password;
     private javax.swing.JPasswordField txt_pass;
     private javax.swing.JTextField txt_user;
     // End of variables declaration//GEN-END:variables
