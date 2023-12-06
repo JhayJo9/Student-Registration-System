@@ -185,42 +185,39 @@ public class LogIn extends javax.swing.JFrame {
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-    try {
-        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        con = DriverManager.getConnection("jdbc:ucanaccess://JavaLoginClone.accdb");
-
-        // Check login credentials
+   try {
+    Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+    con = DriverManager.getConnection("jdbc:ucanaccess://JavaLoginClone.accdb");
+    if (!txt_user.getText().isEmpty() && txt_pass.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please enter password");
+    }
+    else if (txt_user.getText().isEmpty() && !txt_pass.getText().isEmpty()){
+        JOptionPane.showMessageDialog(null, "Please enter username");
+    }
+    else {
         String loginSql = "SELECT * FROM Logintbl WHERE username = ? AND password = ?";
         pst = con.prepareStatement(loginSql);
         pst.setString(1, txt_user.getText());
         pst.setString(2, txt_pass.getText());
-        rs = pst.executeQuery();
         
-        String d = txt_user.getText();
-        String f = txt_pass.getText();
-        if (rs.next()) {
-        JOptionPane.showMessageDialog(null, "Login Success");
-        Main2 b1 = new Main2();
-        b1.setVisible(true);
-        this.setVisible(false);
-            if(!rs.next()){
-             if(d.equals("") && f.equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter requered fields");
+        rs = pst.executeQuery();
+       
+        if (rs.next()){
+                JOptionPane.showMessageDialog(null, "Login Success");
+                Main2 b1 = new Main2();
+                b1.setVisible(true);
+                this.setVisible(false);
             }
-                else if(d == d && f == ""){
-                JOptionPane.showMessageDialog(null, "enter password");
-             }
+            else {
+                JOptionPane.showMessageDialog(null, "Incorrect username or password");
             }
             
-        } 
-       
         
-       
-        
+           
+    }
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         e.printStackTrace();
-    } finally {
+    }finally {
         try {
             if (rs != null) rs.close();
             if (pst != null) pst.close();
