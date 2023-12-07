@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
@@ -179,53 +180,49 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_userActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-
-        System.out.println("Hello");
-     Connection con = null;
-    PreparedStatement pst = null;
-    ResultSet rs = null;
-
-   try {
-    Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-    con = DriverManager.getConnection("jdbc:ucanaccess://JavaLoginClone.accdb");
-    if (!txt_user.getText().isEmpty() && txt_pass.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Please enter password");
-    }
-    else if (txt_user.getText().isEmpty() && !txt_pass.getText().isEmpty()){
-        JOptionPane.showMessageDialog(null, "Please enter username");
-    }
-    else {
-        String loginSql = "SELECT * FROM Logintbl WHERE username = ? AND password = ?";
-        pst = con.prepareStatement(loginSql);
-        pst.setString(1, txt_user.getText());
-        pst.setString(2, txt_pass.getText());
         
-        rs = pst.executeQuery();
-       
-        if (rs.next()){
-                JOptionPane.showMessageDialog(null, "Login Success");
-                Main2 b1 = new Main2();
-                b1.setVisible(true);
-                this.setVisible(false);
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Incorrect username or password");
-            }
-            
-        
-           
-    }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }finally {
-        try {
-            if (rs != null) rs.close();
-            if (pst != null) pst.close();
-            if (con != null) con.close();
-        } catch (Exception e) {
+        if(txt_user.getText().isEmpty() && !txt_pass.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter username");
+        }
+        else if(!txt_user.getText().isEmpty() && txt_pass.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter passsword");
+        }else if (txt_user.getText().isEmpty() && txt_pass.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter required fields");
+        } else {
+            Connection con = null;
+            PreparedStatement pst = null;
+            ResultSet rs = null;
+
+            try {
+                Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+                con = DriverManager.getConnection("jdbc:ucanaccess://JavaLoginClone.accdb");
+                Statement stmt = con.createStatement();
+
+                String sql = "SELECT Username, Password FROM Logintbl WHERE Username = ? OR Password = ?";
+                pst = con.prepareStatement(sql);
+                pst.setString(1, txt_user.getText());
+                pst.setString(2, txt_pass.getText());
+                rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    System.out.print("Check if the query is executed");
+                    if (txt_user.getText().equals(rs.getString("Username")) && txt_pass.getText().equals(rs.getString("Password"))) {
+                        Main2 m = new Main2();
+                        m.setVisible(true);
+                        this.setVisible(false);
+                    }
+                    else if(txt_user.getText().equals(rs.getString("Username")) && !txt_pass.getText().equals(rs.getString("Password"))){
+                        JOptionPane.showMessageDialog(null, "Incorrect password");
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Username not found");
+                } 
+        }catch (Exception e) {
             e.printStackTrace();
         }
-    }
+        }
+    
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void jLabel5clickcreate(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5clickcreate
