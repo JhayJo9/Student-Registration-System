@@ -198,8 +198,9 @@ public class LogIn extends javax.swing.JFrame {
                 Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
                 con = DriverManager.getConnection("jdbc:ucanaccess://JavaLoginClone.accdb");
                 Statement stmt = con.createStatement();
+                String sql = "SELECT Username, Password FROM Logintbl WHERE Username = ? AND Password = ?";
 
-                String sql = "SELECT Username, Password FROM Logintbl WHERE Username = ? OR Password = ?";
+                //String sql = "SELECT Username, Password FROM Logintbl WHERE Username = ?, Password = ?";
                 pst = con.prepareStatement(sql);
                 pst.setString(1, txt_user.getText());
                 pst.setString(2, txt_pass.getText());

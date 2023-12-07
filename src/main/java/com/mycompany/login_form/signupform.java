@@ -162,41 +162,39 @@ public class signupform extends javax.swing.JFrame {
             Connection con = null;
             PreparedStatement pst = null;
             ResultSet rs = null;
-            try{
-                // THIS CODE CHECK IF THE USER TYPE USERNAME THAT IS ALREADY IN THE DATABSE
+            try {
                 Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-                con = DriverManager.getConnection("jdbc:ucanaccess://JavaLoginClone.accdb");
-                Statement stmt = con.createStatement();
+                String url = "jdbc:ucanaccess://JavaLoginClone.accdb";
                 
-                String sql = "SELECT Username FROM Logintbl WHERE Username = ?";
-                pst = con.prepareStatement(sql);
-                pst.setString(1, txt_user2.getText());
-      
-                rs = pst.executeQuery();
-                
-                if(rs.next()){
-                    JOptionPane.showMessageDialog(null, "This username is already created");
-                }else {
-                    // ELSE IF THE USER TYPE NEW USERNAME
-                    Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-                    String url = "jdbc:ucanaccess://JavaLoginClone.accdb";
-                    con = DriverManager.getConnection(url);
+                // Check if the username already exists
+                try (Connection checkCon = DriverManager.getConnection(url);
+                        PreparedStatement checkStmt = checkCon.prepareStatement("SELECT Username FROM Logintbl WHERE Username = ?")) {
                     
-                    //String sqlinsert = "insert into LoginTbl (Username, Password) values(?, ?)";
-                   String sqlinsert = "INSERT INTO Logintbl (Username, Password) VALUES (?, ?)";
-                    pst = con.prepareStatement(sqlinsert);
+                    checkStmt.setString(1, txt_user2.getText());
+                    ResultSet checkRs = checkStmt.executeQuery();
                     
-                    pst.setString(1 , txt_user2.getText());
-                    pst.setString(2, txt_pass.getText());
-                    pst.executeUpdate();
-                    
-                    JOptionPane.showMessageDialog(null, "Account Created");
-                    
+                    if (checkRs.next()) {
+                        JOptionPane.showMessageDialog(null, "This username is already created");
+                    } else {
+                        // Insert a new record
+                        try (Connection insertCon = DriverManager.getConnection(url);
+                                PreparedStatement insertStmt = insertCon.prepareStatement("INSERT INTO Logintbl (Username, Password) VALUES (?, ?)")) {
+                            
+                            insertStmt.setString(1, txt_user2.getText());
+                            insertStmt.setString(2, txt_pass.getText());
+                            insertStmt.executeUpdate();
+                            
+                            JOptionPane.showMessageDialog(null, "Account Created");
+                            
+                            txt_user2.setText("");
+                            txt_pass.setText("");
+                        }
+                    }
                 }
-                
-            }catch(Exception x){
+            } catch (Exception x) {
                 x.printStackTrace();
             }
+            
         } // ELSE 
     }//GEN-LAST:event_btn_loginActionPerformed
 
