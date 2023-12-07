@@ -150,42 +150,54 @@ public class signupform extends javax.swing.JFrame {
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
 
-        System.out.println("Hello");
-
-        // error handling for connection
-        try {
-            //Connection con;
-            // connection
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            String url = "jdbc:ucanaccess://JavaLoginClone.accdb";
-            Connection con = DriverManager.getConnection(url);
-            // path for the accdb
-            // user dns / 64bits ORIG
-            // String url = "jdbc:ucanaccess://JavaLoginClone.accdb";
-            // new database
-            String sql = "insert into LoginTbl (Username, Password) values(?, ?)";
-
-            PreparedStatement pst = con.prepareStatement(sql);
-
-            pst.setString(1 , txt_user2.getText());
-            pst.setString(2, txt_pass.getText());
-            pst.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Account Created");
-            // error handling for query
-
-            try {
-                Statement st = con.createStatement();
-                ResultSet rs;
-
-                rs = st.executeQuery(sql);
-
-            }catch(Exception ex){
-                System.out.println("error in query"+ex);
-            }
-        }catch(Exception x){
-            x.printStackTrace();
+        System.out.println("CLICKED SIGN UP");
+        if(txt_user2.getText().isEmpty() && !txt_pass.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter username");
         }
+        else if(!txt_user2.getText().isEmpty() && txt_pass.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter passsword");
+        }else if (txt_user2.getText().isEmpty() && txt_pass.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter required fields");
+        } else{
+            Connection con = null;
+            PreparedStatement pst = null;
+            ResultSet rs = null;
+            try{
+                // THIS CODE CHECK IF THE USER TYPE USERNAME THAT IS ALREADY IN THE DATABSE
+                Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+                con = DriverManager.getConnection("jdbc:ucanaccess://JavaLoginClone.accdb");
+                Statement stmt = con.createStatement();
+                
+                String sql = "SELECT Username FROM Logintbl WHERE Username = ?";
+                pst = con.prepareStatement(sql);
+                pst.setString(1, txt_user2.getText());
+      
+                rs = pst.executeQuery();
+                
+                if(rs.next()){
+                    JOptionPane.showMessageDialog(null, "This username is already created");
+                }else {
+                    // ELSE IF THE USER TYPE NEW USERNAME
+                    Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+                    String url = "jdbc:ucanaccess://JavaLoginClone.accdb";
+                    con = DriverManager.getConnection(url);
+                    
+                    //String sqlinsert = "insert into LoginTbl (Username, Password) values(?, ?)";
+                   String sqlinsert = "INSERT INTO Logintbl (Username, Password) VALUES (?, ?)";
+                    pst = con.prepareStatement(sqlinsert);
+                    
+                    pst.setString(1 , txt_user2.getText());
+                    pst.setString(2, txt_pass.getText());
+                    pst.executeUpdate();
+                    
+                    JOptionPane.showMessageDialog(null, "Account Created");
+                    
+                }
+                
+            }catch(Exception x){
+                x.printStackTrace();
+            }
+        } // ELSE 
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed

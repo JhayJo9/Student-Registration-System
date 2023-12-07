@@ -180,7 +180,8 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_userActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        
+        System.out.println("CLICKED LOGIN");
+        // CHECK IF THE USER ENTER CREDENTIALS
         if(txt_user.getText().isEmpty() && !txt_pass.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter username");
         }
@@ -207,6 +208,7 @@ public class LogIn extends javax.swing.JFrame {
                 if (rs.next()) {
                     System.out.print("Check if the query is executed");
                     if (txt_user.getText().equals(rs.getString("Username")) && txt_pass.getText().equals(rs.getString("Password"))) {
+                        JOptionPane.showMessageDialog(null, "Login Succesfully");
                         Main2 m = new Main2();
                         m.setVisible(true);
                         this.setVisible(false);
