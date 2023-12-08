@@ -200,7 +200,7 @@ public class LogIn extends javax.swing.JFrame {
                 Statement stmt = con.createStatement();
                 String sql = "SELECT Username, Password FROM Logintbl WHERE Username = ? AND Password = ?";
 
-                //String sql = "SELECT Username, Password FROM Logintbl WHERE Username = ?, Password = ?";
+                //String sql = "SELECT Username, Password FROM Logintbl WHERE Username = ? OR Password = ?";
                 pst = con.prepareStatement(sql);
                 pst.setString(1, txt_user.getText());
                 pst.setString(2, txt_pass.getText());
@@ -214,12 +214,10 @@ public class LogIn extends javax.swing.JFrame {
                         m.setVisible(true);
                         this.setVisible(false);
                     }
-                    else if(txt_user.getText().equals(rs.getString("Username")) && !txt_pass.getText().equals(rs.getString("Password"))){
-                        JOptionPane.showMessageDialog(null, "Incorrect password");
-                    }
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Username not found");
+                    JOptionPane.showMessageDialog(null, "Incorrect password");
+                    //JOptionPane.showMessageDialog(null, "Username not found");
                 } 
         }catch (Exception e) {
             e.printStackTrace();

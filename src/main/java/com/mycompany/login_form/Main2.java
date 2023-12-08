@@ -22,9 +22,6 @@ import java.util.*;
  */
 public class Main2 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Main2
-     */
     public Main2() {
         initComponents();
         
