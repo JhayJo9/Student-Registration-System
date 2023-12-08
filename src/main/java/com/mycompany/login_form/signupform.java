@@ -52,8 +52,10 @@ public class signupform extends javax.swing.JFrame {
         jLabel3.setText("Password");
 
         txt_pass.setBackground(new java.awt.Color(204, 204, 204));
+        txt_pass.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
 
         txt_user2.setBackground(new java.awt.Color(204, 204, 204));
+        txt_user2.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
         txt_user2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txt_user2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +168,7 @@ public class signupform extends javax.swing.JFrame {
                 Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
                 String url = "jdbc:ucanaccess://JavaLoginClone.accdb";
                 
-                // Check if the username already exists
+                //CHECK IF THE USER TYPE USERNAME THAT ALREADY EXIST
                 try (Connection checkCon = DriverManager.getConnection(url);
                         PreparedStatement checkStmt = checkCon.prepareStatement("SELECT Username FROM Logintbl WHERE Username = ?")) {
                     
@@ -176,7 +178,7 @@ public class signupform extends javax.swing.JFrame {
                     if (checkRs.next()) {
                         JOptionPane.showMessageDialog(null, "This username is already created");
                     } else {
-                        // Insert a new record
+                        //INSERT NEW RECORD
                         try (Connection insertCon = DriverManager.getConnection(url);
                                 PreparedStatement insertStmt = insertCon.prepareStatement("INSERT INTO Logintbl (Username, Password) VALUES (?, ?)")) {
                             

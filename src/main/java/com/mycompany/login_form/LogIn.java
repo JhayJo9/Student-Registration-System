@@ -63,6 +63,7 @@ public class LogIn extends javax.swing.JFrame {
         });
 
         txt_pass.setBackground(new java.awt.Color(204, 204, 204));
+        txt_pass.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         jLabel1.setText("STUDENT LOGIN FORM");
@@ -74,6 +75,7 @@ public class LogIn extends javax.swing.JFrame {
         jLabel3.setText("Password");
 
         txt_user.setBackground(new java.awt.Color(204, 204, 204));
+        txt_user.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
         txt_user.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txt_user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,10 +209,10 @@ public class LogIn extends javax.swing.JFrame {
                 rs = pst.executeQuery();
 
                 if (rs.next()) {
-                    System.out.print("Check if the query is executed");
+                    //Check if the query is executed
                     if (txt_user.getText().equals(rs.getString("Username")) && txt_pass.getText().equals(rs.getString("Password"))) {
                         JOptionPane.showMessageDialog(null, "Login Succesfully");
-                        Main2 m = new Main2();
+                        Main m = new Main();
                         m.setVisible(true);
                         this.setVisible(false);
                     }
