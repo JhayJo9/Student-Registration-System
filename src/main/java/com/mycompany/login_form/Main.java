@@ -33,8 +33,11 @@ public class Main extends javax.swing.JFrame {
         txt_bday.setEnabled(false);
         jc_dept.setEnabled(false);
         jc_course.setEnabled(false);
+        
         btn_save.setEnabled(false);
+         btn_update.setEnabled(false);
     }
+    
     public void tableupdate(){
         Connection con = null;
         PreparedStatement pst = null;
@@ -64,12 +67,9 @@ public class Main extends javax.swing.JFrame {
                     v2.add(rs.getString("Birthday"));
                     v2.add(rs.getString("Department"));
                     v2.add(rs.getString("Course"));
-                    
                 }
-                dft.addRow(v2);
-                
+                dft.addRow(v2);               
             }
-            
             // set to empty string
             txt_studno.setText("");
             txt_last.setText("");
@@ -123,19 +123,12 @@ public class Main extends javax.swing.JFrame {
                 pstmain.setString(7, department);      // Department
                 pstmain.setString(8, course);          // Course
                 
-                
-                
-                
                 pstmain.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Inserted Successfully!");
                 tableupdate();
-                
                 // disable the textbox
                 disabletextbox();
-                
                 btn_save.setEnabled(false);
-                
-                
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "The student id is already given");
             }
@@ -167,19 +160,6 @@ public class Main extends javax.swing.JFrame {
         txt_studno.requestFocus();
     }
     public void updaterecord(){
-        txt_studno.setEnabled(true);
-        txt_last.setEnabled(true);
-        txt_first.setEnabled(true);
-        txt_middle.setEnabled(true);
-        txt_add.setEnabled(true);
-        txt_bday.setEnabled(true);
-        jc_dept.setEnabled(true);
-        jc_course.setEnabled(true);
-        
-        
-        btn_save.setEnabled(false);
-        btn_delete.setEnabled(false);
-        btn_add.setEnabled(false);
         
         Connection conmain = null;
         PreparedStatement pstmain = null;
@@ -191,7 +171,6 @@ public class Main extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             int selectedRow = jTable1.getSelectedRow();
             String id = (model.getValueAt(selectedRow, 0).toString());
-            
             
             String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
             
@@ -232,6 +211,15 @@ public class Main extends javax.swing.JFrame {
                 jc_dept.setSelectedItem("---Select Department---");
                 jc_course.setSelectedItem("-------Select Course--------");
                 txt_studno.requestFocus();
+                
+                disabletextbox();
+                
+                btn_save.setEnabled(false);
+                btn_update.setEnabled(false);
+                
+                btn_delete.setEnabled(true);
+                btn_add.setEnabled(true);
+                
                 tableupdate();
             }
             else
@@ -259,6 +247,7 @@ public class Main extends javax.swing.JFrame {
         btn_delete.setEnabled(false);
         btn_add.setEnabled(false);
         
+        btn_update.setEnabled(true);
         Connection conmain = null;
         PreparedStatement pstmain = null;
         
