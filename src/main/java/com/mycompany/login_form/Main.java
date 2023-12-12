@@ -1,7 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+* Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+*/
 package com.mycompany.login_form;
 
 import javax.swing.JOptionPane;
@@ -17,7 +17,7 @@ import java.util.*;
  * @author JhayJTheGosu
  */
 public class Main extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Main
      */
@@ -25,7 +25,7 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         
         // disable the textbox
-       txt_studno.setEnabled(false);
+        txt_studno.setEnabled(false);
         txt_last.setEnabled(false);
         txt_first.setEnabled(false);
         txt_middle.setEnabled(false);
@@ -36,125 +36,40 @@ public class Main extends javax.swing.JFrame {
         btn_save.setEnabled(false);
     }
     public void tableupdate(){
-       Connection con = null;
+        Connection con = null;
         PreparedStatement pst = null;
         ResultSet rs= null;
         
         int c;
-         try {
+        try {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             con = DriverManager.getConnection("jdbc:ucanaccess://JavaLoginClone.accdb");
-
-
+            
+            
             String sql = "SELECT * FROM StudInfoTbl";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
             ResultSetMetaData rsd = rs.getMetaData();
             c = rsd.getColumnCount();
             DefaultTableModel dft = (DefaultTableModel) jTable1.getModel();
-            dft.setRowCount(0);        
-        while(rs.next()){
-            Vector v2 = new Vector();
-            for(int i =1; i<=c;i++){
-                v2.add(rs.getString("Stud-no"));
-                v2.add(rs.getString("Last-name"));
-                v2.add(rs.getString("First-name"));
-                v2.add(rs.getString("Middle-name"));
-                v2.add(rs.getString("Address"));
-                v2.add(rs.getString("Birthday"));
-                v2.add(rs.getString("Department"));
-                v2.add(rs.getString("Course"));
+            dft.setRowCount(0);
+            while(rs.next()){
+                Vector v2 = new Vector();
+                for(int i =1; i<=c;i++){
+                    v2.add(rs.getString("Student"));
+                    v2.add(rs.getString("Last-name"));
+                    v2.add(rs.getString("First-name"));
+                    v2.add(rs.getString("Middle-name"));
+                    v2.add(rs.getString("Address"));
+                    v2.add(rs.getString("Birthday"));
+                    v2.add(rs.getString("Department"));
+                    v2.add(rs.getString("Course"));
+                    
+                }
+                dft.addRow(v2);
                 
             }
-            dft.addRow(v2);
             
-        }
-        
-         // set to empty string
-        txt_studno.setText("");
-        txt_last.setText("");
-        txt_first.setText("");
-        txt_middle.setText("");
-        txt_add.setText("");
-        txt_bday.setText("");
-        jc_dept.setSelectedItem("------------Select Department----------");
-        jc_course.setSelectedItem("------------Select Course----------");
-        txt_studno.requestFocus();
-
-    } catch (Exception e) {
-        e.printStackTrace();
-       
-    }
-    }
-   //
-      public void savebtn(){
-           System.out.println("fggf");
-            
-           if(txt_studno.getText().equals("") || txt_last.getText().equals("") || txt_first.getText().equals("") || txt_middle.getText().equals("") || txt_add.getText().equals("")
-                    || txt_bday.getText().equals("") || jc_dept.getSelectedItem().equals("------------Select Department----------") || jc_course.getSelectedItem().equals("")){
-                    JOptionPane.showMessageDialog(rootPane, "Please enter requeried fields");
-            }
-            else { 
-             Connection conmain = null;
-             PreparedStatement pstmain = null;
-            try {
-              String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
-              conmain = DriverManager.getConnection(urlmain);
-              String sql = "INSERT into StudInfoTbl([STUD-NO], [LAST-NAME], [FIRST-NAME], [MIDDLE-NAME], Address, Birthday, Department, Course) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-              pstmain = conmain.prepareStatement(sql);
-
-              String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
-
-              studentNumber = txt_studno.getText();
-              lastName = txt_last.getText();
-              firstName = txt_first.getText();
-              middleName = txt_middle.getText();
-              address = txt_add.getText();
-              birthDate = txt_bday.getText();
-              department = (String) jc_dept.getSelectedItem();
-              course = (String) jc_course.getSelectedItem();
-
-              pstmain.setString(1, studentNumber);   // STUD-NO
-              pstmain.setString(2, lastName);        // LAST-NAME
-              pstmain.setString(3, firstName);       // FIRST-NAME
-              pstmain.setString(4, middleName);      // MIDDLE-NAME
-              pstmain.setString(5, address);         // Address
-              pstmain.setString(6, birthDate);       // Birthday
-              pstmain.setString(7, department);      // Department
-              pstmain.setString(8, course);          // Course
-
-              
-                
-                
-              pstmain.executeUpdate();
-              JOptionPane.showMessageDialog(rootPane, "Inserted Successfully!");
-              tableupdate();
-              
-              // disable the textbox
-              disabletextbox();
-              
-              btn_save.setEnabled(false);
-             
-
-          } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "The student id is already given");
-          }
-            
-           }
-   }
-    //
-     public void addnewrecord(){
-            btn_save.setEnabled(true);
-            // enable textbox
-            txt_studno.setEnabled(true);
-            txt_last.setEnabled(true);
-            txt_first.setEnabled(true);
-            txt_middle.setEnabled(true);
-            txt_add.setEnabled(true);
-            txt_bday.setEnabled(true);
-            jc_dept.setEnabled(true);
-            jc_course.setEnabled(true);
-
             // set to empty string
             txt_studno.setText("");
             txt_last.setText("");
@@ -165,20 +80,294 @@ public class Main extends javax.swing.JFrame {
             jc_dept.setSelectedItem("------------Select Department----------");
             jc_course.setSelectedItem("------------Select Course----------");
             txt_studno.requestFocus();
-   }
-     
-     public void disabletextbox(){
-                txt_studno.setEnabled(false);
-                txt_last.setEnabled(false);
-                txt_first.setEnabled(false);
-                txt_middle.setEnabled(false);
-                txt_add.setEnabled(false);
-                txt_bday.setEnabled(false);
-                jc_dept.setEnabled(false);
-                jc_course.setEnabled(false);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            
+        }
+    }
+    //
+    public void savebtn(){
+        System.out.println("fggf");
+        
+        if(txt_studno.getText().equals("") || txt_last.getText().equals("") || txt_first.getText().equals("") || txt_middle.getText().equals("") || txt_add.getText().equals("")
+                || txt_bday.getText().equals("") || jc_dept.getSelectedItem().equals("------------Select Department----------") || jc_course.getSelectedItem().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Please enter requeried fields");
+        }
+        else {
+            Connection conmain = null;
+            PreparedStatement pstmain = null;
+            try {
+                String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+                conmain = DriverManager.getConnection(urlmain);
+                String sql = "INSERT into StudInfoTbl([Student], [LAST-NAME], [FIRST-NAME], [MIDDLE-NAME], Address, Birthday, Department, Course) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                pstmain = conmain.prepareStatement(sql);
                 
-                 btn_save.setEnabled(false);
-     }
+                String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+                
+                studentNumber = txt_studno.getText();
+                lastName = txt_last.getText();
+                firstName = txt_first.getText();
+                middleName = txt_middle.getText();
+                address = txt_add.getText();
+                birthDate = txt_bday.getText();
+                department = (String) jc_dept.getSelectedItem();
+                course = (String) jc_course.getSelectedItem();
+                
+                pstmain.setString(1, studentNumber);   // STUD-NO
+                pstmain.setString(2, lastName);        // LAST-NAME
+                pstmain.setString(3, firstName);       // FIRST-NAME
+                pstmain.setString(4, middleName);      // MIDDLE-NAME
+                pstmain.setString(5, address);         // Address
+                pstmain.setString(6, birthDate);       // Birthday
+                pstmain.setString(7, department);      // Department
+                pstmain.setString(8, course);          // Course
+                
+                
+                
+                
+                pstmain.executeUpdate();
+                JOptionPane.showMessageDialog(rootPane, "Inserted Successfully!");
+                tableupdate();
+                
+                // disable the textbox
+                disabletextbox();
+                
+                btn_save.setEnabled(false);
+                
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "The student id is already given");
+            }
+            
+        }
+    }
+    //
+    public void addnewrecord(){
+        btn_save.setEnabled(true);
+        // enable textbox
+        txt_studno.setEnabled(true);
+        txt_last.setEnabled(true);
+        txt_first.setEnabled(true);
+        txt_middle.setEnabled(true);
+        txt_add.setEnabled(true);
+        txt_bday.setEnabled(true);
+        jc_dept.setEnabled(true);
+        jc_course.setEnabled(true);
+        
+        // set to empty string
+        txt_studno.setText("");
+        txt_last.setText("");
+        txt_first.setText("");
+        txt_middle.setText("");
+        txt_add.setText("");
+        txt_bday.setText("");
+        jc_dept.setSelectedItem("------------Select Department----------");
+        jc_course.setSelectedItem("------------Select Course----------");
+        txt_studno.requestFocus();
+    }
+    public void updaterecord(){
+        txt_studno.setEnabled(true);
+        txt_last.setEnabled(true);
+        txt_first.setEnabled(true);
+        txt_middle.setEnabled(true);
+        txt_add.setEnabled(true);
+        txt_bday.setEnabled(true);
+        jc_dept.setEnabled(true);
+        jc_course.setEnabled(true);
+        
+        
+        btn_save.setEnabled(false);
+        btn_delete.setEnabled(false);
+        btn_add.setEnabled(false);
+        
+        Connection conmain = null;
+        PreparedStatement pstmain = null;
+        
+        try
+        {
+            String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+            conmain = DriverManager.getConnection(urlmain);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            int selectedRow = jTable1.getSelectedRow();
+            String id = (model.getValueAt(selectedRow, 0).toString());
+            
+            
+            String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+            
+            studentNumber = txt_studno.getText();
+            lastName = txt_last.getText();
+            firstName = txt_first.getText();
+            middleName = txt_middle.getText();
+            address = txt_add.getText();
+            birthDate = txt_bday.getText();
+            department = (String) jc_dept.getSelectedItem().toString();
+            course = (String) jc_course.getSelectedItem().toString();
+            String sql = "UPDATE StudInfoTbl SET `Student`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=? WHERE `Student`=?";
+            pstmain = conmain.prepareStatement(sql);
+            
+            // Correct order for setting values in the prepared statement
+            pstmain.setString(1, studentNumber);   // Stud-no
+            pstmain.setString(2, lastName);        // Last-name
+            pstmain.setString(3, firstName);       // First-name
+            pstmain.setString(4, middleName);      // Middle-name
+            pstmain.setString(5, address);         // Address
+            pstmain.setString(6, birthDate);       // Birthday
+            pstmain.setString(7, department);      // Department
+            pstmain.setString(8, course);          // Course
+            pstmain.setString(9, studentNumber);   // WHERE condition
+            
+            int k = JOptionPane.showConfirmDialog(rootPane, "Confirm to Update?", "Update", JOptionPane.YES_NO_OPTION);
+            if (k == JOptionPane.YES_OPTION)
+            {
+                
+                pstmain.executeUpdate();
+                JOptionPane.showMessageDialog(rootPane, "Updated Successfully!");
+                txt_studno.setText("");
+                txt_last.setText("");
+                txt_first.setText("");
+                txt_middle.setText("");
+                txt_add.setText("");
+                txt_bday.setText("");
+                jc_dept.setSelectedItem("---Select Department---");
+                jc_course.setSelectedItem("-------Select Course--------");
+                txt_studno.requestFocus();
+                tableupdate();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(rootPane, "Data not Updated!");
+            }
+            
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+    public void edit(){
+        txt_studno.setEnabled(false);
+        txt_last.setEnabled(true);
+        txt_first.setEnabled(true);
+        txt_middle.setEnabled(true);
+        txt_add.setEnabled(true);
+        txt_bday.setEnabled(true);
+        jc_dept.setEnabled(true);
+        jc_course.setEnabled(true);
+        
+        btn_save.setEnabled(false);
+        btn_delete.setEnabled(false);
+        btn_add.setEnabled(false);
+        
+        Connection conmain = null;
+        PreparedStatement pstmain = null;
+        
+        try
+        {
+            String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+            conmain = DriverManager.getConnection(urlmain);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            int selectedRow = jTable1.getSelectedRow();
+            String id = (model.getValueAt(selectedRow, 0).toString());
+            
+            String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+            
+            studentNumber = txt_studno.getText();
+            lastName = txt_last.getText();
+            firstName = txt_first.getText();
+            middleName = txt_middle.getText();
+            address = txt_add.getText();
+            birthDate = txt_bday.getText();
+            department = (String) jc_dept.getSelectedItem();
+            course = (String) jc_course.getSelectedItem();
+            String sql = "UPDATE StudInfoTbl SET `Student`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=? WHERE `Student`=?";
+            pstmain = conmain.prepareStatement(sql);
+            
+            // Correct order for setting values in the prepared statement
+            pstmain.setString(1, studentNumber);   // Stud-no
+            pstmain.setString(2, lastName);        // Last-name
+            pstmain.setString(3, firstName);       // First-name
+            pstmain.setString(4, middleName);      // Middle-name
+            pstmain.setString(5, address);         // Address
+            pstmain.setString(6, birthDate);       // Birthday
+            pstmain.setString(7, department);      // Department
+            pstmain.setString(8, course);          // Course
+            pstmain.setString(9, studentNumber);   // WHERE condition
+            
+            pstmain.executeUpdate();
+            
+            txt_studno.setText("");
+            txt_last.setText("");
+            txt_first.setText("");
+            txt_middle.setText("");
+            txt_add.setText("");
+            txt_bday.setText("");
+            jc_dept.setSelectedItem("---Select Department---");
+            jc_course.setSelectedItem("-------Select Course--------");
+            txt_studno.requestFocus();
+            tableupdate();
+            
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+        
+    }
+    //
+    public void deletebtn(){
+        if(jTable1.getSelectedRowCount() == 1){
+            Connection conmain = null;
+            PreparedStatement pstmain = null;
+            try {
+                String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+                conmain = DriverManager.getConnection(urlmain);
+                String sql = "DELETE FROM StudInfoTbl WHERE Student = ?";
+                pstmain = conmain.prepareStatement(sql);
+                int confirmed = JOptionPane.showConfirmDialog(null,"Do you want to delete?", "Question" , JOptionPane.YES_NO_OPTION);
+                if(confirmed == JOptionPane.YES_OPTION){ // check if the user click the ( YES )
+                    pstmain.setString(1, txt_studno.getText());   // STUD-NO
+                    pstmain.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Recored Deleted");
+                    
+                    txt_studno.setText("");
+                    txt_last.setText("");
+                    txt_first.setText("");
+                    txt_middle.setText("");
+                    txt_add.setText("");
+                    txt_bday.setText("");
+                    jc_dept.setSelectedItem("---Select Department---");
+                    jc_course.setSelectedItem("-------Select Course--------");
+                    txt_studno.requestFocus();
+                }
+                else{
+                    txt_studno.setText("");
+                    txt_last.setText("");
+                    txt_first.setText("");
+                    txt_middle.setText("");
+                    txt_add.setText("");
+                    txt_bday.setText("");
+                    jc_dept.setSelectedItem("---Select Department---");
+                    jc_course.setSelectedItem("-------Select Course--------");
+                    txt_studno.requestFocus();
+                }
+            }catch(Exception e){
+                System.out.println(e);
+            }
+        }
+    }
+    public void disabletextbox(){
+        txt_studno.setEnabled(false);
+        txt_last.setEnabled(false);
+        txt_first.setEnabled(false);
+        txt_middle.setEnabled(false);
+        txt_add.setEnabled(false);
+        txt_bday.setEnabled(false);
+        jc_dept.setEnabled(false);
+        jc_course.setEnabled(false);
+        
+        btn_save.setEnabled(false);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -213,6 +402,7 @@ public class Main extends javax.swing.JFrame {
         edit_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImages(null);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -364,11 +554,12 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6)
-                            .addComponent(txt_add, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_studno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_studno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel6)
+                                .addComponent(txt_add, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_last, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -515,13 +706,14 @@ public class Main extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         int selectedIndex = jTable1.getSelectedRow();
-
+        
         txt_studno.setText(model.getValueAt(selectedIndex, 0).toString());
         txt_last.setText(model.getValueAt(selectedIndex, 1).toString());
         txt_first.setText(model.getValueAt(selectedIndex, 2).toString());
@@ -574,6 +766,7 @@ public class Main extends javax.swing.JFrame {
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         // TODO add your handling code here:
+        deletebtn();
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
@@ -584,7 +777,8 @@ public class Main extends javax.swing.JFrame {
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         // TODO add your handling code here:
-
+        
+        updaterecord();
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
@@ -596,69 +790,8 @@ public class Main extends javax.swing.JFrame {
 
     private void edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btnActionPerformed
         // TODO add your handling code here:
-
-        txt_studno.setEnabled(false);
-        txt_last.setEnabled(true);
-        txt_first.setEnabled(true);
-        txt_middle.setEnabled(true);
-        txt_add.setEnabled(true);
-        txt_bday.setEnabled(true);
-        jc_dept.setEnabled(true);
-        jc_course.setEnabled(true);
-
-        Connection conmain = null;
-        PreparedStatement pstmain = null;
-
-        try
-        {
-            String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
-            conmain = DriverManager.getConnection(urlmain);
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            int selectedRow = jTable1.getSelectedRow();
-            String id = (model.getValueAt(selectedRow, 0).toString());
-
-            String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
-
-            studentNumber = txt_studno.getText();
-            lastName = txt_last.getText();
-            firstName = txt_first.getText();
-            middleName = txt_middle.getText();
-            address = txt_add.getText();
-            birthDate = txt_bday.getText();
-            department = (String) jc_dept.getSelectedItem();
-            course = (String) jc_course.getSelectedItem();
-            String sql = "UPDATE StudInfoTbl SET `Stud-no`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=? WHERE `Stud-no`=?";
-            pstmain = conmain.prepareStatement(sql);
-
-            // Correct order for setting values in the prepared statement
-            pstmain.setString(1, studentNumber);   // Stud-no
-            pstmain.setString(2, lastName);        // Last-name
-            pstmain.setString(3, firstName);       // First-name
-            pstmain.setString(4, middleName);      // Middle-name
-            pstmain.setString(5, address);         // Address
-            pstmain.setString(6, birthDate);       // Birthday
-            pstmain.setString(7, department);      // Department
-            pstmain.setString(8, course);          // Course
-            pstmain.setString(9, studentNumber);   // WHERE condition
-
-            pstmain.executeUpdate();
-
-            txt_studno.setText("");
-            txt_last.setText("");
-            txt_first.setText("");
-            txt_middle.setText("");
-            txt_add.setText("");
-            txt_bday.setText("");
-            jc_dept.setSelectedItem("---Select Department---");
-            jc_course.setSelectedItem("-------Select Course--------");
-            txt_studno.requestFocus();
-            tableupdate();
-
-        }
-        catch (Exception e)
-        {
-            System.out.println(e);
-        }
+        
+        edit();
     }//GEN-LAST:event_edit_btnActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -668,7 +801,7 @@ public class Main extends javax.swing.JFrame {
     private void txt_studnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_studnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_studnoActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -676,8 +809,8 @@ public class Main extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -695,7 +828,7 @@ public class Main extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
