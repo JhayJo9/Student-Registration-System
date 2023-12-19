@@ -389,6 +389,7 @@ public class Main extends javax.swing.JFrame {
         btn_update = new javax.swing.JButton();
         btn_exit = new javax.swing.JButton();
         edit_btn = new javax.swing.JButton();
+        btn_view = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImages(null);
@@ -510,7 +511,7 @@ public class Main extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
@@ -528,13 +529,13 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txt_bday, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txt_add, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jc_dept, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jc_course, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -634,6 +635,16 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        btn_view.setBackground(new java.awt.Color(25, 119, 243));
+        btn_view.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        btn_view.setForeground(new java.awt.Color(255, 255, 255));
+        btn_view.setText("view");
+        btn_view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -641,29 +652,32 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(btn_save)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addComponent(btn_delete)
                 .addGap(18, 18, 18)
                 .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_update)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(edit_btn)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_view)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_exit)
-                .addGap(29, 29, 29))
+                .addGap(19, 19, 19))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(37, 37, 37)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_save)
                     .addComponent(btn_delete)
                     .addComponent(btn_add)
                     .addComponent(btn_update)
                     .addComponent(btn_exit)
-                    .addComponent(edit_btn))
+                    .addComponent(edit_btn)
+                    .addComponent(btn_view))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
@@ -790,6 +804,36 @@ public class Main extends javax.swing.JFrame {
     private void txt_studnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_studnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_studnoActionPerformed
+
+    private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
+          DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        int selectedIndex = jTable1.getSelectedRow();
+        
+        txt_studno.setText(model.getValueAt(selectedIndex, 0).toString());
+        txt_last.setText(model.getValueAt(selectedIndex, 1).toString());
+        txt_first.setText(model.getValueAt(selectedIndex, 2).toString());
+        txt_middle.setText(model.getValueAt(selectedIndex, 3).toString());
+        txt_add.setText(model.getValueAt(selectedIndex, 4).toString());
+        txt_bday.setText(model.getValueAt(selectedIndex, 5).toString());
+        jc_dept.setSelectedItem(model.getValueAt(selectedIndex, 6));
+        jc_course.setSelectedItem(model.getValueAt(selectedIndex, 7));
+        
+          String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+          
+          studentNumber = model.getValueAt(selectedIndex, 0).toString();
+          lastName = model.getValueAt(selectedIndex, 1).toString();
+          firstName = model.getValueAt(selectedIndex, 2).toString();
+          middleName = model.getValueAt(selectedIndex, 3).toString();
+          address = model.getValueAt(selectedIndex, 4).toString();
+          birthDate = model.getValueAt(selectedIndex, 5).toString();
+          department = model.getValueAt(selectedIndex, 6).toString();
+          course = model.getValueAt(selectedIndex, 7).toString();
+          
+          viewform vf = new viewform();
+          vf.getInfo(studentNumber, lastName, firstName, middleName, address, birthDate, department, course);
+          vf.setVisible(true);
+          
+    }//GEN-LAST:event_btn_viewActionPerformed
     
     /**
      * @param args the command line arguments
@@ -832,6 +876,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btn_exit;
     private javax.swing.JButton btn_save;
     private javax.swing.JButton btn_update;
+    private javax.swing.JButton btn_view;
     private javax.swing.JButton edit_btn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -846,7 +891,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> jc_course;
     private javax.swing.JComboBox<String> jc_dept;
     private javax.swing.JTextField txt_add;
