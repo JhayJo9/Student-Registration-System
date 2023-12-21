@@ -37,9 +37,9 @@ import javax.swing.JLabel;
 public class Main extends javax.swing.JFrame {
     String path;
     String path2 = null;
-     Connection conn1 = null;
-       PreparedStatement pss = null;
-       ResultSet rss = null;
+    Connection conn1 = null;
+    PreparedStatement pss = null;
+    ResultSet rss = null;
     /**
      * Creates new form Main
      */
@@ -58,7 +58,7 @@ public class Main extends javax.swing.JFrame {
         
         btn_upload.setEnabled(false);
         btn_save.setEnabled(false);
-         btn_update.setEnabled(false);
+        btn_update.setEnabled(false);
     }
     
     public void tableupdate(){
@@ -93,18 +93,8 @@ public class Main extends javax.swing.JFrame {
                     // image column
                     v2.add(rs.getBlob("StudentProfile"));
                 }
-                dft.addRow(v2);               
+                dft.addRow(v2);
             }
-            // set to empty string
-            txt_studno.setText("");
-            txt_last.setText("");
-            txt_first.setText("");
-            txt_middle.setText("");
-            txt_add.setText("");
-            txt_bday.setText("");
-            jc_dept.setSelectedItem("------------Select Department----------");
-            jc_course.setSelectedItem("------------Select Course----------");
-            txt_studno.requestFocus();
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -125,16 +115,16 @@ public class Main extends javax.swing.JFrame {
             try {
                 String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
                 conmain = DriverManager.getConnection(urlmain);
-                 String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
-                    
-                    studentNumber = txt_studno.getText();
-                    lastName = txt_last.getText();
-                    firstName = txt_first.getText();
-                    middleName = txt_middle.getText();
-                    address = txt_add.getText();
-                    birthDate = txt_bday.getText();
-                    department = (String) jc_dept.getSelectedItem();
-                    course = (String) jc_course.getSelectedItem();
+                String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+                
+                studentNumber = txt_studno.getText();
+                lastName = txt_last.getText();
+                firstName = txt_first.getText();
+                middleName = txt_middle.getText();
+                address = txt_add.getText();
+                birthDate = txt_bday.getText();
+                department = (String) jc_dept.getSelectedItem();
+                course = (String) jc_course.getSelectedItem();
                 try{
                     InputStream s = new FileInputStream(new File(path));
                     
@@ -150,7 +140,7 @@ public class Main extends javax.swing.JFrame {
                     System.out.println(department);
                     System.out.println(course);
                     System.out.println(s);
-                   
+                    
                     pstmain.setString(1, studentNumber);   // STUD-NO
                     pstmain.setString(2, lastName);        // LAST-NAME
                     pstmain.setString(3, firstName);       // FIRST-NAME
@@ -202,47 +192,54 @@ public class Main extends javax.swing.JFrame {
         txt_studno.requestFocus();
         picture.setIcon(null);
     }
-    public void updaterecord(){
-        
-        Connection conmain = null;
-        PreparedStatement pstmain = null;
-        
-        try
-        {
-            String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
-            conmain = DriverManager.getConnection(urlmain);
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            int selectedRow = jTable1.getSelectedRow();
-            String id = (model.getValueAt(selectedRow, 0).toString());
-            
-            String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
-            
-            studentNumber = txt_studno.getText();
-            lastName = txt_last.getText();
-            firstName = txt_first.getText();
-            middleName = txt_middle.getText();
-            address = txt_add.getText();
-            birthDate = txt_bday.getText();
-            department = (String) jc_dept.getSelectedItem().toString();
-            course = (String) jc_course.getSelectedItem().toString();
-            String sql = "UPDATE StudInfoTbl SET `Student`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=? WHERE `Student`=?";
+   public void updaterecord() {
+    Connection conmain = null;
+    PreparedStatement pstmain = null;
+
+    try {
+        String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+        conmain = DriverManager.getConnection(urlmain);
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        int selectedRow = jTable1.getSelectedRow();
+        String id = model.getValueAt(selectedRow, 0).toString();
+
+        String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+        studentNumber = txt_studno.getText();
+        lastName = txt_last.getText();
+        firstName = txt_first.getText();
+        middleName = txt_middle.getText();
+        address = txt_add.getText();
+        birthDate = txt_bday.getText();
+        department = jc_dept.getSelectedItem().toString();
+        course = jc_course.getSelectedItem().toString();
+
+        // Choose a file for the new image
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Choose Image File");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            InputStream imageStream = new FileInputStream(selectedFile);
+
+            // Update the SQL statement to include the image column
+            String sql = "UPDATE StudInfoTbl SET `Student`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=?, StudentProfile=? WHERE `Student`=?";
             pstmain = conmain.prepareStatement(sql);
-            
-            // Correct order for setting values in the prepared statement
-            pstmain.setString(1, studentNumber);   // Stud-no
-            pstmain.setString(2, lastName);        // Last-name
-            pstmain.setString(3, firstName);       // First-name
-            pstmain.setString(4, middleName);      // Middle-name
-            pstmain.setString(5, address);         // Address
-            pstmain.setString(6, birthDate);       // Birthday
-            pstmain.setString(7, department);      // Department
-            pstmain.setString(8, course);          // Course
-            pstmain.setString(9, studentNumber);   // WHERE condition
-            
+
+            // Set values in the prepared statement
+            pstmain.setString(1, studentNumber);
+            pstmain.setString(2, lastName);
+            pstmain.setString(3, firstName);
+            pstmain.setString(4, middleName);
+            pstmain.setString(5, address);
+            pstmain.setString(6, birthDate);
+            pstmain.setString(7, department);
+            pstmain.setString(8, course);
+            pstmain.setBinaryStream(9, imageStream); // Set the image as a binary stream
+            pstmain.setString(10, id);
+
             int k = JOptionPane.showConfirmDialog(rootPane, "Confirm to Update?", "Update", JOptionPane.YES_NO_OPTION);
-            if (k == JOptionPane.YES_OPTION)
-            {
-                
+            if (k == JOptionPane.YES_OPTION) {
                 pstmain.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Updated Successfully!");
                 txt_studno.setText("");
@@ -265,18 +262,17 @@ public class Main extends javax.swing.JFrame {
                 btn_add.setEnabled(true);
                 btn_upload.setEnabled(true);
                 tableupdate();
-            }
-            else
-            {
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Data not Updated!");
             }
-            
         }
-        catch (Exception e)
-        {
-            System.out.println(e);
-        }
-    }
+    } catch (Exception e) {
+        e.printStackTrace();
+    } 
+}
+
+
+   
     public void edit(){
         txt_studno.setEnabled(false);
         txt_last.setEnabled(true);
@@ -286,11 +282,12 @@ public class Main extends javax.swing.JFrame {
         txt_bday.setEnabled(true);
         jc_dept.setEnabled(true);
         jc_course.setEnabled(true);
+        
         btn_upload.setEnabled(true);
         btn_save.setEnabled(false);
         btn_delete.setEnabled(false);
         btn_add.setEnabled(false);
-        
+        btn_upload.setEnabled(true);
         btn_update.setEnabled(true);
         Connection conmain = null;
         PreparedStatement pstmain = null;
@@ -439,8 +436,9 @@ public class Main extends javax.swing.JFrame {
         btn_view = new javax.swing.JButton();
         btn_upload = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImages(null);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -597,17 +595,13 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jc_dept, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jc_course, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(picture, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(picture, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(picture, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -642,8 +636,9 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jc_course, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                            .addComponent(jLabel9)))
+                    .addComponent(picture, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(254, 255, 254));
@@ -800,8 +795,8 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-       
-          DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         int selectedIndex = jTable1.getSelectedRow();
         
         txt_studno.setText(model.getValueAt(selectedIndex, 0).toString());
@@ -813,7 +808,6 @@ public class Main extends javax.swing.JFrame {
         jc_dept.setSelectedItem(model.getValueAt(selectedIndex, 6));
         jc_course.setSelectedItem(model.getValueAt(selectedIndex, 7));
         
-        //String imagePath = model.getValueAt(selectedIndex, 8);
         Blob imageBlob = (Blob) model.getValueAt(selectedIndex, 8);
         byte[] imageBytes;
         try {
@@ -821,8 +815,8 @@ public class Main extends javax.swing.JFrame {
                 imageBytes = imageBlob.getBinaryStream().readAllBytes();
                 ImageIcon imageIcon = new ImageIcon(imageBytes);
                 picture.setIcon(imageIcon);
-                // ... retrieve image data as before ...
                 
+                //GET THE CURRENT WIDTH AND HEIGHT TO MATCH IN IMAGE
                 int labelWidth = picture.getWidth();
                 int labelHeight = picture.getHeight();
                 
@@ -920,7 +914,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_studnoActionPerformed
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
-          DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         int selectedIndex = jTable1.getSelectedRow();
         
         txt_studno.setText(model.getValueAt(selectedIndex, 0).toString());
@@ -931,45 +925,45 @@ public class Main extends javax.swing.JFrame {
         txt_bday.setText(model.getValueAt(selectedIndex, 5).toString());
         jc_dept.setSelectedItem(model.getValueAt(selectedIndex, 6));
         jc_course.setSelectedItem(model.getValueAt(selectedIndex, 7));
-      
-          String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
-          
-          studentNumber = model.getValueAt(selectedIndex, 0).toString();
-          lastName = model.getValueAt(selectedIndex, 1).toString();
-          firstName = model.getValueAt(selectedIndex, 2).toString();
-          middleName = model.getValueAt(selectedIndex, 3).toString();
-          address = model.getValueAt(selectedIndex, 4).toString();
-          birthDate = model.getValueAt(selectedIndex, 5).toString();
-          department = model.getValueAt(selectedIndex, 6).toString();
-          course = model.getValueAt(selectedIndex, 7).toString();
-          
-          viewform vf = new viewform();
-          vf.getInfo(studentNumber, lastName, firstName, middleName, address, birthDate, department, course);
-          vf.setVisible(true);
-          
+        
+        String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+        
+        studentNumber = model.getValueAt(selectedIndex, 0).toString();
+        lastName = model.getValueAt(selectedIndex, 1).toString();
+        firstName = model.getValueAt(selectedIndex, 2).toString();
+        middleName = model.getValueAt(selectedIndex, 3).toString();
+        address = model.getValueAt(selectedIndex, 4).toString();
+        birthDate = model.getValueAt(selectedIndex, 5).toString();
+        department = model.getValueAt(selectedIndex, 6).toString();
+        course = model.getValueAt(selectedIndex, 7).toString();
+        
+        viewform vf = new viewform();
+        vf.getInfo(studentNumber, lastName, firstName, middleName, address, birthDate, department, course);
+        vf.setVisible(true);
+        
     }//GEN-LAST:event_btn_viewActionPerformed
 
     private void pictureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureMouseClicked
         
-      
-      
+        
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_pictureMouseClicked
 
     private void btn_uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uploadActionPerformed
-      JFileChooser imagePicked = new JFileChooser();
-      imagePicked.showOpenDialog(null);
-      File file = imagePicked.getSelectedFile();
-      path = file.getAbsolutePath();
-      try{
-          BufferedImage Bimage = ImageIO.read(new File(path));
-          Image img = Bimage.getScaledInstance(149, 170, Image.SCALE_SMOOTH);
-          ImageIcon icon = new ImageIcon(img);
-          picture.setIcon(icon);
-          path2 = path;
-      }catch(IOException e){
-          System.out.println(e);
-      }
+        JFileChooser imagePicked = new JFileChooser();
+        imagePicked.showOpenDialog(null);
+        File file = imagePicked.getSelectedFile();
+        path = file.getAbsolutePath();
+        try{
+            BufferedImage Bimage = ImageIO.read(new File(path));
+            Image img = Bimage.getScaledInstance(149, 170, Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(img);
+            picture.setIcon(icon);
+            path2 = path;
+        }catch(IOException e){
+            System.out.println(e);
+        }
     }//GEN-LAST:event_btn_uploadActionPerformed
     
     /**

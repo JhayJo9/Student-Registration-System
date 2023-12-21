@@ -83,17 +83,20 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="vlastName" alignment="0" pref="69" max="32767" attributes="0"/>
-                          <Component id="vstudentNumber" alignment="0" max="32767" attributes="0"/>
-                          <Component id="vfirstName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="vmiddleName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="vaddress" alignment="0" max="32767" attributes="0"/>
-                          <Component id="vbirthDate" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="vlastName" alignment="0" pref="69" max="32767" attributes="0"/>
+                              <Component id="vstudentNumber" alignment="0" max="32767" attributes="0"/>
+                              <Component id="vfirstName" alignment="0" max="32767" attributes="0"/>
+                              <Component id="vmiddleName" alignment="0" max="32767" attributes="0"/>
+                              <Component id="vaddress" alignment="0" max="32767" attributes="0"/>
+                              <Component id="vbirthDate" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="vdepartment" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="vcourse" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="vdepartment" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
-                      <Component id="vcourse" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -118,7 +121,9 @@
                   <Component id="vdepartment" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="vcourse" min="-2" pref="16" max="-2" attributes="0"/>
-                  <EmptySpace pref="196" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="133" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -163,6 +168,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel2"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jButton1"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
