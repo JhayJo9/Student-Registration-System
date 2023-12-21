@@ -10,6 +10,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
@@ -20,6 +21,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
 import java.util.logging.Level;
@@ -34,6 +36,10 @@ import javax.swing.JLabel;
  */
 public class Main extends javax.swing.JFrame {
     String path;
+    String path2 = null;
+     Connection conn1 = null;
+       PreparedStatement pss = null;
+       ResultSet rss = null;
     /**
      * Creates new form Main
      */
@@ -794,8 +800,8 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+       
+          DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         int selectedIndex = jTable1.getSelectedRow();
         
         txt_studno.setText(model.getValueAt(selectedIndex, 0).toString());
@@ -807,17 +813,34 @@ public class Main extends javax.swing.JFrame {
         jc_dept.setSelectedItem(model.getValueAt(selectedIndex, 6));
         jc_course.setSelectedItem(model.getValueAt(selectedIndex, 7));
         
-        String imagePath = model.getValueAt(selectedIndex, 8).toString();
+        //String imagePath = model.getValueAt(selectedIndex, 8);
+        Blob imageBlob = (Blob) model.getValueAt(selectedIndex, 8);
+        byte[] imageBytes;
+        try {
+            try {
+                imageBytes = imageBlob.getBinaryStream().readAllBytes();
+                ImageIcon imageIcon = new ImageIcon(imageBytes);
+                picture.setIcon(imageIcon);
+                // ... retrieve image data as before ...
+                
+                int labelWidth = picture.getWidth();
+                int labelHeight = picture.getHeight();
+                
+                Image scaledImage = imageIcon.getImage().getScaledInstance(labelWidth, labelHeight, Image.SCALE_SMOOTH);
+                ImageIcon scaledIcon = new ImageIcon(scaledImage);
+                picture.setIcon(scaledIcon);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-           ImageIcon image1 = (ImageIcon)jTable1.getValueAt(selectedIndex, 0);
-        Image image2 = image1.getImage().getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight()
-                 , Image.SCALE_SMOOTH);
-        ImageIcon image3 = new ImageIcon(image2);
-        picture.setIcon(image3);
-        
-      //  JLabel imageJ = (JLabel)  model.getValueAt(selectedIndex, 8);
-       // ImageIcon imageJIcon = (ImageIcon) imageJ.getIcon();
-      //  picture.setIcon(imageJIcon);
+        //  JLabel imageJ = (JLabel)  model.getValueAt(selectedIndex, 8);
+        // ImageIcon imageJIcon = (ImageIcon) imageJ.getIcon();
+        //  picture.setIcon(imageJIcon);
 
     }//GEN-LAST:event_jTable1MouseClicked
     //
@@ -943,6 +966,7 @@ public class Main extends javax.swing.JFrame {
           Image img = Bimage.getScaledInstance(149, 170, Image.SCALE_SMOOTH);
           ImageIcon icon = new ImageIcon(img);
           picture.setIcon(icon);
+          path2 = path;
       }catch(IOException e){
           System.out.println(e);
       }
