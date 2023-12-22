@@ -40,6 +40,11 @@ public class Main extends javax.swing.JFrame {
     String path;
     String path2;
     int userClick;
+    
+    // DATABASE
+    Connection conmain = null;
+    PreparedStatement pstmain = null;
+    ResultSet rs = null;
     /**
      * Creates new form Main
      */
@@ -62,19 +67,14 @@ public class Main extends javax.swing.JFrame {
     }
     
     public void tableupdate(){
-        Connection con = null;
-        PreparedStatement pst = null;
-        ResultSet rs= null;
-        
         int c;
         try {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            con = DriverManager.getConnection("jdbc:ucanaccess://JavaLoginClone.accdb");
-            
-            
+            conmain = DriverManager.getConnection("jdbc:ucanaccess://JavaLoginClone.accdb");
+
             String sql = "SELECT * FROM StudInfoTbl";
-            pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
+            pstmain = conmain.prepareStatement(sql);
+            rs = pstmain.executeQuery();
             ResultSetMetaData rsd = rs.getMetaData();
             c = rsd.getColumnCount();
             DefaultTableModel dft = (DefaultTableModel) jTable1.getModel();
@@ -96,91 +96,8 @@ public class Main extends javax.swing.JFrame {
                 dft.addRow(v2);
             }
             
-        } catch (Exception e) {
-            e.printStackTrace();
-            
-        }
-    }
-    //
-    public void savebtn(){
-        System.out.println("fggf");
-       
-        if(txt_studno.getText().equals("") || txt_last.getText().equals("") || txt_first.getText().equals("") || txt_middle.getText().equals("") || txt_add.getText().equals("")
-                || txt_bday.getText().equals("") || jc_dept.getSelectedItem().equals("------------Select Department----------") || jc_course.getSelectedItem().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Please enter requeried fields");
-        }
-        else {
-            Connection conmain = null;
-            PreparedStatement pstmain = null;
-            try {
-                String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
-                conmain = DriverManager.getConnection(urlmain);
-                String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
-                
-                studentNumber = txt_studno.getText();
-                lastName = txt_last.getText();
-                firstName = txt_first.getText();
-                middleName = txt_middle.getText();
-                address = txt_add.getText();
-                birthDate = txt_bday.getText();
-                department = (String) jc_dept.getSelectedItem();
-                course = (String) jc_course.getSelectedItem();
-                try{
-                    InputStream s = new FileInputStream(new File(path));
-                    
-                    String sql = "INSERT into StudInfoTbl([Student], [LAST-NAME], [FIRST-NAME], [MIDDLE-NAME], Address, Birthday, Department, Course, StudentProfile) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
-                    pstmain = conmain.prepareStatement(sql);
-                    
-                    System.out.println(studentNumber);
-                    System.out.println(lastName);
-                    System.out.println(firstName);
-                    System.out.println(middleName);
-                    System.out.println(address);
-                    System.out.println(birthDate);
-                    System.out.println(department);
-                    System.out.println(course);
-                    System.out.println(s);
-                    
-                    pstmain.setString(1, studentNumber);   // STUD-NO
-                    pstmain.setString(2, lastName);        // LAST-NAME
-                    pstmain.setString(3, firstName);       // FIRST-NAME
-                    pstmain.setString(4, middleName);      // MIDDLE-NAME
-                    pstmain.setString(5, address);         // Address
-                    pstmain.setString(6, birthDate);       // Birthday
-                    pstmain.setString(7, department);      // Department
-                    pstmain.setString(8, course);          // Course
-                    pstmain.setBlob(9, s);
-                    pstmain.executeUpdate();
-                    JOptionPane.showMessageDialog(rootPane, "Inserted Successfully!");
-                    
-                     // set to empty string
-                    txt_studno.setText("");
-                    txt_last.setText("");
-                    txt_first.setText("");
-                    txt_middle.setText("");
-                    txt_add.setText("");
-                    txt_bday.setText("");
-                    jc_dept.setSelectedItem("------------Select Department----------");
-                    txt_studno.requestFocus();
-                    picture.setIcon(null);
-        
-                    tableupdate();
-                    // disable the textbox
-                    disabletextbox();
-                    btn_save.setEnabled(false);
-                    btn_upload.setEnabled(false);
-                    
-                    
-                    btn_delete.setEnabled(true);
-                    edit_btn.setEnabled(true);
-                    btn_view.setEnabled(true);
-                }catch(HeadlessException | FileNotFoundException | SQLException e){
-                    System.out.println("Error in query " + e);
-                }
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "The student id is already given");
-            }
-            
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
         }
     }
     //
@@ -213,192 +130,7 @@ public class Main extends javax.swing.JFrame {
         txt_studno.requestFocus();
         picture.setIcon(null);
     }
-   public void updaterecord() {
-    Connection conmain = null;
-    PreparedStatement pstmain = null;
 
-    try {
-        String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
-        conmain = DriverManager.getConnection(urlmain);
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        int selectedRow = jTable1.getSelectedRow();
-        String id = model.getValueAt(selectedRow, 0).toString();
-
-        String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
-        studentNumber = txt_studno.getText();
-        lastName = txt_last.getText();
-        firstName = txt_first.getText();
-        middleName = txt_middle.getText();
-        address = txt_add.getText();
-        birthDate = txt_bday.getText();
-        department = jc_dept.getSelectedItem().toString();
-        course = jc_course.getSelectedItem().toString();
-
-            // Update the SQL statement to include the image column
-            String sql = "UPDATE StudInfoTbl SET `Student`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=? WHERE `Student`=?";
-            pstmain = conmain.prepareStatement(sql);
-
-            // Set values in the prepared statement
-            pstmain.setString(1, studentNumber);
-            pstmain.setString(2, lastName);
-            pstmain.setString(3, firstName);
-            pstmain.setString(4, middleName);
-            pstmain.setString(5, address);
-            pstmain.setString(6, birthDate);
-            pstmain.setString(7, department);
-            pstmain.setString(8, course);
-            pstmain.setString(9, id);
-            // Set the image as a binary stream
-          
-            int k = JOptionPane.showConfirmDialog(rootPane, "Confirm to Update?", "Update", JOptionPane.YES_NO_OPTION);
-            if (k == JOptionPane.YES_OPTION) {
-                pstmain.executeUpdate();
-                JOptionPane.showMessageDialog(rootPane, "Updated Successfully!");
-                txt_studno.setText("");
-                txt_last.setText("");
-                txt_first.setText("");
-                txt_middle.setText("");
-                txt_add.setText("");
-                txt_bday.setText("");
-                jc_dept.setSelectedItem(4);
-                picture.setIcon(null);
-                txt_studno.requestFocus();
-                
-                disabletextbox();
-                
-                btn_save.setEnabled(false);
-                btn_update.setEnabled(false);
-                
-                btn_delete.setEnabled(true);
-                btn_add.setEnabled(true);
-                btn_upload.setEnabled(false);
-                tableupdate();
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Data not Updated!");
-            }
-        
-    } catch (Exception e) {
-        e.printStackTrace();
-    } 
-    
-    
-    
-}
-
-
-   
-    public void edit(){
-        txt_studno.setEnabled(false);
-        txt_last.setEnabled(true);
-        txt_first.setEnabled(true);
-        txt_middle.setEnabled(true);
-        txt_add.setEnabled(true);
-        txt_bday.setEnabled(true);
-        jc_dept.setEnabled(true);
-        jc_course.setEnabled(true);
-        
-        btn_upload.setEnabled(true);
-        btn_save.setEnabled(false);
-        btn_delete.setEnabled(false);
-        btn_add.setEnabled(false);
-        btn_upload.setEnabled(true);
-        btn_update.setEnabled(true);
-        Connection conmain = null;
-        PreparedStatement pstmain = null;
-        
-        try
-        {
-            String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
-            conmain = DriverManager.getConnection(urlmain);
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            int selectedRow = jTable1.getSelectedRow();
-            String id = (model.getValueAt(selectedRow, 0).toString());
-            
-            String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
-            
-            studentNumber = txt_studno.getText();
-            lastName = txt_last.getText();
-            firstName = txt_first.getText();
-            middleName = txt_middle.getText();
-            address = txt_add.getText();
-            birthDate = txt_bday.getText();
-            department = (String) jc_dept.getSelectedItem();
-            course = (String) jc_course.getSelectedItem();
-            String sql = "UPDATE StudInfoTbl SET `Student`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=? WHERE `Student`=?";
-            pstmain = conmain.prepareStatement(sql);
-            
-            // Correct order for setting values in the prepared statement
-            pstmain.setString(1, studentNumber);   // Stud-no
-            pstmain.setString(2, lastName);        // Last-name
-            pstmain.setString(3, firstName);       // First-name
-            pstmain.setString(4, middleName);      // Middle-name
-            pstmain.setString(5, address);         // Address
-            pstmain.setString(6, birthDate);       // Birthday
-            pstmain.setString(7, department);      // Department
-            pstmain.setString(8, course);          // Course
-            pstmain.setString(9, studentNumber);   // WHERE condition
-            
-            pstmain.executeUpdate();
-            
-            txt_studno.setText("");
-            txt_last.setText("");
-            txt_first.setText("");
-            txt_middle.setText("");
-            txt_add.setText("");
-            txt_bday.setText("");
-            jc_dept.setSelectedItem(4);
-            txt_studno.requestFocus();
-            picture.setIcon(null);
-            tableupdate();
-            
-        }
-        catch (Exception e)
-        {
-            System.out.println(e);
-        }
-        
-    }
-    //
-    public void deletebtn(){
-        if(jTable1.getSelectedRowCount() == 1){
-            Connection conmain = null;
-            PreparedStatement pstmain = null;
-            try {
-                String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
-                conmain = DriverManager.getConnection(urlmain);
-                String sql = "DELETE FROM StudInfoTbl WHERE Student = ?";
-                pstmain = conmain.prepareStatement(sql);
-                int confirmed = JOptionPane.showConfirmDialog(null,"Do you want to delete?", "Question" , JOptionPane.YES_NO_OPTION);
-                if(confirmed == JOptionPane.YES_OPTION){ // check if the user click the ( YES )
-                    pstmain.setString(1, txt_studno.getText());   // STUD-NO
-                    pstmain.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Recored Deleted");
-                    
-                    txt_studno.setText("");
-                    txt_last.setText("");
-                    txt_first.setText("");
-                    txt_middle.setText("");
-                    txt_add.setText("");
-                    txt_bday.setText("");
-                    jc_dept.setSelectedItem(4);
-                    txt_studno.requestFocus();
-                }
-                else{
-                    txt_studno.setText("");
-                    txt_last.setText("");
-                    txt_first.setText("");
-                    txt_middle.setText("");
-                    txt_add.setText("");
-                    txt_bday.setText("");
-                    jc_dept.setSelectedItem(4);
-                    picture.setIcon(null);
-                    txt_studno.requestFocus();
-                }
-            }catch(Exception e){
-                System.out.println(e);
-            }
-        }
-    }
     public void disabletextbox(){
         txt_studno.setEnabled(false);
         txt_last.setEnabled(false);
@@ -493,11 +225,11 @@ public class Main extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Student no.", "Last Name", "First Name", "Middle Name", "Address", "Birthday", "Department", "Course", "picture"
+                "Student no.", "Last Name", "First Name", "Middle Name", "Address", "Birthday", "Department", "Course", "Student Profile"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -729,7 +461,7 @@ public class Main extends javax.swing.JFrame {
         btn_upload.setBackground(new java.awt.Color(25, 119, 243));
         btn_upload.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         btn_upload.setForeground(new java.awt.Color(255, 255, 255));
-        btn_upload.setText("Upload Image");
+        btn_upload.setText("Add/Upload Image");
         btn_upload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_uploadActionPerformed(evt);
@@ -753,9 +485,9 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(edit_btn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_view)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(btn_upload)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(btn_exit)
                 .addGap(19, 19, 19))
         );
@@ -843,11 +575,7 @@ public class Main extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        //  JLabel imageJ = (JLabel)  model.getValueAt(selectedIndex, 8);
-        // ImageIcon imageJIcon = (ImageIcon) imageJ.getIcon();
-        //  picture.setIcon(imageJIcon);
-
+ 
     }//GEN-LAST:event_jTable1MouseClicked
     //
     
@@ -883,12 +611,123 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jc_deptActionPerformed
 
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
-        savebtn();
+        System.out.println("fggf");
+       
+        if(txt_studno.getText().equals("") || txt_last.getText().equals("") || txt_first.getText().equals("") || txt_middle.getText().equals("") || txt_add.getText().equals("")
+                || txt_bday.getText().equals("") || jc_dept.getSelectedItem().equals("------------Select Department----------") || jc_course.getSelectedItem().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Please enter requeried fields");
+        }
+        else {
+          
+            try {
+                String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+                conmain = DriverManager.getConnection(urlmain);
+                String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+                
+                studentNumber = txt_studno.getText();
+                lastName = txt_last.getText();
+                firstName = txt_first.getText();
+                middleName = txt_middle.getText();
+                address = txt_add.getText();
+                birthDate = txt_bday.getText();
+                department = (String) jc_dept.getSelectedItem();
+                course = (String) jc_course.getSelectedItem();
+                try{
+                    InputStream s = new FileInputStream(new File(path));
+                    
+                    String sql = "INSERT into StudInfoTbl([Student], [LAST-NAME], [FIRST-NAME], [MIDDLE-NAME], Address, Birthday, Department, Course, StudentProfile) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
+                    pstmain = conmain.prepareStatement(sql);
+                    
+                    System.out.println(studentNumber);
+                    System.out.println(lastName);
+                    System.out.println(firstName);
+                    System.out.println(middleName);
+                    System.out.println(address);
+                    System.out.println(birthDate);
+                    System.out.println(department);
+                    System.out.println(course);
+                    System.out.println(s);
+                    
+                    pstmain.setString(1, studentNumber);   // STUD-NO
+                    pstmain.setString(2, lastName);        // LAST-NAME
+                    pstmain.setString(3, firstName);       // FIRST-NAME
+                    pstmain.setString(4, middleName);      // MIDDLE-NAME
+                    pstmain.setString(5, address);         // Address
+                    pstmain.setString(6, birthDate);       // Birthday
+                    pstmain.setString(7, department);      // Department
+                    pstmain.setString(8, course);          // Course
+                    pstmain.setBlob(9, s);
+                    pstmain.executeUpdate();
+                    JOptionPane.showMessageDialog(rootPane, "Inserted Successfully!");
+                    
+                     // set to empty string
+                    txt_studno.setText("");
+                    txt_last.setText("");
+                    txt_first.setText("");
+                    txt_middle.setText("");
+                    txt_add.setText("");
+                    txt_bday.setText("");
+                    jc_dept.setSelectedItem("------------Select Department----------");
+                    txt_studno.requestFocus();
+                    picture.setIcon(null);
+        
+                    tableupdate();
+                    // disable the textbox
+                    disabletextbox();
+                    btn_save.setEnabled(false);
+                    btn_upload.setEnabled(false);
+                    
+                    
+                    btn_delete.setEnabled(true);
+                    edit_btn.setEnabled(true);
+                    btn_view.setEnabled(true);
+                }catch(HeadlessException | FileNotFoundException | SQLException e){
+                    System.out.println("Error in query " + e);
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "The student id is already given");
+            }
+            
+        }
     }//GEN-LAST:event_btn_saveActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-        // TODO add your handling code here:
-        deletebtn();
+        if(jTable1.getSelectedRowCount() == 1){
+            try {
+                String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+                conmain = DriverManager.getConnection(urlmain);
+                String sql = "DELETE FROM StudInfoTbl WHERE Student = ?";
+                pstmain = conmain.prepareStatement(sql);
+                int confirmed = JOptionPane.showConfirmDialog(null,"Do you want to delete?", "Question" , JOptionPane.YES_NO_OPTION);
+                if(confirmed == JOptionPane.YES_OPTION){ // check if the user click the ( YES )
+                    pstmain.setString(1, txt_studno.getText());   // STUD-NO
+                    pstmain.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Recored Deleted");
+                    
+                    txt_studno.setText("");
+                    txt_last.setText("");
+                    txt_first.setText("");
+                    txt_middle.setText("");
+                    txt_add.setText("");
+                    txt_bday.setText("");
+                    jc_dept.setSelectedItem("------------Select Department----------");
+                    txt_studno.requestFocus();
+                }
+                else{
+                    txt_studno.setText("");
+                    txt_last.setText("");
+                    txt_first.setText("");
+                    txt_middle.setText("");
+                    txt_add.setText("");
+                    txt_bday.setText("");
+                    jc_dept.setSelectedItem("------------Select Department----------");
+                    picture.setIcon(null);
+                    txt_studno.requestFocus();
+                }
+            }catch(Exception e){
+                System.out.println(e);
+            }
+        }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
@@ -900,9 +739,70 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_addActionPerformed
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-        // TODO add your handling code here:
+
+    try {
+        String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+        conmain = DriverManager.getConnection(urlmain);
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        int selectedRow = jTable1.getSelectedRow();
+        String id = model.getValueAt(selectedRow, 0).toString();
+
+        String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+        studentNumber = txt_studno.getText();
+        lastName = txt_last.getText();
+        firstName = txt_first.getText();
+        middleName = txt_middle.getText();
+        address = txt_add.getText();
+        birthDate = txt_bday.getText();
+        department = jc_dept.getSelectedItem().toString();
+        course = jc_course.getSelectedItem().toString();
+
+            // Update the SQL statement to include the image column
+            String sql = "UPDATE StudInfoTbl SET `Student`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=? WHERE `Student`=?";
+            pstmain = conmain.prepareStatement(sql);
+
+            // Set values in the prepared statement
+            pstmain.setString(1, studentNumber);
+            pstmain.setString(2, lastName);
+            pstmain.setString(3, firstName);
+            pstmain.setString(4, middleName);
+            pstmain.setString(5, address);
+            pstmain.setString(6, birthDate);
+            pstmain.setString(7, department);
+            pstmain.setString(8, course);
+            pstmain.setString(9, id);
+            int k = JOptionPane.showConfirmDialog(rootPane, "Confirm to Update?", "Update", JOptionPane.YES_NO_OPTION);
+            if (k == JOptionPane.YES_OPTION) {
+                pstmain.executeUpdate();
+                JOptionPane.showMessageDialog(rootPane, "Updated Successfully!");
+                txt_studno.setText("");
+                txt_last.setText("");
+                txt_first.setText("");
+                txt_middle.setText("");
+                txt_add.setText("");
+                txt_bday.setText("");
+                jc_dept.setSelectedItem("------------Select Department----------");
+                picture.setIcon(null);
+                txt_studno.requestFocus();
+                
+                disabletextbox();
+                
+                btn_save.setEnabled(false);
+                btn_update.setEnabled(false);
+                
+                btn_delete.setEnabled(true);
+                btn_add.setEnabled(true);
+                btn_upload.setEnabled(false);
+                tableupdate();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Data not Updated!");
+            }
         
-        updaterecord();
+    } catch (HeadlessException | SQLException e) {
+        System.out.println(e);
+    } 
+        
+       
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
@@ -916,7 +816,73 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         userClick = 2;
         btn_upload.setText("Update Image");
-        edit();
+        
+         txt_studno.setEnabled(false);
+        txt_last.setEnabled(true);
+        txt_first.setEnabled(true);
+        txt_middle.setEnabled(true);
+        txt_add.setEnabled(true);
+        txt_bday.setEnabled(true);
+        jc_dept.setEnabled(true);
+        jc_course.setEnabled(true);
+        
+        btn_upload.setEnabled(true);
+        btn_save.setEnabled(false);
+        btn_delete.setEnabled(false);
+        btn_add.setEnabled(false);
+        btn_upload.setEnabled(true);
+        btn_update.setEnabled(true);
+        try
+        {
+            String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+            conmain = DriverManager.getConnection(urlmain);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            int selectedRow = jTable1.getSelectedRow();
+            String id = (model.getValueAt(selectedRow, 0).toString());
+            
+            String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+            
+            studentNumber = txt_studno.getText();
+            lastName = txt_last.getText();
+            firstName = txt_first.getText();
+            middleName = txt_middle.getText();
+            address = txt_add.getText();
+            birthDate = txt_bday.getText();
+            department = (String) jc_dept.getSelectedItem();
+            course = (String) jc_course.getSelectedItem();
+            String sql = "UPDATE StudInfoTbl SET `Student`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=? WHERE `Student`=?";
+            pstmain = conmain.prepareStatement(sql);
+            
+            // Correct order for setting values in the prepared statement
+            pstmain.setString(1, studentNumber);   // Stud-no
+            pstmain.setString(2, lastName);        // Last-name
+            pstmain.setString(3, firstName);       // First-name
+            pstmain.setString(4, middleName);      // Middle-name
+            pstmain.setString(5, address);         // Address
+            pstmain.setString(6, birthDate);       // Birthday
+            pstmain.setString(7, department);      // Department
+            pstmain.setString(8, course);          // Course
+            pstmain.setString(9, studentNumber);   // WHERE condition
+            
+            pstmain.executeUpdate();
+            
+            txt_studno.setText("");
+            txt_last.setText("");
+            txt_first.setText("");
+            txt_middle.setText("");
+            txt_add.setText("");
+            txt_bday.setText("");
+            jc_dept.setSelectedItem("------------Select Department----------");
+            txt_studno.requestFocus();
+            picture.setIcon(null);
+            tableupdate();
+            
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e);
+        }
+        
     }//GEN-LAST:event_edit_btnActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -963,66 +929,65 @@ public class Main extends javax.swing.JFrame {
         
         // TODO add your handling code here:
     }//GEN-LAST:event_pictureMouseClicked
-   public void UpdateImage(){
-        
-       Connection conmain = null;
-        PreparedStatement pstmain = null;
+    public void UpdateImage(){
+        Connection conUpdate = null;
+        PreparedStatement pstUpdate = null;
+        ResultSet rsUpdate = null;
+         try {
+      String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+      conUpdate = DriverManager.getConnection(urlmain);
 
-        try {
-            String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
-            conmain = DriverManager.getConnection(urlmain);
+      String studentNumber = txt_studno.getText();
 
-            String studentNumber = txt_studno.getText();
+      // Choose a file for the new image
+      JFileChooser fileChooser = new JFileChooser();
+      fileChooser.setDialogTitle("Choose Image File");
+      fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-            // Choose a file for the new image
-            JFileChooser fileChooser = new JFileChooser();
-            fileChooser.setDialogTitle("Choose Image File");
-            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+      if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+        File selectedFile = fileChooser.getSelectedFile();
+        InputStream imageStream = new FileInputStream(selectedFile);
 
-            if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-                File selectedFile = fileChooser.getSelectedFile();
-                InputStream imageStream = new FileInputStream(selectedFile);
+        // UPDATE FOR IMAGE COLUMN
+        String sql = "UPDATE StudInfoTbl SET `Student`=?, StudentProfile=? WHERE `Student`=?";
+        pstUpdate = conUpdate.prepareStatement(sql);
 
-                // Update the SQL statement to include the image column
-                String sql = "UPDATE StudInfoTbl SET `Student`=?, StudentProfile=? WHERE `Student`=?";
-                pstmain = conmain.prepareStatement(sql);
+        // PARAMETER FOR IMAGE COLUMN AND CONDITION FOR PRIMARY KEY
+        pstUpdate.setString(1, studentNumber);
+        pstUpdate.setBinaryStream(2, imageStream); // PASSING DATA
+        pstUpdate.setString(3, studentNumber); // WHERE condition
 
-                // Set values in the prepared statement (3 parameters, not 2)
-                pstmain.setString(1, studentNumber);
-                pstmain.setBinaryStream(2, imageStream);  // Image data
-                pstmain.setString(3, studentNumber);  // WHERE condition
-
-                int k = JOptionPane.showConfirmDialog(rootPane, "Confirm to Update?", "Update", JOptionPane.YES_NO_OPTION);
-                if (k == JOptionPane.YES_OPTION) {
-                    pstmain.executeUpdate();
-                    JOptionPane.showMessageDialog(rootPane, "Updated Successfully!");
-                    txt_studno.setText("");
-                    txt_last.setText("");
-                    txt_first.setText("");
-                    txt_middle.setText("");
-                    txt_add.setText("");
-                    txt_bday.setText("");
-                    jc_dept.setSelectedItem("---Select Department---");
-                    jc_course.setSelectedItem("-------Select Course--------");
-                    picture.setIcon(null);
-                    txt_studno.requestFocus();
-                    disabletextbox();
-                    
-                    btn_save.setEnabled(false);
-                    btn_update.setEnabled(false);
-                    
-                    btn_delete.setEnabled(true);
-                    btn_add.setEnabled(true);
-                    btn_upload.setEnabled(true);
-                    tableupdate();
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "Data not Updated!");
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        int k = JOptionPane.showConfirmDialog(rootPane, "Confirm to Update?", "Update", JOptionPane.YES_NO_OPTION);
+        if (k == JOptionPane.YES_OPTION) {
+          pstUpdate.executeUpdate();
+          JOptionPane.showMessageDialog(rootPane, "Updated Successfully!");
+          txt_studno.setText("");
+          txt_last.setText("");
+          txt_first.setText("");
+          txt_middle.setText("");
+          txt_add.setText("");
+          txt_bday.setText("");
+          jc_dept.setSelectedItem("---Select Department---");
+          jc_course.setSelectedItem("-------Select Course--------");
+          picture.setIcon(null);
+          txt_studno.requestFocus();
+          disabletextbox();
+           
+          btn_save.setEnabled(false);
+          btn_update.setEnabled(false);
+           
+          btn_delete.setEnabled(true);
+          btn_add.setEnabled(true);
+          btn_upload.setEnabled(true);
+          tableupdate();
+        } else {
+          JOptionPane.showMessageDialog(rootPane, "Data not Updated!");
         }
-   }
+      }
+    } catch (HeadlessException | FileNotFoundException | SQLException e) {
+      System.out.println("UPDATE : "+e);
+    }
+    }
    
    public void UploadImage(){
         JFileChooser imagePicked = new JFileChooser();
