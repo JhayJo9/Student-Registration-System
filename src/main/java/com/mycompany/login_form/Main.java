@@ -4,13 +4,14 @@
 */
 package com.mycompany.login_form;
 
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
@@ -22,24 +23,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
+
 /**
  *
  * @author JhayJTheGosu
  */
 public class Main extends javax.swing.JFrame {
     String path;
-    String path2 = null;
-    Connection conn1 = null;
-    PreparedStatement pss = null;
-    ResultSet rss = null;
+    String path2;
+    int userClick;
     /**
      * Creates new form Main
      */
@@ -104,7 +104,7 @@ public class Main extends javax.swing.JFrame {
     //
     public void savebtn(){
         System.out.println("fggf");
-        
+       
         if(txt_studno.getText().equals("") || txt_last.getText().equals("") || txt_first.getText().equals("") || txt_middle.getText().equals("") || txt_add.getText().equals("")
                 || txt_bday.getText().equals("") || jc_dept.getSelectedItem().equals("------------Select Department----------") || jc_course.getSelectedItem().equals("")){
             JOptionPane.showMessageDialog(rootPane, "Please enter requeried fields");
@@ -152,15 +152,32 @@ public class Main extends javax.swing.JFrame {
                     pstmain.setBlob(9, s);
                     pstmain.executeUpdate();
                     JOptionPane.showMessageDialog(rootPane, "Inserted Successfully!");
+                    
+                     // set to empty string
+                    txt_studno.setText("");
+                    txt_last.setText("");
+                    txt_first.setText("");
+                    txt_middle.setText("");
+                    txt_add.setText("");
+                    txt_bday.setText("");
+                    jc_dept.setSelectedItem("------------Select Department----------");
+                    txt_studno.requestFocus();
+                    picture.setIcon(null);
+        
                     tableupdate();
                     // disable the textbox
                     disabletextbox();
                     btn_save.setEnabled(false);
                     btn_upload.setEnabled(false);
-                }catch(Exception e){
-                    e.printStackTrace();
+                    
+                    
+                    btn_delete.setEnabled(true);
+                    edit_btn.setEnabled(true);
+                    btn_view.setEnabled(true);
+                }catch(HeadlessException | FileNotFoundException | SQLException e){
+                    System.out.println("Error in query " + e);
                 }
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "The student id is already given");
             }
             
@@ -168,6 +185,11 @@ public class Main extends javax.swing.JFrame {
     }
     //
     public void addnewrecord(){
+         btn_delete.setEnabled(false);
+        btn_update.setEnabled(false);
+        edit_btn.setEnabled(false);
+        btn_view.setEnabled(false);
+        
         btn_upload.setEnabled(true);
         btn_save.setEnabled(true);
         // enable textbox
@@ -187,8 +209,7 @@ public class Main extends javax.swing.JFrame {
         txt_middle.setText("");
         txt_add.setText("");
         txt_bday.setText("");
-        jc_dept.setSelectedItem("------------Select Department----------");
-        jc_course.setSelectedItem("------------Select Course----------");
+        jc_dept.setSelectedItem(4);
         txt_studno.requestFocus();
         picture.setIcon(null);
     }
@@ -213,17 +234,8 @@ public class Main extends javax.swing.JFrame {
         department = jc_dept.getSelectedItem().toString();
         course = jc_course.getSelectedItem().toString();
 
-        // Choose a file for the new image
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Choose Image File");
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
-        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            InputStream imageStream = new FileInputStream(selectedFile);
-
             // Update the SQL statement to include the image column
-            String sql = "UPDATE StudInfoTbl SET `Student`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=?, StudentProfile=? WHERE `Student`=?";
+            String sql = "UPDATE StudInfoTbl SET `Student`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=? WHERE `Student`=?";
             pstmain = conmain.prepareStatement(sql);
 
             // Set values in the prepared statement
@@ -235,9 +247,9 @@ public class Main extends javax.swing.JFrame {
             pstmain.setString(6, birthDate);
             pstmain.setString(7, department);
             pstmain.setString(8, course);
-            pstmain.setBinaryStream(9, imageStream); // Set the image as a binary stream
-            pstmain.setString(10, id);
-
+            pstmain.setString(9, id);
+            // Set the image as a binary stream
+          
             int k = JOptionPane.showConfirmDialog(rootPane, "Confirm to Update?", "Update", JOptionPane.YES_NO_OPTION);
             if (k == JOptionPane.YES_OPTION) {
                 pstmain.executeUpdate();
@@ -248,8 +260,7 @@ public class Main extends javax.swing.JFrame {
                 txt_middle.setText("");
                 txt_add.setText("");
                 txt_bday.setText("");
-                jc_dept.setSelectedItem("---Select Department---");
-                jc_course.setSelectedItem("-------Select Course--------");
+                jc_dept.setSelectedItem(4);
                 picture.setIcon(null);
                 txt_studno.requestFocus();
                 
@@ -260,15 +271,18 @@ public class Main extends javax.swing.JFrame {
                 
                 btn_delete.setEnabled(true);
                 btn_add.setEnabled(true);
-                btn_upload.setEnabled(true);
+                btn_upload.setEnabled(false);
                 tableupdate();
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Data not Updated!");
             }
-        }
+        
     } catch (Exception e) {
         e.printStackTrace();
     } 
+    
+    
+    
 }
 
 
@@ -332,8 +346,7 @@ public class Main extends javax.swing.JFrame {
             txt_middle.setText("");
             txt_add.setText("");
             txt_bday.setText("");
-            jc_dept.setSelectedItem("---Select Department---");
-            jc_course.setSelectedItem("-------Select Course--------");
+            jc_dept.setSelectedItem(4);
             txt_studno.requestFocus();
             picture.setIcon(null);
             tableupdate();
@@ -367,8 +380,7 @@ public class Main extends javax.swing.JFrame {
                     txt_middle.setText("");
                     txt_add.setText("");
                     txt_bday.setText("");
-                    jc_dept.setSelectedItem("---Select Department---");
-                    jc_course.setSelectedItem("-------Select Course--------");
+                    jc_dept.setSelectedItem(4);
                     txt_studno.requestFocus();
                 }
                 else{
@@ -378,8 +390,7 @@ public class Main extends javax.swing.JFrame {
                     txt_middle.setText("");
                     txt_add.setText("");
                     txt_bday.setText("");
-                    jc_dept.setSelectedItem("---Select Department---");
-                    jc_course.setSelectedItem("-------Select Course--------");
+                    jc_dept.setSelectedItem(4);
                     picture.setIcon(null);
                     txt_studno.requestFocus();
                 }
@@ -533,6 +544,7 @@ public class Main extends javax.swing.JFrame {
         jLabel9.setText("Course:");
 
         jc_dept.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "School of Computer Studies", "School of Education", "School of Business Management", "School of Hospitality and Tourism Management", "------------Select Department----------" }));
+        jc_dept.setSelectedIndex(4);
         jc_dept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jc_deptActionPerformed(evt);
@@ -872,7 +884,6 @@ public class Main extends javax.swing.JFrame {
 
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
         savebtn();
-
     }//GEN-LAST:event_btn_saveActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
@@ -883,6 +894,8 @@ public class Main extends javax.swing.JFrame {
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         // TODO add your handling code here:
         // btn_save.setEnabled(true);
+        btn_upload.setText("Add Image");
+        userClick = 1;
         addnewrecord();
     }//GEN-LAST:event_btn_addActionPerformed
 
@@ -901,7 +914,8 @@ public class Main extends javax.swing.JFrame {
 
     private void edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btnActionPerformed
         // TODO add your handling code here:
-        
+        userClick = 2;
+        btn_upload.setText("Update Image");
         edit();
     }//GEN-LAST:event_edit_btnActionPerformed
 
@@ -949,8 +963,68 @@ public class Main extends javax.swing.JFrame {
         
         // TODO add your handling code here:
     }//GEN-LAST:event_pictureMouseClicked
+   public void UpdateImage(){
+        
+       Connection conmain = null;
+        PreparedStatement pstmain = null;
 
-    private void btn_uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uploadActionPerformed
+        try {
+            String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+            conmain = DriverManager.getConnection(urlmain);
+
+            String studentNumber = txt_studno.getText();
+
+            // Choose a file for the new image
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Choose Image File");
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+            if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = fileChooser.getSelectedFile();
+                InputStream imageStream = new FileInputStream(selectedFile);
+
+                // Update the SQL statement to include the image column
+                String sql = "UPDATE StudInfoTbl SET `Student`=?, StudentProfile=? WHERE `Student`=?";
+                pstmain = conmain.prepareStatement(sql);
+
+                // Set values in the prepared statement (3 parameters, not 2)
+                pstmain.setString(1, studentNumber);
+                pstmain.setBinaryStream(2, imageStream);  // Image data
+                pstmain.setString(3, studentNumber);  // WHERE condition
+
+                int k = JOptionPane.showConfirmDialog(rootPane, "Confirm to Update?", "Update", JOptionPane.YES_NO_OPTION);
+                if (k == JOptionPane.YES_OPTION) {
+                    pstmain.executeUpdate();
+                    JOptionPane.showMessageDialog(rootPane, "Updated Successfully!");
+                    txt_studno.setText("");
+                    txt_last.setText("");
+                    txt_first.setText("");
+                    txt_middle.setText("");
+                    txt_add.setText("");
+                    txt_bday.setText("");
+                    jc_dept.setSelectedItem("---Select Department---");
+                    jc_course.setSelectedItem("-------Select Course--------");
+                    picture.setIcon(null);
+                    txt_studno.requestFocus();
+                    disabletextbox();
+                    
+                    btn_save.setEnabled(false);
+                    btn_update.setEnabled(false);
+                    
+                    btn_delete.setEnabled(true);
+                    btn_add.setEnabled(true);
+                    btn_upload.setEnabled(true);
+                    tableupdate();
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Data not Updated!");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+   }
+   
+   public void UploadImage(){
         JFileChooser imagePicked = new JFileChooser();
         imagePicked.showOpenDialog(null);
         File file = imagePicked.getSelectedFile();
@@ -964,8 +1038,26 @@ public class Main extends javax.swing.JFrame {
         }catch(IOException e){
             System.out.println(e);
         }
+   }
+    private void btn_uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uploadActionPerformed
+
+        switch (userClick) {
+            case 2 -> {
+                btn_upload.setText("Update Image");
+                UpdateImage();
+            }
+            case 1 -> {
+                 btn_upload.setText("Add Image");
+                UploadImage();
+                
+            }
+            default -> {
+            }
+        }
+        
+
     }//GEN-LAST:event_btn_uploadActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
