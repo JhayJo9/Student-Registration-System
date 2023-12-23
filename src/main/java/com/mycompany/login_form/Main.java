@@ -4,6 +4,7 @@
 */
 package com.mycompany.login_form;
 
+import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -50,6 +51,10 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        
+         // jframe bg color
+        Color kulay = new Color(58,47,68);
+        getContentPane().setBackground(kulay);
         
         // disable the textbox
         txt_studno.setEnabled(false);
@@ -169,17 +174,18 @@ public class Main extends javax.swing.JFrame {
         txt_studno = new javax.swing.JTextField();
         picture = new javax.swing.JLabel();
         jc_course = new javax.swing.JComboBox<>();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         btn_save = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
         btn_add = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
-        btn_exit = new javax.swing.JButton();
         edit_btn = new javax.swing.JButton();
         btn_view = new javax.swing.JButton();
         btn_upload = new javax.swing.JButton();
+        btn_exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(53, 47, 68));
         setIconImages(null);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -187,11 +193,13 @@ public class Main extends javax.swing.JFrame {
                 formWindowActivated(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(254, 255, 254));
+        jPanel1.setBackground(new java.awt.Color(53, 47, 68));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, new java.awt.Color(102, 102, 102)));
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(250, 240, 230));
         jLabel1.setText("MS ACCESS DATABASE CONNECTION WITH JAVA NETBEANS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -211,8 +219,12 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 1003, -1));
+
+        jTable1.setBackground(new java.awt.Color(53, 47, 68));
         jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTable1.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(250, 240, 230));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -247,32 +259,42 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.setBackground(new java.awt.Color(254, 255, 254));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 289, 1003, 178));
+
+        jPanel2.setBackground(new java.awt.Color(53, 47, 68));
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.setForeground(new java.awt.Color(0, 204, 255));
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(250, 240, 230));
         jLabel2.setText("Student no.:");
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(250, 240, 230));
         jLabel3.setText("Last name:");
 
         jLabel4.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(250, 240, 230));
         jLabel4.setText("First name:");
 
         jLabel5.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(250, 240, 230));
         jLabel5.setText("Middle Name:");
 
         jLabel6.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(250, 240, 230));
         jLabel6.setText("Address");
 
         jLabel7.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(250, 240, 230));
         jLabel7.setText("Birthday:");
 
         jLabel8.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(250, 240, 230));
         jLabel8.setText("Department:");
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(250, 240, 230));
         jLabel9.setText("Course:");
 
         jc_dept.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "School of Computer Studies", "School of Education", "School of Business Management", "School of Hospitality and Tourism Management", "------------Select Department----------" }));
@@ -323,7 +345,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(txt_studno, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                        .addGap(58, 58, 58)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel9)
@@ -338,9 +360,9 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(txt_add, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jc_dept, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jc_course, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(picture, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(15, 15, 15))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -385,8 +407,9 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(254, 255, 254));
-        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 116, -1, -1));
+
+        jPanel4.setBackground(new java.awt.Color(53, 48, 68));
 
         btn_save.setBackground(new java.awt.Color(25, 119, 243));
         btn_save.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
@@ -428,16 +451,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btn_exit.setBackground(new java.awt.Color(25, 119, 243));
-        btn_exit.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
-        btn_exit.setForeground(new java.awt.Color(255, 255, 255));
-        btn_exit.setText("Exit");
-        btn_exit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_exitActionPerformed(evt);
-            }
-        });
-
         edit_btn.setBackground(new java.awt.Color(25, 119, 243));
         edit_btn.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         edit_btn.setForeground(new java.awt.Color(255, 255, 255));
@@ -468,75 +481,66 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(btn_save)
-                .addGap(18, 18, 18)
-                .addComponent(btn_delete)
-                .addGap(18, 18, 18)
-                .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        btn_exit.setBackground(new java.awt.Color(25, 119, 243));
+        btn_exit.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        btn_exit.setForeground(new java.awt.Color(255, 255, 255));
+        btn_exit.setText("Exit");
+        btn_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exitActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(418, 418, 418)
                 .addComponent(btn_update)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(edit_btn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_view)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_upload)
                 .addGap(18, 18, 18)
-                .addComponent(btn_exit)
-                .addGap(19, 19, 19))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(btn_exit, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(22, 22, 22)
                     .addComponent(btn_save)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(btn_delete)
-                    .addComponent(btn_add)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(595, Short.MAX_VALUE)))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_update)
-                    .addComponent(btn_exit)
-                    .addComponent(edit_btn)
+                    .addComponent(btn_upload)
+                    .addComponent(btn_exit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_view)
-                    .addComponent(btn_upload))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(edit_btn))
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(39, 39, 39)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_save)
+                        .addComponent(btn_delete)
+                        .addComponent(btn_add))
+                    .addContainerGap(39, Short.MAX_VALUE)))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 1000, 100));
 
-        pack();
+        setSize(new java.awt.Dimension(1029, 580));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -612,20 +616,35 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jc_deptActionPerformed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        tableupdate();
+    }//GEN-LAST:event_formWindowActivated
+
+    private void txt_studnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_studnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_studnoActionPerformed
+
+    private void pictureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureMouseClicked
+        
+        
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pictureMouseClicked
+
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
         System.out.println("fggf");
-       
+
         if(txt_studno.getText().equals("") || txt_last.getText().equals("") || txt_first.getText().equals("") || txt_middle.getText().equals("") || txt_add.getText().equals("")
-                || txt_bday.getText().equals("") || jc_dept.getSelectedItem().equals("------------Select Department----------") || jc_course.getSelectedItem().equals("")){
+            || txt_bday.getText().equals("") || jc_dept.getSelectedItem().equals("------------Select Department----------") || jc_course.getSelectedItem().equals("")){
             JOptionPane.showMessageDialog(rootPane, "Please enter requeried fields");
         }
         else {
-          
+
             try {
                 String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
                 conmain = DriverManager.getConnection(urlmain);
                 String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
-                
+
                 studentNumber = txt_studno.getText();
                 lastName = txt_last.getText();
                 firstName = txt_first.getText();
@@ -636,10 +655,10 @@ public class Main extends javax.swing.JFrame {
                 course = (String) jc_course.getSelectedItem();
                 try{
                     InputStream s = new FileInputStream(new File(path));
-                    
+
                     String sql = "INSERT into StudInfoTbl([Student], [LAST-NAME], [FIRST-NAME], [MIDDLE-NAME], Address, Birthday, Department, Course, StudentProfile) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
                     pstmain = conmain.prepareStatement(sql);
-                    
+
                     System.out.println(studentNumber);
                     System.out.println(lastName);
                     System.out.println(firstName);
@@ -649,7 +668,7 @@ public class Main extends javax.swing.JFrame {
                     System.out.println(department);
                     System.out.println(course);
                     System.out.println(s);
-                    
+
                     pstmain.setString(1, studentNumber);   // STUD-NO
                     pstmain.setString(2, lastName);        // LAST-NAME
                     pstmain.setString(3, firstName);       // FIRST-NAME
@@ -661,8 +680,8 @@ public class Main extends javax.swing.JFrame {
                     pstmain.setBlob(9, s);
                     pstmain.executeUpdate();
                     JOptionPane.showMessageDialog(rootPane, "Inserted Successfully!");
-                    
-                     // set to empty string
+
+                    // set to empty string
                     txt_studno.setText("");
                     txt_last.setText("");
                     txt_first.setText("");
@@ -672,14 +691,13 @@ public class Main extends javax.swing.JFrame {
                     jc_dept.setSelectedItem("------------Select Department----------");
                     txt_studno.requestFocus();
                     picture.setIcon(null);
-        
+
                     tableupdate();
                     // disable the textbox
                     disabletextbox();
                     btn_save.setEnabled(false);
                     btn_upload.setEnabled(false);
-                    
-                    
+
                     btn_delete.setEnabled(true);
                     edit_btn.setEnabled(true);
                     btn_view.setEnabled(true);
@@ -689,7 +707,7 @@ public class Main extends javax.swing.JFrame {
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "The student id is already given");
             }
-            
+
         }
     }//GEN-LAST:event_btn_saveActionPerformed
 
@@ -705,7 +723,7 @@ public class Main extends javax.swing.JFrame {
                     pstmain.setString(1, txt_studno.getText());   // STUD-NO
                     pstmain.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Recored Deleted");
-                    
+
                     txt_studno.setText("");
                     txt_last.setText("");
                     txt_first.setText("");
@@ -742,22 +760,22 @@ public class Main extends javax.swing.JFrame {
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
 
-    try {
-        String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
-        conmain = DriverManager.getConnection(urlmain);
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        int selectedRow = jTable1.getSelectedRow();
-        String id = model.getValueAt(selectedRow, 0).toString();
+        try {
+            String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+            conmain = DriverManager.getConnection(urlmain);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            int selectedRow = jTable1.getSelectedRow();
+            String id = model.getValueAt(selectedRow, 0).toString();
 
-        String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
-        studentNumber = txt_studno.getText();
-        lastName = txt_last.getText();
-        firstName = txt_first.getText();
-        middleName = txt_middle.getText();
-        address = txt_add.getText();
-        birthDate = txt_bday.getText();
-        department = jc_dept.getSelectedItem().toString();
-        course = jc_course.getSelectedItem().toString();
+            String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+            studentNumber = txt_studno.getText();
+            lastName = txt_last.getText();
+            firstName = txt_first.getText();
+            middleName = txt_middle.getText();
+            address = txt_add.getText();
+            birthDate = txt_bday.getText();
+            department = jc_dept.getSelectedItem().toString();
+            course = jc_course.getSelectedItem().toString();
 
             // Update the SQL statement to include the image column
             String sql = "UPDATE StudInfoTbl SET `Student`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=? WHERE `Student`=?";
@@ -786,12 +804,12 @@ public class Main extends javax.swing.JFrame {
                 jc_dept.setSelectedItem("------------Select Department----------");
                 picture.setIcon(null);
                 txt_studno.requestFocus();
-                
+
                 disabletextbox();
-                
+
                 btn_save.setEnabled(false);
                 btn_update.setEnabled(false);
-                
+
                 btn_delete.setEnabled(true);
                 btn_add.setEnabled(true);
                 btn_upload.setEnabled(false);
@@ -799,27 +817,18 @@ public class Main extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Data not Updated!");
             }
-        
-    } catch (HeadlessException | SQLException e) {
-        System.out.println(e);
-    } 
-        
-       
-    }//GEN-LAST:event_btn_updateActionPerformed
 
-    private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
-        // TODO add your handling code here:
-        LogIn frame5 = new LogIn();
-        frame5.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btn_exitActionPerformed
+        } catch (HeadlessException | SQLException e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_btn_updateActionPerformed
 
     private void edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btnActionPerformed
         // TODO add your handling code here:
         userClick = 2;
         btn_upload.setText("Update Image");
-        
-         txt_studno.setEnabled(false);
+
+        txt_studno.setEnabled(false);
         txt_last.setEnabled(true);
         txt_first.setEnabled(true);
         txt_middle.setEnabled(true);
@@ -827,7 +836,7 @@ public class Main extends javax.swing.JFrame {
         txt_bday.setEnabled(true);
         jc_dept.setEnabled(true);
         jc_course.setEnabled(true);
-        
+
         btn_upload.setEnabled(true);
         btn_save.setEnabled(false);
         btn_delete.setEnabled(false);
@@ -841,9 +850,9 @@ public class Main extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             int selectedRow = jTable1.getSelectedRow();
             String id = (model.getValueAt(selectedRow, 0).toString());
-            
+
             String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
-            
+
             studentNumber = txt_studno.getText();
             lastName = txt_last.getText();
             firstName = txt_first.getText();
@@ -854,7 +863,7 @@ public class Main extends javax.swing.JFrame {
             course = (String) jc_course.getSelectedItem();
             String sql = "UPDATE StudInfoTbl SET `Student`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=? WHERE `Student`=?";
             pstmain = conmain.prepareStatement(sql);
-            
+
             // Correct order for setting values in the prepared statement
             pstmain.setString(1, studentNumber);   // Stud-no
             pstmain.setString(2, lastName);        // Last-name
@@ -865,9 +874,9 @@ public class Main extends javax.swing.JFrame {
             pstmain.setString(7, department);      // Department
             pstmain.setString(8, course);          // Course
             pstmain.setString(9, studentNumber);   // WHERE condition
-            
+
             pstmain.executeUpdate();
-            
+
             txt_studno.setText("");
             txt_last.setText("");
             txt_first.setText("");
@@ -878,27 +887,18 @@ public class Main extends javax.swing.JFrame {
             txt_studno.requestFocus();
             picture.setIcon(null);
             tableupdate();
-            
+
         }
         catch (SQLException e)
         {
             System.out.println(e);
         }
-        
     }//GEN-LAST:event_edit_btnActionPerformed
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        tableupdate();
-    }//GEN-LAST:event_formWindowActivated
-
-    private void txt_studnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_studnoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_studnoActionPerformed
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         int selectedIndex = jTable1.getSelectedRow();
-        
+
         txt_studno.setText(model.getValueAt(selectedIndex, 0).toString());
         txt_last.setText(model.getValueAt(selectedIndex, 1).toString());
         txt_first.setText(model.getValueAt(selectedIndex, 2).toString());
@@ -907,9 +907,9 @@ public class Main extends javax.swing.JFrame {
         txt_bday.setText(model.getValueAt(selectedIndex, 5).toString());
         jc_dept.setSelectedItem(model.getValueAt(selectedIndex, 6));
         jc_course.setSelectedItem(model.getValueAt(selectedIndex, 7));
-        
+
         String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
-        
+
         studentNumber = model.getValueAt(selectedIndex, 0).toString();
         lastName = model.getValueAt(selectedIndex, 1).toString();
         firstName = model.getValueAt(selectedIndex, 2).toString();
@@ -918,19 +918,37 @@ public class Main extends javax.swing.JFrame {
         birthDate = model.getValueAt(selectedIndex, 5).toString();
         department = model.getValueAt(selectedIndex, 6).toString();
         course = model.getValueAt(selectedIndex, 7).toString();
-        
+
         viewform vf = new viewform();
         vf.getInfo(studentNumber, lastName, firstName, middleName, address, birthDate, department, course);
         vf.setVisible(true);
-        
     }//GEN-LAST:event_btn_viewActionPerformed
 
-    private void pictureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pictureMouseClicked
-        
-        
-        
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pictureMouseClicked
+    private void btn_uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uploadActionPerformed
+
+        switch (userClick) {
+            case 2 -> {
+                btn_upload.setText("Update Image");
+                UpdateImage();
+            }
+            case 1 -> {
+                btn_upload.setText("Add Image");
+                UploadImage();
+
+            }
+            default -> {
+            }
+        }
+    }//GEN-LAST:event_btn_uploadActionPerformed
+
+    private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
+        int ask = JOptionPane.showConfirmDialog(null ,"Do you want to exit?", "Exit", JOptionPane.YES_NO_OPTION);
+        if(ask == JOptionPane.YES_NO_OPTION){
+            Loginf frame5 = new Loginf();
+            frame5.setVisible(true);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_btn_exitActionPerformed
     public void UpdateImage(){
         Connection conUpdate = null;
         PreparedStatement pstUpdate = null;
@@ -1006,25 +1024,6 @@ public class Main extends javax.swing.JFrame {
             System.out.println(e);
         }
    }
-    private void btn_uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uploadActionPerformed
-
-        switch (userClick) {
-            case 2 -> {
-                btn_upload.setText("Update Image");
-                UpdateImage();
-            }
-            case 1 -> {
-                 btn_upload.setText("Add Image");
-                UploadImage();
-                
-            }
-            default -> {
-            }
-        }
-        
-
-    }//GEN-LAST:event_btn_uploadActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -1062,13 +1061,29 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_add;
+    private javax.swing.JButton btn_add1;
+    private javax.swing.JButton btn_add2;
     private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_delete1;
+    private javax.swing.JButton btn_delete2;
     private javax.swing.JButton btn_exit;
+    private javax.swing.JButton btn_exit1;
+    private javax.swing.JButton btn_exit2;
     private javax.swing.JButton btn_save;
+    private javax.swing.JButton btn_save1;
+    private javax.swing.JButton btn_save2;
     private javax.swing.JButton btn_update;
+    private javax.swing.JButton btn_update1;
+    private javax.swing.JButton btn_update2;
     private javax.swing.JButton btn_upload;
+    private javax.swing.JButton btn_upload1;
+    private javax.swing.JButton btn_upload2;
     private javax.swing.JButton btn_view;
+    private javax.swing.JButton btn_view1;
+    private javax.swing.JButton btn_view2;
     private javax.swing.JButton edit_btn;
+    private javax.swing.JButton edit_btn1;
+    private javax.swing.JButton edit_btn2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1080,7 +1095,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> jc_course;

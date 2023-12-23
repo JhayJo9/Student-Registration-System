@@ -3,6 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.login_form;
+import java.awt.HeadlessException;
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 /**
  *
@@ -36,7 +43,7 @@ public class signup extends javax.swing.JFrame {
         txt_user = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btn_login = new javax.swing.JButton();
+        btn_signup = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,6 +66,14 @@ public class signup extends javax.swing.JFrame {
         txt_pass.setForeground(new java.awt.Color(185, 180, 199));
         txt_pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_pass.setBorder(null);
+        txt_pass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txt_passMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txt_passMouseExited(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
@@ -82,6 +97,14 @@ public class signup extends javax.swing.JFrame {
         txt_user.setBorder(null);
         txt_user.setCaretColor(new java.awt.Color(31, 31, 35));
         txt_user.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txt_user.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txt_userMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txt_userMouseExited(evt);
+            }
+        });
         txt_user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_userActionPerformed(evt);
@@ -101,22 +124,22 @@ public class signup extends javax.swing.JFrame {
             }
         });
 
-        btn_login.setBackground(new java.awt.Color(0, 150, 255));
-        btn_login.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        btn_login.setForeground(java.awt.Color.white);
-        btn_login.setText("Sign Up");
-        btn_login.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btn_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_login.setFocusPainted(false);
-        btn_login.addActionListener(new java.awt.event.ActionListener() {
+        btn_signup.setBackground(new java.awt.Color(0, 150, 255));
+        btn_signup.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        btn_signup.setForeground(java.awt.Color.white);
+        btn_signup.setText("Sign Up");
+        btn_signup.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_signup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_signup.setFocusPainted(false);
+        btn_signup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_loginActionPerformed(evt);
+                btn_signupActionPerformed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(250, 240, 230));
-        jLabel1.setText("Create a Account");
+        jLabel1.setText("Create an account");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -143,7 +166,7 @@ public class signup extends javax.swing.JFrame {
                         .addComponent(txt_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_signup, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addComponent(jLabel4)
@@ -177,7 +200,7 @@ public class signup extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(txt_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_signup, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -214,12 +237,73 @@ public class signup extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_userActionPerformed
 
     private void jLabel5clickcreate(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5clickcreate
-
+        Loginf backtoLogin = new Loginf();
+        backtoLogin.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel5clickcreate
 
-    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+    private void btn_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signupActionPerformed
+                       System.out.println("CLICKED SIGN UP");
+        if(txt_user.getText().isEmpty() && !txt_pass.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter username");
+        }
+        else if(!txt_user.getText().isEmpty() && txt_pass.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter passsword");
+        }else if (txt_user.getText().isEmpty() && txt_pass.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter required fields");
+        } else{
+           
+            try {
+                Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+                String url = "jdbc:ucanaccess://JavaLoginClone.accdb";
+                
+                //CHECK IF THE USER TYPE USERNAME THAT ALREADY EXIST
+                try (Connection checkCon = DriverManager.getConnection(url);
+                        PreparedStatement checkStmt = checkCon.prepareStatement("SELECT Username FROM Logintbl WHERE Username = ?")) {
+                    
+                    checkStmt.setString(1, txt_user.getText());
+                    ResultSet checkRs = checkStmt.executeQuery();
+                    
+                    if (checkRs.next()) {
+                        JOptionPane.showMessageDialog(null, "This username is already created");
+                    } else {
+                        //INSERT NEW RECORD
+                        try (Connection insertCon = DriverManager.getConnection(url);
+                                PreparedStatement insertStmt = insertCon.prepareStatement("INSERT INTO Logintbl (Username, Password) VALUES (?, ?)")) {
+                            
+                            insertStmt.setString(1, txt_user.getText());
+                            insertStmt.setString(2, txt_pass.getText());
+                            insertStmt.executeUpdate();
+                            
+                            JOptionPane.showMessageDialog(null, "Account Created");
+                            
+                            txt_user.setText("");
+                            txt_pass.setText("");
+                        }
+                    }
+                }
+            } catch (HeadlessException | ClassNotFoundException | java.sql.SQLException x) {
+                System.out.println(x);
+            }
+            
+        } // ELSE 
+    }//GEN-LAST:event_btn_signupActionPerformed
 
-    }//GEN-LAST:event_btn_loginActionPerformed
+    private void txt_userMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_userMouseEntered
+       txt_user.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
+    }//GEN-LAST:event_txt_userMouseEntered
+
+    private void txt_userMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_userMouseExited
+        txt_user.setBorder(null);
+    }//GEN-LAST:event_txt_userMouseExited
+
+    private void txt_passMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_passMouseEntered
+       txt_pass.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
+    }//GEN-LAST:event_txt_passMouseEntered
+
+    private void txt_passMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_passMouseExited
+       txt_pass.setBorder(null);
+    }//GEN-LAST:event_txt_passMouseExited
 
     /**
      * @param args the command line arguments
@@ -257,7 +341,7 @@ public class signup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_login;
+    private javax.swing.JButton btn_signup;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

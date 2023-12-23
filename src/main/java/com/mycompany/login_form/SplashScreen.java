@@ -11,10 +11,6 @@ import java.util.logging.Logger;
  * @author JhayJTheGosu
  */
 public class SplashScreen extends javax.swing.JFrame {
-    
-    /**
-     * Creates new form loading
-     */
     public SplashScreen() {
         initComponents();
         
@@ -111,7 +107,29 @@ public class SplashScreen extends javax.swing.JFrame {
         //Login_Form fr2 = new Login_Form();
         fr1.setVisible(true);
         
-    
+         for(int i = 1;i <= 100;i++){
+            try{
+                Thread.sleep(80);
+                fr1.jProgressBar1.setValue(i);
+                if(i% 2 == 0){
+                    fr1.pleasewait.setText("Please wait..");
+                }
+                else if(i% 3 == 0){
+                    fr1.pleasewait.setText("Please wait...");
+                }
+                else {
+                    fr1.pleasewait.setText("Please wait.");
+                }
+                if(i == 100){
+                    Loginf frame5 = new Loginf();
+                    fr1.setVisible(false);
+                    frame5.setVisible(true);
+                }
+            }catch(InterruptedException x){
+                System.out.println(x);
+            }
+        }
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
