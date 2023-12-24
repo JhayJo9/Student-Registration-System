@@ -4,6 +4,10 @@
  */
 package com.mycompany.login_form;
 
+import java.awt.Image;
+import java.sql.Blob;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,8 +17,8 @@ import javax.swing.table.DefaultTableModel;
 public class viewform extends javax.swing.JFrame {
     
    String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
-   
-    public void getInfo(String studentNumber, String lastName, String firstName, String middleName, String address, String birthDate, String department, String course){
+   ImageIcon picture;
+    public void getInfo(String studentNumber, String lastName, String firstName, String middleName, String address, String birthDate, String department, String course, ImageIcon picture){
       this.studentNumber = studentNumber;
       this.lastName = lastName;
       this.firstName = firstName;
@@ -23,6 +27,7 @@ public class viewform extends javax.swing.JFrame {
       this.birthDate = birthDate;
       this.department = department;
       this.course = course;
+      this.picture = picture;
       System.out.println("fg");
    }
     /**
@@ -53,123 +58,159 @@ public class viewform extends javax.swing.JFrame {
         vbirthDate = new javax.swing.JLabel();
         vdepartment = new javax.swing.JLabel();
         vcourse = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        vpicture = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        btn_exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(134, 167, 137));
 
-        jLabel1.setText("view profile");
+        jLabel1.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
+        jLabel1.setText("Student Profile");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(173, 173, 173)
+                .addGap(107, 107, 107)
                 .addComponent(jLabel1)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        vstudentNumber.setText("jLabel2");
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 80));
 
-        vfirstName.setText("jLabel2");
+        jPanel2.setBackground(new java.awt.Color(53, 48, 68));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        vlastName.setText("jLabel2");
+        vstudentNumber.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        vstudentNumber.setForeground(new java.awt.Color(250, 240, 230));
+        vstudentNumber.setText("s");
+        jPanel2.add(vstudentNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 69, -1));
 
-        vaddress.setText("jLabel2");
+        vfirstName.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        vfirstName.setForeground(new java.awt.Color(250, 240, 230));
+        vfirstName.setText("f");
+        jPanel2.add(vfirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 69, -1));
 
-        vmiddleName.setText("jLabel2");
+        vlastName.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        vlastName.setForeground(new java.awt.Color(250, 240, 230));
+        vlastName.setText("l");
+        jPanel2.add(vlastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 69, -1));
 
-        vbirthDate.setText("jLabel2");
+        vaddress.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        vaddress.setForeground(new java.awt.Color(250, 240, 230));
+        vaddress.setText("b");
+        jPanel2.add(vaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 69, -1));
 
-        vdepartment.setText("jLabel2");
+        vmiddleName.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        vmiddleName.setForeground(new java.awt.Color(250, 240, 230));
+        vmiddleName.setText("m");
+        jPanel2.add(vmiddleName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 69, -1));
 
-        vcourse.setText("jLabel2");
+        vbirthDate.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        vbirthDate.setForeground(new java.awt.Color(250, 240, 230));
+        vbirthDate.setText("a");
+        jPanel2.add(vbirthDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 69, -1));
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        vdepartment.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        vdepartment.setForeground(new java.awt.Color(250, 240, 230));
+        vdepartment.setText("d");
+        jPanel2.add(vdepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 250, -1));
+
+        vcourse.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        vcourse.setForeground(new java.awt.Color(250, 240, 230));
+        vcourse.setText("c");
+        jPanel2.add(vcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 250, -1));
+
+        vpicture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(vpicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 140, 120));
+
+        jLabel3.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(250, 240, 230));
+        jLabel3.setText("Middle name");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(250, 240, 230));
+        jLabel4.setText("Student No. :");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(250, 240, 230));
+        jLabel5.setText("Last name");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(250, 240, 230));
+        jLabel6.setText("Birthdate");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(250, 240, 230));
+        jLabel7.setText("Address");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(250, 240, 230));
+        jLabel8.setText("Course");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(250, 240, 230));
+        jLabel9.setText("First name");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(250, 240, 230));
+        jLabel10.setText("Department");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        btn_exit.setBackground(new java.awt.Color(0, 150, 255));
+        btn_exit.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        btn_exit.setForeground(new java.awt.Color(250, 240, 230));
+        btn_exit.setText("Exit");
+        btn_exit.setBorder(null);
+        btn_exit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_exit.setPreferredSize(new java.awt.Dimension(70, 30));
+        btn_exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_exitActionPerformed(evt);
             }
         });
+        jPanel2.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 70, 30));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(vlastName, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-                            .addComponent(vstudentNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(vfirstName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(vmiddleName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(vaddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(vbirthDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(vdepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(vcourse, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(vstudentNumber)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vlastName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vfirstName)
-                .addGap(9, 9, 9)
-                .addComponent(vmiddleName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vaddress)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vbirthDate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vdepartment)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vcourse, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jButton1)
-                .addContainerGap(133, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 400, 400));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-            getInfo( studentNumber, lastName, firstName, middleName, address, birthDate, department, course);
+            getInfo( studentNumber, lastName, firstName, middleName, address, birthDate, department, course, picture);
             vstudentNumber.setText(studentNumber);
             vlastName.setText(lastName);
             vfirstName.setText(firstName);
@@ -178,11 +219,18 @@ public class viewform extends javax.swing.JFrame {
             vbirthDate.setText(birthDate);
             vdepartment.setText(department);
             vcourse.setText(course);
+            int labelWidth = vpicture.getWidth();
+            int labelHeight = vpicture.getHeight();
+            
+            Image scaledImage = picture.getImage().getScaledInstance(labelWidth, labelHeight, Image.SCALE_SMOOTH);
+            ImageIcon scaledIcon = new ImageIcon(scaledImage);
+            vpicture.setIcon(scaledIcon);
+            
     }//GEN-LAST:event_formWindowActivated
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_exitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,8 +268,16 @@ public class viewform extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_exit;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel vaddress;
@@ -231,6 +287,7 @@ public class viewform extends javax.swing.JFrame {
     private javax.swing.JLabel vfirstName;
     private javax.swing.JLabel vlastName;
     private javax.swing.JLabel vmiddleName;
+    private javax.swing.JLabel vpicture;
     private javax.swing.JLabel vstudentNumber;
     // End of variables declaration//GEN-END:variables
 }

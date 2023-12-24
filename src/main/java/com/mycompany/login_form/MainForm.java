@@ -234,11 +234,12 @@ public class MainForm extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(250, 240, 230));
         jLabel1.setText("MS ACCESS DATABASE CONNECTION WITH JAVA NETBEANS");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 750, -1));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\resource\\ms access.png"));
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 50, 80, 80));
 
@@ -248,10 +249,10 @@ public class MainForm extends javax.swing.JFrame {
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 80, 80));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 960, 140));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 140));
 
         jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jTable1.setForeground(new java.awt.Color(53, 48, 68));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -287,66 +288,78 @@ public class MainForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 960, 178));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 960, 178));
 
         jPanel3.setBackground(new java.awt.Color(53, 48, 68));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.setPreferredSize(new java.awt.Dimension(1003, 167));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(250, 240, 230));
         jLabel5.setText("Student no.:");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
 
-        jLabel6.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(250, 240, 230));
         jLabel6.setText("Last name:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(250, 240, 230));
         jLabel7.setText("First name:");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
+        txt_studno.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         txt_studno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_studnoActionPerformed(evt);
             }
         });
         jPanel3.add(txt_studno, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 240, -1));
+
+        txt_last.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jPanel3.add(txt_last, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 240, -1));
+
+        txt_first.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jPanel3.add(txt_first, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 240, -1));
 
-        jLabel8.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(250, 240, 230));
         jLabel8.setText("Middle Name:");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+
+        txt_middle.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jPanel3.add(txt_middle, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 240, -1));
 
-        jLabel9.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(250, 240, 230));
         jLabel9.setText("Address");
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(250, 240, 230));
         jLabel10.setText("Birthday:");
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, -1, -1));
+
+        txt_add.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jPanel3.add(txt_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 288, -1));
 
-        jLabel12.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(250, 240, 230));
         jLabel12.setText("Course:");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(250, 240, 230));
         jLabel11.setText("Department:");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 70, -1));
+
+        txt_bday.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jPanel3.add(txt_bday, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 288, -1));
 
-        jPanel3.add(jc_course, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 288, -1));
+        jc_course.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jPanel3.add(jc_course, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 290, -1));
 
         picture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         picture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -360,6 +373,7 @@ public class MainForm extends javax.swing.JFrame {
         });
         jPanel3.add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, -1, -1));
 
+        jc_dept.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jc_dept.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "School of Computer Studies", "School of Education", "School of Business Management", "School of Hospitality and Tourism Management", "------------Select Department----------" }));
         jc_dept.setSelectedIndex(4);
         jc_dept.addActionListener(new java.awt.event.ActionListener() {
@@ -369,30 +383,41 @@ public class MainForm extends javax.swing.JFrame {
         });
         jPanel3.add(jc_dept, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 290, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 960, 170));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 960, 170));
 
         jPanel2.setBackground(new java.awt.Color(53, 48, 68));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setForeground(new java.awt.Color(53, 48, 68));
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_add.setBackground(new java.awt.Color(0, 150, 255));
-        btn_add.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        btn_add.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
         btn_add.setForeground(new java.awt.Color(250, 240, 230));
         btn_add.setText("Add");
-        jPanel2.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
+        btn_add.setBorder(null);
+        btn_add.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_add.setPreferredSize(new java.awt.Dimension(70, 30));
+        jPanel2.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, 70, 30));
 
         btn_exit.setBackground(new java.awt.Color(0, 150, 255));
-        btn_exit.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        btn_exit.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
         btn_exit.setForeground(new java.awt.Color(250, 240, 230));
         btn_exit.setText("Exit");
-        jPanel2.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, -1, -1));
+        btn_exit.setBorder(null);
+        btn_exit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_exit.setPreferredSize(new java.awt.Dimension(70, 30));
+        jPanel2.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 70, 30));
 
         btn_delete.setBackground(new java.awt.Color(0, 150, 255));
-        btn_delete.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        btn_delete.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
         btn_delete.setForeground(new java.awt.Color(250, 240, 230));
         btn_delete.setText("Delete");
-        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
+        btn_delete.setBorder(null);
+        btn_delete.setBorderPainted(false);
+        btn_delete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_delete.setPreferredSize(new java.awt.Dimension(70, 30));
+        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 70, 30));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -437,32 +462,43 @@ public class MainForm extends javax.swing.JFrame {
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 960, 90));
 
         btn_save.setBackground(new java.awt.Color(0, 150, 255));
-        btn_save.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        btn_save.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
         btn_save.setForeground(new java.awt.Color(250, 240, 230));
         btn_save.setText("Save");
+        btn_save.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_save.setBorderPainted(false);
+        btn_save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_save.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_save.setPreferredSize(new java.awt.Dimension(70, 30));
         btn_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_saveActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
+        jPanel2.add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 70, 30));
 
         btn_update.setBackground(new java.awt.Color(0, 150, 255));
-        btn_update.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        btn_update.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
         btn_update.setForeground(new java.awt.Color(250, 240, 230));
         btn_update.setText("Update");
-        jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, -1));
+        btn_update.setBorder(null);
+        btn_update.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_update.setPreferredSize(new java.awt.Dimension(75, 30));
+        jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 75, 30));
 
         btn_edit.setBackground(new java.awt.Color(0, 150, 255));
-        btn_edit.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        btn_edit.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
         btn_edit.setForeground(new java.awt.Color(250, 240, 230));
         btn_edit.setText("Edit ");
+        btn_edit.setBorder(null);
+        btn_edit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_edit.setPreferredSize(new java.awt.Dimension(70, 30));
         btn_edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_editActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, -1, -1));
+        jPanel2.add(btn_edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 70, 30));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -530,25 +566,31 @@ public class MainForm extends javax.swing.JFrame {
         jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 960, 90));
 
         btn_view.setBackground(new java.awt.Color(0, 150, 255));
-        btn_view.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        btn_view.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
         btn_view.setForeground(new java.awt.Color(250, 240, 230));
         btn_view.setText("View");
-        jPanel2.add(btn_view, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, -1, -1));
+        btn_view.setBorder(null);
+        btn_view.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_view.setPreferredSize(new java.awt.Dimension(70, 30));
+        jPanel2.add(btn_view, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 70, 30));
 
         btn_AddUp.setBackground(new java.awt.Color(0, 150, 255));
-        btn_AddUp.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        btn_AddUp.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
         btn_AddUp.setForeground(new java.awt.Color(250, 240, 230));
         btn_AddUp.setText("Add/Upload image");
+        btn_AddUp.setBorder(null);
+        btn_AddUp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_AddUp.setPreferredSize(new java.awt.Dimension(140, 30));
         btn_AddUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_AddUpActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_AddUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, -1, -1));
+        jPanel2.add(btn_AddUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 960, 90));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 960, 90));
 
-        setSize(new java.awt.Dimension(979, 601));
+        setSize(new java.awt.Dimension(960, 579));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

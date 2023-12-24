@@ -41,7 +41,7 @@ public class Main extends javax.swing.JFrame {
     String path;
     String path2;
     int userClick;
-    
+
     // DATABASE
     Connection conmain = null;
     PreparedStatement pstmain = null;
@@ -195,11 +195,10 @@ public class Main extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(53, 47, 68));
+        jPanel1.setBackground(new java.awt.Color(134, 167, 137));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, new java.awt.Color(102, 102, 102)));
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(250, 240, 230));
         jLabel1.setText("MS ACCESS DATABASE CONNECTION WITH JAVA NETBEANS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -918,10 +917,34 @@ public class Main extends javax.swing.JFrame {
         birthDate = model.getValueAt(selectedIndex, 5).toString();
         department = model.getValueAt(selectedIndex, 6).toString();
         course = model.getValueAt(selectedIndex, 7).toString();
-
-        viewform vf = new viewform();
-        vf.getInfo(studentNumber, lastName, firstName, middleName, address, birthDate, department, course);
-        vf.setVisible(true);
+         Blob imageBlob = (Blob) model.getValueAt(selectedIndex, 8);
+        byte[] imageBytes;
+        try {
+            ImageIcon imgIcon = null;
+            try {
+                imageBytes = imageBlob.getBinaryStream().readAllBytes();
+                imgIcon = new ImageIcon(imageBytes);
+                picture.setIcon(imgIcon);
+                
+                //GET THE CURRENT WIDTH AND HEIGHT TO MATCH IN IMAGE
+                int labelWidth = picture.getWidth();
+                int labelHeight = picture.getHeight();
+                
+                Image scaledImage = imgIcon.getImage().getScaledInstance(labelWidth, labelHeight, Image.SCALE_SMOOTH);
+                ImageIcon scaledIcon = new ImageIcon(scaledImage);
+                picture.setIcon(scaledIcon);
+                viewform vf = new viewform();
+                vf.getInfo(studentNumber, lastName, firstName, middleName, address, birthDate, department, course, imgIcon);
+                vf.setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
     }//GEN-LAST:event_btn_viewActionPerformed
 
     private void btn_uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uploadActionPerformed
@@ -1061,29 +1084,13 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_add;
-    private javax.swing.JButton btn_add1;
-    private javax.swing.JButton btn_add2;
     private javax.swing.JButton btn_delete;
-    private javax.swing.JButton btn_delete1;
-    private javax.swing.JButton btn_delete2;
     private javax.swing.JButton btn_exit;
-    private javax.swing.JButton btn_exit1;
-    private javax.swing.JButton btn_exit2;
     private javax.swing.JButton btn_save;
-    private javax.swing.JButton btn_save1;
-    private javax.swing.JButton btn_save2;
     private javax.swing.JButton btn_update;
-    private javax.swing.JButton btn_update1;
-    private javax.swing.JButton btn_update2;
     private javax.swing.JButton btn_upload;
-    private javax.swing.JButton btn_upload1;
-    private javax.swing.JButton btn_upload2;
     private javax.swing.JButton btn_view;
-    private javax.swing.JButton btn_view1;
-    private javax.swing.JButton btn_view2;
     private javax.swing.JButton edit_btn;
-    private javax.swing.JButton edit_btn1;
-    private javax.swing.JButton edit_btn2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1096,8 +1103,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> jc_course;
