@@ -67,7 +67,7 @@ public class MainForm extends javax.swing.JFrame {
         
         btn_AddUp.setEnabled(false);
         btn_save.setEnabled(false);
-        btn_update.setEnabled(false);
+        btn_update.setEnabled(true);
     }
       public void tableupdate(){
         int c;
@@ -392,30 +392,31 @@ public class MainForm extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_add.setBackground(new java.awt.Color(0, 150, 255));
-        btn_add.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        btn_add.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_add.setForeground(new java.awt.Color(250, 240, 230));
+        btn_add.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\add.png"));
         btn_add.setText("Add");
         btn_add.setBorder(null);
-        btn_add.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_add.setPreferredSize(new java.awt.Dimension(70, 30));
         jPanel2.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, 70, 30));
 
         btn_exit.setBackground(new java.awt.Color(0, 150, 255));
-        btn_exit.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        btn_exit.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_exit.setForeground(new java.awt.Color(250, 240, 230));
+        btn_exit.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\exit.png"));
         btn_exit.setText("Exit");
         btn_exit.setBorder(null);
-        btn_exit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_exit.setPreferredSize(new java.awt.Dimension(70, 30));
         jPanel2.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 70, 30));
 
         btn_delete.setBackground(new java.awt.Color(0, 150, 255));
-        btn_delete.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        btn_delete.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_delete.setForeground(new java.awt.Color(250, 240, 230));
+        btn_delete.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\delete.png"));
         btn_delete.setText("Delete");
         btn_delete.setBorder(null);
         btn_delete.setBorderPainted(false);
-        btn_delete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_delete.setIconTextGap(2);
         btn_delete.setPreferredSize(new java.awt.Dimension(70, 30));
         jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 70, 30));
 
@@ -462,13 +463,14 @@ public class MainForm extends javax.swing.JFrame {
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 960, 90));
 
         btn_save.setBackground(new java.awt.Color(0, 150, 255));
-        btn_save.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        btn_save.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_save.setForeground(new java.awt.Color(250, 240, 230));
+        btn_save.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\save_FILL0_wght400_GRAD0_opsz24.png"));
         btn_save.setText("Save");
         btn_save.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btn_save.setBorderPainted(false);
         btn_save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_save.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_save.setIconTextGap(1);
         btn_save.setPreferredSize(new java.awt.Dimension(70, 30));
         btn_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -478,20 +480,20 @@ public class MainForm extends javax.swing.JFrame {
         jPanel2.add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 70, 30));
 
         btn_update.setBackground(new java.awt.Color(0, 150, 255));
-        btn_update.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        btn_update.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_update.setForeground(new java.awt.Color(250, 240, 230));
+        btn_update.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\update.png"));
         btn_update.setText("Update");
         btn_update.setBorder(null);
-        btn_update.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_update.setPreferredSize(new java.awt.Dimension(75, 30));
         jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 75, 30));
 
         btn_edit.setBackground(new java.awt.Color(0, 150, 255));
-        btn_edit.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        btn_edit.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_edit.setForeground(new java.awt.Color(250, 240, 230));
+        btn_edit.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\edit.png"));
         btn_edit.setText("Edit ");
         btn_edit.setBorder(null);
-        btn_edit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_edit.setPreferredSize(new java.awt.Dimension(70, 30));
         btn_edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -566,20 +568,19 @@ public class MainForm extends javax.swing.JFrame {
         jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 960, 90));
 
         btn_view.setBackground(new java.awt.Color(0, 150, 255));
-        btn_view.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        btn_view.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_view.setForeground(new java.awt.Color(250, 240, 230));
+        btn_view.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\view.png"));
         btn_view.setText("View");
         btn_view.setBorder(null);
-        btn_view.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_view.setPreferredSize(new java.awt.Dimension(70, 30));
         jPanel2.add(btn_view, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 70, 30));
 
         btn_AddUp.setBackground(new java.awt.Color(0, 150, 255));
-        btn_AddUp.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
+        btn_AddUp.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_AddUp.setForeground(new java.awt.Color(250, 240, 230));
-        btn_AddUp.setText("Add/Upload image");
+        btn_AddUp.setText("Upload image");
         btn_AddUp.setBorder(null);
-        btn_AddUp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_AddUp.setPreferredSize(new java.awt.Dimension(140, 30));
         btn_AddUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

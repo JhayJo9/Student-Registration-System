@@ -47,8 +47,10 @@ public class viewform extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         vstudentNumber = new javax.swing.JLabel();
         vfirstName = new javax.swing.JLabel();
@@ -57,7 +59,6 @@ public class viewform extends javax.swing.JFrame {
         vmiddleName = new javax.swing.JLabel();
         vbirthDate = new javax.swing.JLabel();
         vdepartment = new javax.swing.JLabel();
-        vcourse = new javax.swing.JLabel();
         vpicture = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -68,6 +69,9 @@ public class viewform extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         btn_exit = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+
+        jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -79,27 +83,16 @@ public class viewform extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(134, 167, 137));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(250, 240, 230));
         jLabel1.setText("Student Profile");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 20, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(jLabel1)
-                .addContainerGap(121, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 400, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 80));
 
@@ -140,11 +133,6 @@ public class viewform extends javax.swing.JFrame {
         vdepartment.setForeground(new java.awt.Color(250, 240, 230));
         vdepartment.setText("d");
         jPanel2.add(vdepartment, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 250, -1));
-
-        vcourse.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
-        vcourse.setForeground(new java.awt.Color(250, 240, 230));
-        vcourse.setText("c");
-        jPanel2.add(vcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 250, -1));
 
         vpicture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(vpicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 140, 120));
@@ -192,9 +180,9 @@ public class viewform extends javax.swing.JFrame {
         btn_exit.setBackground(new java.awt.Color(0, 150, 255));
         btn_exit.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_exit.setForeground(new java.awt.Color(250, 240, 230));
+        btn_exit.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\logout.png"));
         btn_exit.setText("Exit");
         btn_exit.setBorder(null);
-        btn_exit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_exit.setPreferredSize(new java.awt.Dimension(70, 30));
         btn_exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,7 +191,11 @@ public class viewform extends javax.swing.JFrame {
         });
         jPanel2.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 70, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 400, 400));
+        jLabel11.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\close.png"));
+        jLabel11.setPreferredSize(new java.awt.Dimension(24, 24));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 120, 130));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 400, 360));
 
         pack();
         setLocationRelativeTo(null);
@@ -271,6 +263,8 @@ public class viewform extends javax.swing.JFrame {
     private javax.swing.JButton btn_exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -280,9 +274,9 @@ public class viewform extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel vaddress;
     private javax.swing.JLabel vbirthDate;
-    private javax.swing.JLabel vcourse;
     private javax.swing.JLabel vdepartment;
     private javax.swing.JLabel vfirstName;
     private javax.swing.JLabel vlastName;
