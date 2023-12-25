@@ -40,7 +40,6 @@ public class MainForm extends javax.swing.JFrame {
      String path;
     String path2;
     int userClick;
-    
     // DATABASE
     Connection conmain = null;
     PreparedStatement pstmain = null;
@@ -67,7 +66,7 @@ public class MainForm extends javax.swing.JFrame {
         
         btn_AddUp.setEnabled(false);
         btn_save.setEnabled(false);
-        btn_update.setEnabled(true);
+        btn_update.setEnabled(false);
     }
       public void tableupdate(){
         int c;
@@ -219,6 +218,7 @@ public class MainForm extends javax.swing.JFrame {
         jButton30 = new javax.swing.JButton();
         btn_view = new javax.swing.JButton();
         btn_AddUp = new javax.swing.JButton();
+        btn_reset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -243,10 +243,13 @@ public class MainForm extends javax.swing.JFrame {
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 50, 80, 80));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\java.png"));
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel3.setPreferredSize(new java.awt.Dimension(80, 80));
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, 80, 80));
 
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel4.setPreferredSize(new java.awt.Dimension(80, 80));
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 80, 80));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 140));
@@ -278,6 +281,7 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
         jTable1.setToolTipText("");
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTable1.setGridColor(new java.awt.Color(53, 48, 68));
         jTable1.setShowGrid(true);
         jTable1.setSurrendersFocusOnKeystroke(true);
@@ -311,6 +315,7 @@ public class MainForm extends javax.swing.JFrame {
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         txt_studno.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        txt_studno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txt_studno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_studnoActionPerformed(evt);
@@ -319,9 +324,11 @@ public class MainForm extends javax.swing.JFrame {
         jPanel3.add(txt_studno, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 240, -1));
 
         txt_last.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        txt_last.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(txt_last, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 240, -1));
 
         txt_first.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        txt_first.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(txt_first, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 240, -1));
 
         jLabel8.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
@@ -330,6 +337,7 @@ public class MainForm extends javax.swing.JFrame {
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         txt_middle.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        txt_middle.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(txt_middle, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 240, -1));
 
         jLabel9.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
@@ -343,6 +351,7 @@ public class MainForm extends javax.swing.JFrame {
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, -1, -1));
 
         txt_add.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        txt_add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(txt_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 288, -1));
 
         jLabel12.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
@@ -356,9 +365,11 @@ public class MainForm extends javax.swing.JFrame {
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 70, -1));
 
         txt_bday.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        txt_bday.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(txt_bday, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 288, -1));
 
         jc_course.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jc_course.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(jc_course, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 290, -1));
 
         picture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -376,6 +387,7 @@ public class MainForm extends javax.swing.JFrame {
         jc_dept.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jc_dept.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "School of Computer Studies", "School of Education", "School of Business Management", "School of Hospitality and Tourism Management", "------------Select Department----------" }));
         jc_dept.setSelectedIndex(4);
+        jc_dept.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jc_dept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jc_deptActionPerformed(evt);
@@ -397,8 +409,14 @@ public class MainForm extends javax.swing.JFrame {
         btn_add.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\add.png"));
         btn_add.setText("Add");
         btn_add.setBorder(null);
-        btn_add.setPreferredSize(new java.awt.Dimension(70, 30));
-        jPanel2.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, 70, 30));
+        btn_add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_add.setPreferredSize(new java.awt.Dimension(75, 30));
+        btn_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
 
         btn_exit.setBackground(new java.awt.Color(0, 150, 255));
         btn_exit.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
@@ -406,8 +424,14 @@ public class MainForm extends javax.swing.JFrame {
         btn_exit.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\exit.png"));
         btn_exit.setText("Exit");
         btn_exit.setBorder(null);
-        btn_exit.setPreferredSize(new java.awt.Dimension(70, 30));
-        jPanel2.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 70, 30));
+        btn_exit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_exit.setPreferredSize(new java.awt.Dimension(75, 30));
+        btn_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exitActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, -1, -1));
 
         btn_delete.setBackground(new java.awt.Color(0, 150, 255));
         btn_delete.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
@@ -416,9 +440,15 @@ public class MainForm extends javax.swing.JFrame {
         btn_delete.setText("Delete");
         btn_delete.setBorder(null);
         btn_delete.setBorderPainted(false);
+        btn_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_delete.setIconTextGap(2);
-        btn_delete.setPreferredSize(new java.awt.Dimension(70, 30));
-        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 70, 30));
+        btn_delete.setPreferredSize(new java.awt.Dimension(75, 30));
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -471,13 +501,13 @@ public class MainForm extends javax.swing.JFrame {
         btn_save.setBorderPainted(false);
         btn_save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_save.setIconTextGap(1);
-        btn_save.setPreferredSize(new java.awt.Dimension(70, 30));
+        btn_save.setPreferredSize(new java.awt.Dimension(75, 30));
         btn_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_saveActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 70, 30));
+        jPanel2.add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
 
         btn_update.setBackground(new java.awt.Color(0, 150, 255));
         btn_update.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
@@ -485,8 +515,14 @@ public class MainForm extends javax.swing.JFrame {
         btn_update.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\update.png"));
         btn_update.setText("Update");
         btn_update.setBorder(null);
+        btn_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_update.setPreferredSize(new java.awt.Dimension(75, 30));
-        jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 75, 30));
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
 
         btn_edit.setBackground(new java.awt.Color(0, 150, 255));
         btn_edit.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
@@ -494,13 +530,14 @@ public class MainForm extends javax.swing.JFrame {
         btn_edit.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\edit.png"));
         btn_edit.setText("Edit ");
         btn_edit.setBorder(null);
-        btn_edit.setPreferredSize(new java.awt.Dimension(70, 30));
+        btn_edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_edit.setPreferredSize(new java.awt.Dimension(75, 30));
         btn_edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_editActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 70, 30));
+        jPanel2.add(btn_edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, -1));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -573,21 +610,41 @@ public class MainForm extends javax.swing.JFrame {
         btn_view.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\view.png"));
         btn_view.setText("View");
         btn_view.setBorder(null);
-        btn_view.setPreferredSize(new java.awt.Dimension(70, 30));
-        jPanel2.add(btn_view, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 70, 30));
+        btn_view.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_view.setPreferredSize(new java.awt.Dimension(75, 30));
+        btn_view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_view, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, -1, -1));
 
         btn_AddUp.setBackground(new java.awt.Color(0, 150, 255));
         btn_AddUp.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_AddUp.setForeground(new java.awt.Color(250, 240, 230));
         btn_AddUp.setText("Upload image");
         btn_AddUp.setBorder(null);
-        btn_AddUp.setPreferredSize(new java.awt.Dimension(140, 30));
+        btn_AddUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_AddUp.setPreferredSize(new java.awt.Dimension(135, 30));
         btn_AddUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_AddUpActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_AddUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, -1, 30));
+        jPanel2.add(btn_AddUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, -1, 30));
+
+        btn_reset.setBackground(new java.awt.Color(0, 150, 255));
+        btn_reset.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        btn_reset.setForeground(new java.awt.Color(250, 240, 230));
+        btn_reset.setText("Reset");
+        btn_reset.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_reset.setPreferredSize(new java.awt.Dimension(75, 30));
+        btn_reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_resetActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 960, 90));
 
@@ -645,15 +702,242 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_pictureMouseClicked
 
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
-        // TODO add your handling code here:
+         System.out.println("fggf");
+
+        if(txt_studno.getText().equals("") || txt_last.getText().equals("") || txt_first.getText().equals("") || txt_middle.getText().equals("") || txt_add.getText().equals("")
+            || txt_bday.getText().equals("") || jc_dept.getSelectedItem().equals("------------Select Department----------") || jc_course.getSelectedItem().equals("") || path2 == null){
+            JOptionPane.showMessageDialog(rootPane, "Please enter requeried fields or image not found");
+        }
+        else {
+
+            try {
+                String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+                conmain = DriverManager.getConnection(urlmain);
+                String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+
+                studentNumber = txt_studno.getText();
+                lastName = txt_last.getText();
+                firstName = txt_first.getText();
+                middleName = txt_middle.getText();
+                address = txt_add.getText();
+                birthDate = txt_bday.getText();
+                department = (String) jc_dept.getSelectedItem();
+                course = (String) jc_course.getSelectedItem();
+                try{
+                    InputStream s = new FileInputStream(new File(path));
+
+                    String sql = "INSERT into StudInfoTbl([Student], [LAST-NAME], [FIRST-NAME], [MIDDLE-NAME], Address, Birthday, Department, Course, StudentProfile) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
+                    pstmain = conmain.prepareStatement(sql);
+
+                    System.out.println(studentNumber);
+                    System.out.println(lastName);
+                    System.out.println(firstName);
+                    System.out.println(middleName);
+                    System.out.println(address);
+                    System.out.println(birthDate);
+                    System.out.println(department);
+                    System.out.println(course);
+                    System.out.println(s);
+
+                    pstmain.setString(1, studentNumber);   // STUD-NO
+                    pstmain.setString(2, lastName);        // LAST-NAME
+                    pstmain.setString(3, firstName);       // FIRST-NAME
+                    pstmain.setString(4, middleName);      // MIDDLE-NAME
+                    pstmain.setString(5, address);         // Address
+                    pstmain.setString(6, birthDate);       // Birthday
+                    pstmain.setString(7, department);      // Department
+                    pstmain.setString(8, course);          // Course
+                    pstmain.setBlob(9, s);
+                    pstmain.executeUpdate();
+                    JOptionPane.showMessageDialog(rootPane, "Inserted Successfully!");
+
+                    // set to empty string
+                    txt_studno.setText("");
+                    txt_last.setText("");
+                    txt_first.setText("");
+                    txt_middle.setText("");
+                    txt_add.setText("");
+                    txt_bday.setText("");
+                    jc_dept.setSelectedItem("------------Select Department----------");
+                    txt_studno.requestFocus();
+                    picture.setIcon(null);
+
+                    tableupdate();
+                    // disable the textbox
+                    disabletextbox();
+                    btn_save.setEnabled(false);
+                    btn_AddUp.setEnabled(false);
+
+                    btn_delete.setEnabled(true);
+                    btn_edit.setEnabled(true);
+                    btn_view.setEnabled(true);
+                }catch(HeadlessException | FileNotFoundException | SQLException e){
+                    System.out.println("Error in query " + e);
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "The student id is already given");
+            }
+
+        }
     }//GEN-LAST:event_btn_saveActionPerformed
 
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_editActionPerformed
+       userClick = 2;
+        btn_AddUp.setText("Update Image");
 
+        txt_studno.setEnabled(false);
+        txt_last.setEnabled(true);
+        txt_first.setEnabled(true);
+        txt_middle.setEnabled(true);
+        txt_add.setEnabled(true);
+        txt_bday.setEnabled(true);
+        jc_dept.setEnabled(true);
+        jc_course.setEnabled(true);
+
+
+        btn_save.setEnabled(false);
+        btn_delete.setEnabled(false);
+        btn_add.setEnabled(false);
+        btn_AddUp.setEnabled(true);
+        btn_update.setEnabled(true);
+        try
+        {
+            String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+            conmain = DriverManager.getConnection(urlmain);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            int selectedRow = jTable1.getSelectedRow();
+            String id = (model.getValueAt(selectedRow, 0).toString());
+
+            String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+
+            studentNumber = txt_studno.getText();
+            lastName = txt_last.getText();
+            firstName = txt_first.getText();
+            middleName = txt_middle.getText();
+            address = txt_add.getText();
+            birthDate = txt_bday.getText();
+            department = (String) jc_dept.getSelectedItem();
+            course = (String) jc_course.getSelectedItem();
+            String sql = "UPDATE StudInfoTbl SET `Student`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=? WHERE `Student`=?";
+            pstmain = conmain.prepareStatement(sql);
+
+            // Correct order for setting values in the prepared statement
+            pstmain.setString(1, studentNumber);   // Stud-no
+            pstmain.setString(2, lastName);        // Last-name
+            pstmain.setString(3, firstName);       // First-name
+            pstmain.setString(4, middleName);      // Middle-name
+            pstmain.setString(5, address);         // Address
+            pstmain.setString(6, birthDate);       // Birthday
+            pstmain.setString(7, department);      // Department
+            pstmain.setString(8, course);          // Course
+            pstmain.setString(9, studentNumber);   // WHERE condition
+
+            pstmain.executeUpdate();
+
+            txt_studno.setText("");
+            txt_last.setText("");
+            txt_first.setText("");
+            txt_middle.setText("");
+            txt_add.setText("");
+            txt_bday.setText("");
+            jc_dept.setSelectedItem("------------Select Department----------");
+            txt_studno.requestFocus();
+            picture.setIcon(null);
+            tableupdate();
+
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_btn_editActionPerformed
+     public void UpdateImage(){
+        Connection conUpdate = null;
+        PreparedStatement pstUpdate = null;
+        ResultSet rsUpdate = null;
+         try {
+      String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+      conUpdate = DriverManager.getConnection(urlmain);
+
+      String studentNumber = txt_studno.getText();
+
+      // Choose a file for the new image
+      JFileChooser fileChooser = new JFileChooser();
+      fileChooser.setDialogTitle("Choose Image File");
+      fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+      if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+        File selectedFile = fileChooser.getSelectedFile();
+        InputStream imageStream = new FileInputStream(selectedFile);
+
+        // UPDATE FOR IMAGE COLUMN
+        String sql = "UPDATE StudInfoTbl SET `Student`=?, StudentProfile=? WHERE `Student`=?";
+        pstUpdate = conUpdate.prepareStatement(sql);
+
+        // PARAMETER FOR IMAGE COLUMN AND CONDITION FOR PRIMARY KEY
+        pstUpdate.setString(1, studentNumber);
+        pstUpdate.setBinaryStream(2, imageStream); // PASSING DATA
+        pstUpdate.setString(3, studentNumber); // WHERE condition
+
+        
+          pstUpdate.executeUpdate();
+          tableupdate();
+          JOptionPane.showMessageDialog(rootPane, "Updated Successfully!");
+        
+          txt_studno.setText("");
+          txt_last.setText("");
+          txt_first.setText("");
+          txt_middle.setText("");
+          txt_add.setText("");
+          txt_bday.setText("");
+          jc_dept.setSelectedItem("---Select Department---");
+          jc_course.setSelectedItem("-------Select Course--------");
+          picture.setIcon(null);
+          txt_studno.requestFocus();
+          disabletextbox();
+                    
+          btn_delete.setEnabled(true);
+          btn_add.setEnabled(true);
+       
+        btn_AddUp.setEnabled(false);
+        btn_save.setEnabled(false);
+        btn_update.setEnabled(false);
+       
+      }
+    } catch (HeadlessException | FileNotFoundException | SQLException e) {
+      System.out.println("UPDATE : "+e);
+    }
+    }
+   
+   public void UploadImage(){
+        JFileChooser imagePicked = new JFileChooser();
+        imagePicked.showOpenDialog(null);
+        File file = imagePicked.getSelectedFile();
+        path = file.getAbsolutePath();
+        try{
+            BufferedImage Bimage = ImageIO.read(new File(path));
+            Image img = Bimage.getScaledInstance(149, 170, Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(img);
+            picture.setIcon(icon);
+            path2 = path;
+        }catch(IOException e){
+            System.out.println(e);
+        }
+   }
     private void btn_AddUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddUpActionPerformed
-        // TODO add your handling code here:
+       switch (userClick) {
+            case 2 -> { //WHEN UPDATE BTN IS CLICKED
+                btn_AddUp.setText("Update Image");
+                UpdateImage();
+            }
+            case 1 -> { // WHEN ADD BTN IS CLICKED
+                btn_AddUp.setText("Upload Image");
+                UploadImage();
+
+            }
+            default -> {
+            }
+        }
     }//GEN-LAST:event_btn_AddUpActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -661,8 +945,216 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jc_deptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jc_deptActionPerformed
-        // TODO add your handling code here:
+        if(jc_dept.getSelectedItem().equals("School of Computer Studies")){
+            jc_course.removeAllItems();
+            jc_course.addItem("BS. Information Technology");
+            jc_course.addItem("BS. Computer Science");
+        }
+        else if(jc_dept.getSelectedItem().equals("School of Business Management")){
+            jc_course.removeAllItems();
+            jc_course.addItem("BS. Marketing Management");
+            jc_course.addItem("BS. Human Resources and Development");
+            jc_course.addItem("BS. Office administration");
+        }
+        else if(jc_dept.getSelectedItem().equals("School of Hospitality and Tourism Management")){
+            jc_course.removeAllItems();
+            jc_course.addItem("BS. in Hotel Management");
+            jc_course.addItem("BS. in Tourism Management");
+        }
+        else if(jc_dept.getSelectedItem().equals("School of Education")){
+            jc_course.removeAllItems();
+            jc_course.addItem("B.S.E Major in English");
+            jc_course.addItem("B.S.E Major in Mathematics");
+            jc_course.addItem("B.S.E Major in Social Studies");
+            jc_course.addItem("B.S.E Major in Filipino");
+        }
+        else if(jc_dept.getSelectedItem().equals("------------Select Department----------")){
+            jc_course.removeAllItems();
+        }
     }//GEN-LAST:event_jc_deptActionPerformed
+
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+         if(jTable1.getSelectedRowCount() == 1){
+            try {
+                String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+                conmain = DriverManager.getConnection(urlmain);
+                String sql = "DELETE FROM StudInfoTbl WHERE Student = ?";
+                pstmain = conmain.prepareStatement(sql);
+                int confirmed = JOptionPane.showConfirmDialog(null,"Do you want to delete?", "Question" , JOptionPane.YES_NO_OPTION);
+                if(confirmed == JOptionPane.YES_OPTION){ // check if the user click the ( YES )
+                    pstmain.setString(1, txt_studno.getText());   // STUD-NO
+                    pstmain.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Recored Deleted");
+
+                    txt_studno.setText("");
+                    txt_last.setText("");
+                    txt_first.setText("");
+                    txt_middle.setText("");
+                    txt_add.setText("");
+                    txt_bday.setText("");
+                    jc_dept.setSelectedItem("------------Select Department----------");
+                    txt_studno.requestFocus();
+                }
+                else{
+                    txt_studno.setText("");
+                    txt_last.setText("");
+                    txt_first.setText("");
+                    txt_middle.setText("");
+                    txt_add.setText("");
+                    txt_bday.setText("");
+                    jc_dept.setSelectedItem("------------Select Department----------");
+                    picture.setIcon(null);
+                    txt_studno.requestFocus();
+                }
+            }catch(HeadlessException | SQLException e){
+                System.out.println(e);
+            }
+        }
+    }//GEN-LAST:event_btn_deleteActionPerformed
+
+    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
+        // btn_save.setEnabled(true);
+        btn_AddUp.setText("Add Image");
+        userClick = 1;
+        addnewrecord();
+    }//GEN-LAST:event_btn_addActionPerformed
+
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+       try {
+            String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+            conmain = DriverManager.getConnection(urlmain);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            int selectedRow = jTable1.getSelectedRow();
+            String id = model.getValueAt(selectedRow, 0).toString();
+
+            String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+            studentNumber = txt_studno.getText();
+            lastName = txt_last.getText();
+            firstName = txt_first.getText();
+            middleName = txt_middle.getText();
+            address = txt_add.getText();
+            birthDate = txt_bday.getText();
+            department = jc_dept.getSelectedItem().toString();
+            course = jc_course.getSelectedItem().toString();
+
+            // Update the SQL statement to include the image column
+            String sql = "UPDATE StudInfoTbl SET `Student`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=? WHERE `Student`=?";
+            pstmain = conmain.prepareStatement(sql);
+
+            // Set values in the prepared statement
+            pstmain.setString(1, studentNumber);
+            pstmain.setString(2, lastName);
+            pstmain.setString(3, firstName);
+            pstmain.setString(4, middleName);
+            pstmain.setString(5, address);
+            pstmain.setString(6, birthDate);
+            pstmain.setString(7, department);
+            pstmain.setString(8, course);
+            pstmain.setString(9, id);
+            //UploadImage();
+            int k = JOptionPane.showConfirmDialog(rootPane, "Confirm to Update?", "Update", JOptionPane.YES_NO_OPTION);
+            if (k == JOptionPane.YES_OPTION) {
+                pstmain.executeUpdate();
+                JOptionPane.showMessageDialog(rootPane, "Updated Successfully!");
+                txt_studno.setText("");
+                txt_last.setText("");
+                txt_first.setText("");
+                txt_middle.setText("");
+                txt_add.setText("");
+                txt_bday.setText("");
+                jc_dept.setSelectedItem("------------Select Department----------");
+                picture.setIcon(null);
+                txt_studno.requestFocus();
+
+                disabletextbox();
+
+                btn_save.setEnabled(false);
+                btn_update.setEnabled(false);
+
+                btn_delete.setEnabled(true);
+                btn_add.setEnabled(true);
+                btn_AddUp.setEnabled(false);
+                tableupdate();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Data not Updated!");
+            }
+
+        } catch (HeadlessException | SQLException e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_btn_updateActionPerformed
+
+    private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
+       DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        int selectedIndex = jTable1.getSelectedRow();
+
+        txt_studno.setText(model.getValueAt(selectedIndex, 0).toString());
+        txt_last.setText(model.getValueAt(selectedIndex, 1).toString());
+        txt_first.setText(model.getValueAt(selectedIndex, 2).toString());
+        txt_middle.setText(model.getValueAt(selectedIndex, 3).toString());
+        txt_add.setText(model.getValueAt(selectedIndex, 4).toString());
+        txt_bday.setText(model.getValueAt(selectedIndex, 5).toString());
+        jc_dept.setSelectedItem(model.getValueAt(selectedIndex, 6));
+        jc_course.setSelectedItem(model.getValueAt(selectedIndex, 7));
+
+        String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
+
+        studentNumber = model.getValueAt(selectedIndex, 0).toString();
+        lastName = model.getValueAt(selectedIndex, 1).toString();
+        firstName = model.getValueAt(selectedIndex, 2).toString();
+        middleName = model.getValueAt(selectedIndex, 3).toString();
+        address = model.getValueAt(selectedIndex, 4).toString();
+        birthDate = model.getValueAt(selectedIndex, 5).toString();
+        department = model.getValueAt(selectedIndex, 6).toString();
+        course = model.getValueAt(selectedIndex, 7).toString();
+         Blob imageBlob = (Blob) model.getValueAt(selectedIndex, 8);
+        byte[] imageBytes;
+        try {
+            ImageIcon imgIcon = null;
+            try {
+                imageBytes = imageBlob.getBinaryStream().readAllBytes();
+                imgIcon = new ImageIcon(imageBytes);
+                picture.setIcon(imgIcon);
+                
+                //GET THE CURRENT WIDTH AND HEIGHT TO MATCH IN IMAGE
+                int labelWidth = picture.getWidth();
+                int labelHeight = picture.getHeight();
+                
+                Image scaledImage = imgIcon.getImage().getScaledInstance(labelWidth, labelHeight, Image.SCALE_SMOOTH);
+                ImageIcon scaledIcon = new ImageIcon(scaledImage);
+                picture.setIcon(scaledIcon);
+                viewform vf = new viewform();
+                vf.getInfo(studentNumber, lastName, firstName, middleName, address, birthDate, department, course, imgIcon);
+                vf.setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_viewActionPerformed
+
+    private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
+        int ask = JOptionPane.showConfirmDialog(null ,"Do you want to exit?", "Exit", JOptionPane.YES_NO_OPTION);
+        if(ask == JOptionPane.YES_NO_OPTION){
+            Loginf frame5 = new Loginf();
+            frame5.setVisible(true);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_btn_exitActionPerformed
+
+    private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
+        btn_AddUp.setEnabled(false);
+        btn_save.setEnabled(false);
+        btn_update.setEnabled(false);
+        
+        
+        btn_delete.setEnabled(true);
+        btn_add.setEnabled(true);
+        btn_edit.setEnabled(true);
+        btn_view.setEnabled(true);
+    }//GEN-LAST:event_btn_resetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -705,6 +1197,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_edit;
     private javax.swing.JButton btn_exit;
+    private javax.swing.JButton btn_reset;
     private javax.swing.JButton btn_save;
     private javax.swing.JButton btn_update;
     private javax.swing.JButton btn_view;

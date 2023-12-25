@@ -47,7 +47,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTextField1.setText("jTextField1");
 
-        jLabel3.setIcon(new FlatSVGIcon("svg/xv.svg"));
+        jLabel3.setIcon(new com.formdev.flatlaf.extras.FlatSVGIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\xv.svg"));
         jLabel3.setText("jLabel3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -77,9 +77,11 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(16, 16, 16)))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
 

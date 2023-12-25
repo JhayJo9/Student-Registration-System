@@ -53,6 +53,7 @@ public class signup extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(53, 47, 68));
         jPanel1.setAutoscrolls(true);
+        jPanel1.setPreferredSize(new java.awt.Dimension(402, 463));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_pass.setBackground(new java.awt.Color(6, 6, 8));
@@ -133,12 +134,13 @@ public class signup extends javax.swing.JFrame {
         btn_signup.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btn_signup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_signup.setFocusPainted(false);
+        btn_signup.setPreferredSize(new java.awt.Dimension(140, 30));
         btn_signup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_signupActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 124, 30));
+        jPanel1.add(btn_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 140, 30));
 
         jLabel1.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(250, 240, 230));
@@ -148,13 +150,17 @@ public class signup extends javax.swing.JFrame {
         btn_exit.setBackground(new java.awt.Color(0, 150, 255));
         btn_exit.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
         btn_exit.setForeground(new java.awt.Color(250, 240, 230));
-        btn_exit.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\exit.png"));
         btn_exit.setText("Exit");
         btn_exit.setBorder(null);
-        btn_exit.setPreferredSize(new java.awt.Dimension(70, 30));
+        btn_exit.setPreferredSize(new java.awt.Dimension(140, 30));
+        btn_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exitActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 140, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 478));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 480));
 
         pack();
         setLocationRelativeTo(null);
@@ -232,6 +238,13 @@ public class signup extends javax.swing.JFrame {
     private void txt_passMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_passMouseExited
        txt_pass.setBorder(null);
     }//GEN-LAST:event_txt_passMouseExited
+
+    private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
+        int ask = JOptionPane.showConfirmDialog(null ,"Do you want to exit?", "Exit", JOptionPane.YES_NO_OPTION);
+        if(ask == JOptionPane.YES_NO_OPTION){
+            dispose();
+        }
+    }//GEN-LAST:event_btn_exitActionPerformed
 
     /**
      * @param args the command line arguments

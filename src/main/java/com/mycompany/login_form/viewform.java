@@ -69,7 +69,7 @@ public class viewform extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         btn_exit = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
+        vcourse = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -191,9 +191,10 @@ public class viewform extends javax.swing.JFrame {
         });
         jPanel2.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 70, 30));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\close.png"));
-        jLabel11.setPreferredSize(new java.awt.Dimension(24, 24));
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 120, 130));
+        vcourse.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        vcourse.setForeground(new java.awt.Color(250, 240, 230));
+        vcourse.setText("c");
+        jPanel2.add(vcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 270, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 400, 360));
 
@@ -263,7 +264,6 @@ public class viewform extends javax.swing.JFrame {
     private javax.swing.JButton btn_exit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -277,6 +277,7 @@ public class viewform extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel vaddress;
     private javax.swing.JLabel vbirthDate;
+    private javax.swing.JLabel vcourse;
     private javax.swing.JLabel vdepartment;
     private javax.swing.JLabel vfirstName;
     private javax.swing.JLabel vlastName;
