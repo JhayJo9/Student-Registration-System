@@ -143,12 +143,10 @@ public class Loginf extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 190, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\scs-logoresize.png"));
-        jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jLabel7.setPreferredSize(new java.awt.Dimension(91, 99));
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 99, 91));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\cct-logoresize.png"));
-        jLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         jLabel8.setPreferredSize(new java.awt.Dimension(91, 99));
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, 91));
 
