@@ -69,6 +69,9 @@ public class MainForm extends javax.swing.JFrame {
         btn_update.setEnabled(false);
     }
       public void tableupdate(){
+        // 
+        jTable1.getTableHeader().setResizingAllowed(false);
+        jTable1.getTableHeader().setReorderingAllowed(false);
         int c;
         try {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -374,7 +377,7 @@ public class MainForm extends javax.swing.JFrame {
 
         picture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         picture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
-        picture.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        picture.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         picture.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         picture.setPreferredSize(new java.awt.Dimension(170, 149));
         picture.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -879,9 +882,9 @@ public class MainForm extends javax.swing.JFrame {
         pstUpdate.setBinaryStream(2, imageStream); // PASSING DATA
         pstUpdate.setString(3, studentNumber); // WHERE condition
 
-        
+         int k = JOptionPane.showConfirmDialog(rootPane, "Confirm to Update?", "Update", JOptionPane.YES_NO_OPTION);
+            if (k == JOptionPane.YES_OPTION) {
           pstUpdate.executeUpdate();
-          tableupdate();
           JOptionPane.showMessageDialog(rootPane, "Updated Successfully!");
         
           txt_studno.setText("");
@@ -890,8 +893,8 @@ public class MainForm extends javax.swing.JFrame {
           txt_middle.setText("");
           txt_add.setText("");
           txt_bday.setText("");
-          jc_dept.setSelectedItem("---Select Department---");
-          jc_course.setSelectedItem("-------Select Course--------");
+          jc_dept.setSelectedItem("------------Select Department----------");
+          jc_course.removeAllItems();
           picture.setIcon(null);
           txt_studno.requestFocus();
           disabletextbox();
@@ -902,7 +905,10 @@ public class MainForm extends javax.swing.JFrame {
         btn_AddUp.setEnabled(false);
         btn_save.setEnabled(false);
         btn_update.setEnabled(false);
-       
+         tableupdate();
+        }else {
+                JOptionPane.showMessageDialog(null, "Data not updated");
+            }
       }
     } catch (HeadlessException | FileNotFoundException | SQLException e) {
       System.out.println("UPDATE : "+e);
@@ -993,6 +999,7 @@ public class MainForm extends javax.swing.JFrame {
                     txt_add.setText("");
                     txt_bday.setText("");
                     jc_dept.setSelectedItem("------------Select Department----------");
+                    picture.setIcon(null);
                     txt_studno.requestFocus();
                 }
                 else{
@@ -1145,6 +1152,17 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_exitActionPerformed
 
     private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
+       
+         // disable the textbox
+        txt_studno.setEnabled(false);
+        txt_last.setEnabled(false);
+        txt_first.setEnabled(false);
+        txt_middle.setEnabled(false);
+        txt_add.setEnabled(false);
+        txt_bday.setEnabled(false);
+        jc_dept.setEnabled(false);
+        jc_course.setEnabled(false);
+        
         btn_AddUp.setEnabled(false);
         btn_save.setEnabled(false);
         btn_update.setEnabled(false);
@@ -1154,6 +1172,16 @@ public class MainForm extends javax.swing.JFrame {
         btn_add.setEnabled(true);
         btn_edit.setEnabled(true);
         btn_view.setEnabled(true);
+        
+        txt_studno.setText("");
+        txt_last.setText("");
+        txt_first.setText("");
+        txt_middle.setText("");
+        txt_add.setText("");
+        txt_bday.setText("");
+        jc_dept.setSelectedItem("------------Select Department----------");
+        picture.setIcon(null);
+        txt_studno.requestFocus();
     }//GEN-LAST:event_btn_resetActionPerformed
 
     /**
