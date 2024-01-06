@@ -295,10 +295,9 @@ public class MainForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 960, 178));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 940, 178));
 
         jPanel3.setBackground(new java.awt.Color(53, 48, 68));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.setPreferredSize(new java.awt.Dimension(1003, 167));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -346,34 +345,34 @@ public class MainForm extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(250, 240, 230));
         jLabel9.setText("Address");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(250, 240, 230));
         jLabel10.setText("Birthday:");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, -1, -1));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, -1, -1));
 
         txt_add.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         txt_add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(txt_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 288, -1));
+        jPanel3.add(txt_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 288, -1));
 
         jLabel12.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(250, 240, 230));
         jLabel12.setText("Course:");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, -1, -1));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(250, 240, 230));
         jLabel11.setText("Department:");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 70, -1));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 70, -1));
 
         txt_bday.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         txt_bday.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(txt_bday, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 288, -1));
+        jPanel3.add(txt_bday, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 288, -1));
 
         jc_course.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jc_course.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(jc_course, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 290, -1));
+        jPanel3.add(jc_course, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 290, -1));
 
         picture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         picture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -385,7 +384,7 @@ public class MainForm extends javax.swing.JFrame {
                 pictureMouseClicked(evt);
             }
         });
-        jPanel3.add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, -1, -1));
+        jPanel3.add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, -1, -1));
 
         jc_dept.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jc_dept.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "School of Computer Studies", "School of Education", "School of Business Management", "School of Hospitality and Tourism Management", "------------Select Department----------" }));
@@ -396,7 +395,7 @@ public class MainForm extends javax.swing.JFrame {
                 jc_deptActionPerformed(evt);
             }
         });
-        jPanel3.add(jc_dept, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 290, -1));
+        jPanel3.add(jc_dept, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 290, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 960, 170));
 
