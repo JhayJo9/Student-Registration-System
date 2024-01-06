@@ -686,11 +686,11 @@ public class MainForm extends javax.swing.JFrame {
                 picture.setIcon(scaledIcon);
 
             } catch (IOException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_jTable1MouseClicked
@@ -1134,11 +1134,11 @@ public class MainForm extends javax.swing.JFrame {
                 vf.getInfo(studentNumber, lastName, firstName, middleName, address, birthDate, department, course, imgIcon);
                 vf.setVisible(true);
             } catch (IOException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_viewActionPerformed
 
