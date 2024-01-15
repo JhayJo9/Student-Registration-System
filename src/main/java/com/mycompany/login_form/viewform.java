@@ -83,20 +83,20 @@ public class viewform extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(50, 31, 40));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(250, 240, 230));
-        jLabel1.setText("Student Profile");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 20, -1, -1));
+        jLabel1.setText("STUDENT PROFILE");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, 30));
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 400, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 80));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 90));
 
-        jPanel2.setBackground(new java.awt.Color(53, 48, 68));
+        jPanel2.setBackground(new java.awt.Color(67, 118, 108));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         vstudentNumber.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N

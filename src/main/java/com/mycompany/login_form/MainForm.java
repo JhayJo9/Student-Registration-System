@@ -4,6 +4,7 @@
  */
 package com.mycompany.login_form;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -31,6 +32,7 @@ import javax.imageio.ImageIO;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -51,8 +53,11 @@ public class MainForm extends javax.swing.JFrame {
         initComponents();
         
         // jframe bg color
-        Color kulay = new Color(58,47,68);
+        Color kulay = new Color(67,118,108);
         getContentPane().setBackground(kulay);
+        
+        JTableHeader table = jTable1.getTableHeader();
+        table.setFont(new Font("Roboto Medium", Font.PLAIN, 14));
         
         // disable the textbox
         txt_studno.setEnabled(false);
@@ -158,9 +163,6 @@ public class MainForm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -224,6 +226,7 @@ public class MainForm extends javax.swing.JFrame {
         btn_reset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(67, 118, 108));
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(979, 613));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -233,32 +236,19 @@ public class MainForm extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(53, 47, 68));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBackground(new java.awt.Color(67, 83, 61));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(248, 250, 229));
+        jLabel1.setFont(new java.awt.Font("Roboto Medium", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(250, 240, 230));
-        jLabel1.setText("MS ACCESS DATABASE CONNECTION WITH JAVA NETBEANS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 750, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\resource\\ms access.png"));
-        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 50, 80, 80));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\java.png"));
-        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel3.setPreferredSize(new java.awt.Dimension(80, 80));
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, 80, 80));
-
-        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel4.setPreferredSize(new java.awt.Dimension(80, 80));
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 80, 80));
+        jLabel1.setText("STUDENT FORM WITH MS ACCESS ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 820, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 140));
 
         jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jTable1.setForeground(new java.awt.Color(53, 48, 68));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -295,9 +285,10 @@ public class MainForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 940, 178));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 940, 190));
 
-        jPanel3.setBackground(new java.awt.Color(53, 48, 68));
+        jPanel3.setBackground(new java.awt.Color(67, 118, 108));
+        jPanel3.setAutoscrolls(true);
         jPanel3.setPreferredSize(new java.awt.Dimension(1003, 167));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -375,7 +366,7 @@ public class MainForm extends javax.swing.JFrame {
         jPanel3.add(jc_course, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 290, -1));
 
         picture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        picture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        picture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         picture.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         picture.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         picture.setPreferredSize(new java.awt.Dimension(170, 149));
@@ -399,58 +390,56 @@ public class MainForm extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 960, 170));
 
-        jPanel2.setBackground(new java.awt.Color(53, 48, 68));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setBackground(new java.awt.Color(67, 118, 108));
         jPanel2.setForeground(new java.awt.Color(53, 48, 68));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_add.setBackground(new java.awt.Color(0, 150, 255));
+        btn_add.setBackground(new java.awt.Color(0, 169, 255));
         btn_add.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_add.setForeground(new java.awt.Color(250, 240, 230));
-        btn_add.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\add.png"));
-        btn_add.setText("Add");
+        btn_add.setText("Add new record");
         btn_add.setBorder(null);
         btn_add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_add.setPreferredSize(new java.awt.Dimension(75, 30));
+        btn_add.setPreferredSize(new java.awt.Dimension(100, 35));
         btn_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_addActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
+        jPanel2.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
-        btn_exit.setBackground(new java.awt.Color(0, 150, 255));
+        btn_exit.setBackground(new java.awt.Color(0, 169, 255));
         btn_exit.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_exit.setForeground(new java.awt.Color(250, 240, 230));
-        btn_exit.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\exit.png"));
         btn_exit.setText("Exit");
+        btn_exit.setAutoscrolls(true);
         btn_exit.setBorder(null);
         btn_exit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_exit.setPreferredSize(new java.awt.Dimension(75, 30));
+        btn_exit.setPreferredSize(new java.awt.Dimension(80, 35));
         btn_exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_exitActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, -1, -1));
+        jPanel2.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, -1, -1));
 
-        btn_delete.setBackground(new java.awt.Color(0, 150, 255));
+        btn_delete.setBackground(new java.awt.Color(0, 169, 255));
         btn_delete.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_delete.setForeground(new java.awt.Color(250, 240, 230));
-        btn_delete.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\delete.png"));
         btn_delete.setText("Delete");
+        btn_delete.setAutoscrolls(true);
         btn_delete.setBorder(null);
         btn_delete.setBorderPainted(false);
         btn_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_delete.setIconTextGap(2);
-        btn_delete.setPreferredSize(new java.awt.Dimension(75, 30));
+        btn_delete.setPreferredSize(new java.awt.Dimension(80, 35));
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_deleteActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
+        jPanel2.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -494,52 +483,52 @@ public class MainForm extends javax.swing.JFrame {
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 960, 90));
 
-        btn_save.setBackground(new java.awt.Color(0, 150, 255));
+        btn_save.setBackground(new java.awt.Color(0, 169, 255));
         btn_save.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_save.setForeground(new java.awt.Color(250, 240, 230));
-        btn_save.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\save_FILL0_wght400_GRAD0_opsz24.png"));
         btn_save.setText("Save");
+        btn_save.setAutoscrolls(true);
         btn_save.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btn_save.setBorderPainted(false);
         btn_save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_save.setIconTextGap(1);
-        btn_save.setPreferredSize(new java.awt.Dimension(75, 30));
+        btn_save.setPreferredSize(new java.awt.Dimension(80, 35));
         btn_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_saveActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
+        jPanel2.add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
 
-        btn_update.setBackground(new java.awt.Color(0, 150, 255));
+        btn_update.setBackground(new java.awt.Color(0, 169, 255));
         btn_update.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_update.setForeground(new java.awt.Color(250, 240, 230));
-        btn_update.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\update.png"));
         btn_update.setText("Update");
+        btn_update.setAutoscrolls(true);
         btn_update.setBorder(null);
         btn_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_update.setPreferredSize(new java.awt.Dimension(75, 30));
+        btn_update.setPreferredSize(new java.awt.Dimension(80, 35));
         btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_updateActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
+        jPanel2.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, -1, -1));
 
-        btn_edit.setBackground(new java.awt.Color(0, 150, 255));
+        btn_edit.setBackground(new java.awt.Color(0, 169, 255));
         btn_edit.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_edit.setForeground(new java.awt.Color(250, 240, 230));
-        btn_edit.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\edit.png"));
         btn_edit.setText("Edit ");
+        btn_edit.setAutoscrolls(true);
         btn_edit.setBorder(null);
         btn_edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_edit.setPreferredSize(new java.awt.Dimension(75, 30));
+        btn_edit.setPreferredSize(new java.awt.Dimension(80, 35));
         btn_edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_editActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, -1));
+        jPanel2.add(btn_edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -606,49 +595,51 @@ public class MainForm extends javax.swing.JFrame {
 
         jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 960, 90));
 
-        btn_view.setBackground(new java.awt.Color(0, 150, 255));
+        btn_view.setBackground(new java.awt.Color(0, 169, 255));
         btn_view.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_view.setForeground(new java.awt.Color(250, 240, 230));
-        btn_view.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\view.png"));
         btn_view.setText("View");
+        btn_view.setAutoscrolls(true);
         btn_view.setBorder(null);
         btn_view.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_view.setPreferredSize(new java.awt.Dimension(75, 30));
+        btn_view.setPreferredSize(new java.awt.Dimension(80, 35));
         btn_view.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_viewActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_view, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, -1, -1));
+        jPanel2.add(btn_view, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, -1, -1));
 
-        btn_AddUp.setBackground(new java.awt.Color(0, 150, 255));
+        btn_AddUp.setBackground(new java.awt.Color(0, 169, 255));
         btn_AddUp.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_AddUp.setForeground(new java.awt.Color(250, 240, 230));
         btn_AddUp.setText("Upload image");
+        btn_AddUp.setAutoscrolls(true);
         btn_AddUp.setBorder(null);
         btn_AddUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_AddUp.setPreferredSize(new java.awt.Dimension(135, 30));
+        btn_AddUp.setPreferredSize(new java.awt.Dimension(100, 35));
         btn_AddUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_AddUpActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_AddUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, -1, 30));
+        jPanel2.add(btn_AddUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, -1, -1));
 
-        btn_reset.setBackground(new java.awt.Color(0, 150, 255));
+        btn_reset.setBackground(new java.awt.Color(0, 169, 255));
         btn_reset.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_reset.setForeground(new java.awt.Color(250, 240, 230));
         btn_reset.setText("Reset");
+        btn_reset.setAutoscrolls(true);
         btn_reset.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btn_reset.setPreferredSize(new java.awt.Dimension(75, 30));
+        btn_reset.setPreferredSize(new java.awt.Dimension(80, 35));
         btn_reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_resetActionPerformed(evt);
             }
         });
-        jPanel2.add(btn_reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
+        jPanel2.add(btn_reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 960, 90));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 960, 80));
 
         setSize(new java.awt.Dimension(960, 579));
         setLocationRelativeTo(null);
@@ -1142,7 +1133,7 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_viewActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
-        int ask = JOptionPane.showConfirmDialog(null ,"Do you want to exit?", "Exit", JOptionPane.YES_NO_OPTION);
+        int ask = JOptionPane.showConfirmDialog(null ,"Do you want to exit?", "Exit", JOptionPane.OK_CANCEL_OPTION);
         if(ask == JOptionPane.YES_NO_OPTION){
             Loginf frame5 = new Loginf();
             frame5.setVisible(true);
@@ -1256,9 +1247,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

@@ -55,7 +55,7 @@ public class Loginf extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(53, 47, 68));
+        jPanel1.setBackground(new java.awt.Color(57, 62, 70));
         jPanel1.setPreferredSize(new java.awt.Dimension(402, 463));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -123,7 +123,7 @@ public class Loginf extends javax.swing.JFrame {
         jPanel1.add(lbl_createAcc, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 100, -1));
 
         btn_login.setBackground(new java.awt.Color(0, 150, 255));
-        btn_login.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        btn_login.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
         btn_login.setForeground(java.awt.Color.white);
         btn_login.setText("Login");
         btn_login.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -151,7 +151,7 @@ public class Loginf extends javax.swing.JFrame {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, 91));
 
         btn_exit.setBackground(new java.awt.Color(0, 150, 255));
-        btn_exit.setFont(new java.awt.Font("Roboto Medium", 1, 14)); // NOI18N
+        btn_exit.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
         btn_exit.setForeground(new java.awt.Color(250, 240, 230));
         btn_exit.setText("Exit");
         btn_exit.setBorder(null);

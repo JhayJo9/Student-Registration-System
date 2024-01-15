@@ -15,7 +15,7 @@ public class SplashScreen extends javax.swing.JFrame {
         initComponents();
         
          // jframe bg color
-        Color kulay = new Color(210,230,254,255);
+        Color kulay = new Color(67,83,61);
         getContentPane().setBackground(kulay); 
         
     }
@@ -42,6 +42,7 @@ public class SplashScreen extends javax.swing.JFrame {
         pleasewait.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         pleasewait.setText("Please wait.....");
 
+        jLabel1.setBackground(new java.awt.Color(250, 240, 230));
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         jLabel1.setText("Netbeans with MS Access");
 
