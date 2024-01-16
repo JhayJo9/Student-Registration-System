@@ -79,10 +79,13 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="e6" green="f0" red="fa" type="rgb"/>
+          <Color blue="e5" green="fa" red="f8" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Rockwell" size="24" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="e5" green="fa" red="f8" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Netbeans with MS Access"/>
       </Properties>

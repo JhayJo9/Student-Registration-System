@@ -42,8 +42,9 @@ public class SplashScreen extends javax.swing.JFrame {
         pleasewait.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
         pleasewait.setText("Please wait.....");
 
-        jLabel1.setBackground(new java.awt.Color(250, 240, 230));
+        jLabel1.setBackground(new java.awt.Color(248, 250, 229));
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(248, 250, 229));
         jLabel1.setText("Netbeans with MS Access");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
