@@ -39,9 +39,10 @@ import javax.swing.table.JTableHeader;
  * @author JhayJTheGosu
  */
 public class MainForm extends javax.swing.JFrame {
-     String path;
+    String path;
     String path2;
     int userClick;
+    int userSelectedRow;
     // DATABASE
     Connection conmain = null;
     PreparedStatement pstmain = null;
@@ -57,7 +58,7 @@ public class MainForm extends javax.swing.JFrame {
         getContentPane().setBackground(kulay);
         
         JTableHeader table = jTable1.getTableHeader();
-        table.setFont(new Font("Roboto Medium", Font.PLAIN, 14));
+        table.setFont(new Font("Roboto Ligth", Font.PLAIN, 14));
         
         // disable the textbox
         txt_studno.setEnabled(false);
@@ -281,6 +282,9 @@ public class MainForm extends javax.swing.JFrame {
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTable1MouseEntered(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -646,7 +650,9 @@ public class MainForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-
+        
+        userSelectedRow = 1;
+        
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         int selectedIndex = jTable1.getSelectedRow();
 
@@ -777,8 +783,14 @@ public class MainForm extends javax.swing.JFrame {
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
        userClick = 2;
         btn_AddUp.setText("Update Image");
-
-        txt_studno.setEnabled(false);
+        if(jTable1.getSelectedRowCount() == 0){
+            JOptionPane.showMessageDialog(null, "Please select you want to edit");
+        }
+        else if (jTable1.getSelectedRowCount() > 1){
+             JOptionPane.showMessageDialog(null, "Please select only one record");
+        }
+        else {
+             txt_studno.setEnabled(false);
         txt_last.setEnabled(true);
         txt_first.setEnabled(true);
         txt_middle.setEnabled(true);
@@ -793,56 +805,9 @@ public class MainForm extends javax.swing.JFrame {
         btn_add.setEnabled(false);
         btn_AddUp.setEnabled(true);
         btn_update.setEnabled(true);
-        try
-        {
-            String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
-            conmain = DriverManager.getConnection(urlmain);
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            int selectedRow = jTable1.getSelectedRow();
-            String id = (model.getValueAt(selectedRow, 0).toString());
-
-            String studentNumber, lastName, firstName, middleName, address, birthDate, department, course;
-
-            studentNumber = txt_studno.getText();
-            lastName = txt_last.getText();
-            firstName = txt_first.getText();
-            middleName = txt_middle.getText();
-            address = txt_add.getText();
-            birthDate = txt_bday.getText();
-            department = (String) jc_dept.getSelectedItem();
-            course = (String) jc_course.getSelectedItem();
-            String sql = "UPDATE StudInfoTbl SET `Student`=?, `Last-name`=?, `First-name`=?, `Middle-name`=?, Address=?, Birthday=?, Department=?, Course=? WHERE `Student`=?";
-            pstmain = conmain.prepareStatement(sql);
-
-            // Correct order for setting values in the prepared statement
-            pstmain.setString(1, studentNumber);   // Stud-no
-            pstmain.setString(2, lastName);        // Last-name
-            pstmain.setString(3, firstName);       // First-name
-            pstmain.setString(4, middleName);      // Middle-name
-            pstmain.setString(5, address);         // Address
-            pstmain.setString(6, birthDate);       // Birthday
-            pstmain.setString(7, department);      // Department
-            pstmain.setString(8, course);          // Course
-            pstmain.setString(9, studentNumber);   // WHERE condition
-
-            pstmain.executeUpdate();
-
-            txt_studno.setText("");
-            txt_last.setText("");
-            txt_first.setText("");
-            txt_middle.setText("");
-            txt_add.setText("");
-            txt_bday.setText("");
-            jc_dept.setSelectedItem("------------Select Department----------");
-            txt_studno.requestFocus();
-            picture.setIcon(null);
-            tableupdate();
-
         }
-        catch (SQLException e)
-        {
-            System.out.println(e);
-        }
+       
+        
     }//GEN-LAST:event_btn_editActionPerformed
      public void UpdateImage(){
         Connection conUpdate = null;
@@ -970,43 +935,54 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jc_deptActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-         if(jTable1.getSelectedRowCount() == 1){
-            try {
-                String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
-                conmain = DriverManager.getConnection(urlmain);
-                String sql = "DELETE FROM StudInfoTbl WHERE Student = ?";
-                pstmain = conmain.prepareStatement(sql);
-                int confirmed = JOptionPane.showConfirmDialog(null,"Do you want to delete?", "Question" , JOptionPane.YES_NO_OPTION);
-                if(confirmed == JOptionPane.YES_OPTION){ // check if the user click the ( YES )
-                    pstmain.setString(1, txt_studno.getText());   // STUD-NO
-                    pstmain.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Recored Deleted");
-
-                    txt_studno.setText("");
-                    txt_last.setText("");
-                    txt_first.setText("");
-                    txt_middle.setText("");
-                    txt_add.setText("");
-                    txt_bday.setText("");
-                    jc_dept.setSelectedItem("------------Select Department----------");
-                    picture.setIcon(null);
-                    txt_studno.requestFocus();
+         
+       if(jTable1.getSelectedRowCount() == 0){
+            JOptionPane.showMessageDialog(null, "Please select you want to delete");
+        }
+        else if (jTable1.getSelectedRowCount() > 1){
+             JOptionPane.showMessageDialog(null, "Please select only one record");
+        }
+        else {
+            if(jTable1.getSelectedRowCount() == 1){
+                try {
+                    String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
+                    conmain = DriverManager.getConnection(urlmain);
+                    String sql = "DELETE FROM StudInfoTbl WHERE Student = ?";
+                    pstmain = conmain.prepareStatement(sql);
+                    int confirmed = JOptionPane.showConfirmDialog(null,"Do you want to delete?", "Question" , JOptionPane.YES_NO_OPTION);
+                    if(confirmed == JOptionPane.YES_OPTION){ // check if the user click the ( YES )
+                        pstmain.setString(1, txt_studno.getText());   // STUD-NO
+                        pstmain.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "Recored Deleted");
+                        
+                        txt_studno.setText("");
+                        txt_last.setText("");
+                        txt_first.setText("");
+                        txt_middle.setText("");
+                        txt_add.setText("");
+                        txt_bday.setText("");
+                        jc_dept.setSelectedItem("------------Select Department----------");
+                        picture.setIcon(null);
+                        txt_studno.requestFocus();
+                    }
+                    else{
+                        txt_studno.setText("");
+                        txt_last.setText("");
+                        txt_first.setText("");
+                        txt_middle.setText("");
+                        txt_add.setText("");
+                        txt_bday.setText("");
+                        jc_dept.setSelectedItem("------------Select Department----------");
+                        picture.setIcon(null);
+                        txt_studno.requestFocus();
+                    }
+                }catch(HeadlessException | SQLException e){
+                    System.out.println(e);
                 }
-                else{
-                    txt_studno.setText("");
-                    txt_last.setText("");
-                    txt_first.setText("");
-                    txt_middle.setText("");
-                    txt_add.setText("");
-                    txt_bday.setText("");
-                    jc_dept.setSelectedItem("------------Select Department----------");
-                    picture.setIcon(null);
-                    txt_studno.requestFocus();
-                }
-            }catch(HeadlessException | SQLException e){
-                System.out.println(e);
             }
         }
+        userSelectedRow = 0;
+        
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
@@ -1017,7 +993,15 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_addActionPerformed
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-       try {
+       
+        if(jTable1.getSelectedRowCount() == 0){
+            JOptionPane.showMessageDialog(null, "Please select you want to update");
+        }
+        else if (jTable1.getSelectedRowCount() > 1){
+             JOptionPane.showMessageDialog(null, "Please select only one record");
+        }
+        else {
+             try {
             String urlmain = "jdbc:ucanaccess://JavaLoginClone.accdb";
             conmain = DriverManager.getConnection(urlmain);
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -1062,7 +1046,7 @@ public class MainForm extends javax.swing.JFrame {
                 jc_dept.setSelectedItem("------------Select Department----------");
                 picture.setIcon(null);
                 txt_studno.requestFocus();
-
+                userSelectedRow = 0;
                 disabletextbox();
 
                 btn_save.setEnabled(false);
@@ -1072,6 +1056,8 @@ public class MainForm extends javax.swing.JFrame {
                 btn_add.setEnabled(true);
                 btn_AddUp.setEnabled(false);
                 tableupdate();
+                
+               
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Data not Updated!");
             }
@@ -1079,10 +1065,21 @@ public class MainForm extends javax.swing.JFrame {
         } catch (HeadlessException | SQLException e) {
             System.out.println(e);
         }
+        }
+        
+       
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
-       DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+       
+        if(jTable1.getSelectedRowCount() == 0){
+            JOptionPane.showMessageDialog(null, "Please select you want to view");
+        }
+        else if (jTable1.getSelectedRowCount() > 1){
+             JOptionPane.showMessageDialog(null, "Please select only one record");
+        }
+        else {
+            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         int selectedIndex = jTable1.getSelectedRow();
 
         txt_studno.setText(model.getValueAt(selectedIndex, 0).toString());
@@ -1130,6 +1127,9 @@ public class MainForm extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }
+        //userSelectedRow = 0;
+        
     }//GEN-LAST:event_btn_viewActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
@@ -1142,7 +1142,8 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_exitActionPerformed
 
     private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
-       
+
+        userSelectedRow = 0;
          // disable the textbox
         txt_studno.setEnabled(false);
         txt_last.setEnabled(false);
@@ -1173,6 +1174,10 @@ public class MainForm extends javax.swing.JFrame {
         picture.setIcon(null);
         txt_studno.requestFocus();
     }//GEN-LAST:event_btn_resetActionPerformed
+
+    private void jTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1MouseEntered
 
     /**
      * @param args the command line arguments

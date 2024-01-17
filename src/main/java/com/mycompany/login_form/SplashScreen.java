@@ -43,7 +43,7 @@ public class SplashScreen extends javax.swing.JFrame {
         pleasewait.setText("Please wait.....");
 
         jLabel1.setBackground(new java.awt.Color(248, 250, 229));
-        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(248, 250, 229));
         jLabel1.setText("Netbeans with MS Access");
 
@@ -58,7 +58,7 @@ public class SplashScreen extends javax.swing.JFrame {
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
+                .addContainerGap(81, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(75, 75, 75))
         );
@@ -71,7 +71,7 @@ public class SplashScreen extends javax.swing.JFrame {
                 .addComponent(pleasewait)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();

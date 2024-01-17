@@ -180,7 +180,6 @@ public class viewform extends javax.swing.JFrame {
         btn_exit.setBackground(new java.awt.Color(0, 150, 255));
         btn_exit.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         btn_exit.setForeground(new java.awt.Color(250, 240, 230));
-        btn_exit.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\com\\mycompany\\login_form\\images\\logout.png"));
         btn_exit.setText("Exit");
         btn_exit.setBorder(null);
         btn_exit.setPreferredSize(new java.awt.Dimension(70, 30));

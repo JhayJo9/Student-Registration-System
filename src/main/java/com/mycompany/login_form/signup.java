@@ -141,7 +141,7 @@ public class signup extends javax.swing.JFrame {
         });
         jPanel1.add(btn_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 140, 30));
 
-        jLabel1.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(250, 240, 230));
         jLabel1.setText("Create an account");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));

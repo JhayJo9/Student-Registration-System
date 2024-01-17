@@ -363,9 +363,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e6" green="f0" red="fa" type="rgb"/>
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(System.getProperty(&quot;user.dir&quot;) + &quot;\\src\\main\\java\\com\\mycompany\\login_form\\images\\logout.png&quot;)" type="code"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Exit"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
