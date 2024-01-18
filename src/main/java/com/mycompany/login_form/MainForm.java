@@ -137,7 +137,7 @@ public class MainForm extends javax.swing.JFrame {
         txt_middle.setText("");
         txt_add.setText("");
         txt_bday.setText("");
-        jc_dept.setSelectedItem(4);
+        jc_dept.setSelectedItem("------------Select Department----------");
         txt_studno.requestFocus();
         picture.setIcon(null);
     }
